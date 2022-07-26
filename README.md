@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# shopping-cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+[App] Creating a fake store using the fake store API 
 
-In the project directory, you can run:
+> See it live on [optimistictrousers.github.io/TOP-shopping-cart](https://optimistictrousers.github.io/TOP-shopping-cart/)
+> Or clone repo, cd into repo, then run "npm run start"
 
-### `npm start`
+![screenshot of the battleship game](PLACE_URL_HERE)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Purpose
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Creating a multi-page application with react-router-dom, using Testing Library and Jest to test, and learning how to use context.
 
-### `npm test`
+Beyond that, other learning outcomes were:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Design reusable components
+- Fetching mock data from the Fake Store API https://fakestoreapi.com/
+- Practicing state management
+- Using snapshot tests with Jest and Testing Library
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. a drag-and-drop option to place ships built entirely with vanilla JS.
+2. uses ship images for an improved UX/UI that make use of calculated CSS offsets for proper placement.
+3. a random placement button for users to simplify the placement of their ships.
+4. an improved computer AI that selects random squares until a hit is registered, at which point the computer hits adjacent coordinates until the ship is sunk.
+5. when a user sinks a ship, the image of the sunken ship is displayed. to me, this simulates the actual game during which your opponent must tell you which ship is sunk.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. choose to randomize your ship placement or drag-and-drop each ship.
+2. if you choose to drag-and-drop your ships, you will have the option to clear the board and start over OR choose to randomize instead.
+3. if you choose to randomize your ship placement, you will need to refresh the page in order to revert back to drag-and-drop functionality.
+4. click "start game" and have fun!
 
-### `npm run eject`
+## Development
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Javascript Framework
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React](https://github.com/facebook/create-react-app)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Technologies used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- - [Firebase](https://firebase.google.com/) - Cloud services (database, authentication) -->
+- [ESLint](https://eslint.org/) - A linter tool to standardize code
+- [Github Pages](https://pages.github.com/) - Hosting
+- [Prettier](https://prettier.io/) - Code formatter
+- [React Router](https://reactrouter.com/web/guides/quick-start) - Router tool for React applications
+- [Jest-Fetch-Mock](https://github.com/jefflau/jest-fetch-mock) - Tool to mock fetch requests
+<p align="left"> 
+<a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> 
+<a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a>
+<a href="https://jestjs.io" target="_blank"> <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/> </a>
+<a href="https://webpack.js.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/d00d0969292a6569d45b06d3f350f463a0107b0d/icons/webpack/webpack-original-wordmark.svg" alt="webpack" width="40" height="40"/> </a> 
+</p>
 
-## Learn More
+## Areas for Improvement
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. the computer AI does not account for hitting a ship that is adjacent to the intitially hit ship. once the computer AI sinks the initially hit ship it currently will not return to the ship that was inadvertently hit. to improve this functionality would require some refactoring that i may return to in the future.
+2. i began the project enthusiastically testing via jest but abandoned testing once the code got sufficiently complex; in reality, this was exactly the wrong time to shift away from testing.
+3. both the drag-and-drop and the computer AI functionalities proved much more complex than i had originally expected, thus they both resulted in significant muddling of my code and adversely affected its readability. further, i encountered serious state issues that resulted in me opting to refresh the page for a new game rather than play a game of "whack-a-mole debugging".
+4. not yet responsive. need media queries to stack the gameboards in a single column if mobile/tablet is portrait-oriented.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Known Bugs
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. if user drags a ship off screen AND drops the ship off screen, the drag-and-drop will break and the page will need to be refreshed.
+2. i opted to set overflow: hidden for the page because the drag-and-drop breaks when the page scrolls.
+3. the drag-and-drop is not compatible with touch screens so the functionality could be hidden for mobile/tablet use. this would further allow scrollbars as needed/desired.
