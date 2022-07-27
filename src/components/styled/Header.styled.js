@@ -11,6 +11,15 @@ export const StyledHeader = styled.header`
 
   nav {
     width: ${(props) => props.theme.width};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0rem;
+  }
+
+  svg {
+    height: 24px;
+    width: 24px;
   }
 
   img {
