@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-const StyledFooter = styled.footer`
-  width: 100%;
+export const StyledFooter = styled.footer`
   margin-top: auto;
-  background-color: aliceblue;
+  background-color: blue;
   height: 8%;
 `;
 
-export default StyledFooter;
