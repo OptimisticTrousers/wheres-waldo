@@ -9,8 +9,7 @@ export const StyledHeader = styled.header`
   box-shadow: 0 3px 7.5px rgb(0 0 0 / 10%);
   background-color: #fff;
 
-  nav {
-    width: ${(props) => props.theme.width};
+  div{
     display: flex;
     justify-content: space-between;
     align-items: center;
