@@ -10,9 +10,8 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <h1>owhy</h1>
       <GlobalStyles />
+      <Header />
       <Game />
     </ThemeProvider>
   );
