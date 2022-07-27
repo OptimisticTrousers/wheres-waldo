@@ -1,6 +1,7 @@
 import Game from "./components/Game";
-import { GlobalStyles } from "./components/styled/Global.styled";
+import GlobalStyles from "./components/styled/Global.styled";
 import { ThemeProvider } from "styled-components";
+import Header from "./components/Header";
 function App() {
 
   const theme = {
@@ -9,6 +10,8 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
+      <Header />
+      <h1>owhy</h1>
       <GlobalStyles />
       <Game />
     </ThemeProvider>

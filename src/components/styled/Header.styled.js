@@ -1,6 +1,7 @@
 import styled from "styled-components";
-export const StyledGame = styled.main`
-  //width: ${(props) => props.theme.width};
+
+export const StyledHeader = styled.header`
+  height: 8%;
   width: 100%;
   background-color: red;
 `;

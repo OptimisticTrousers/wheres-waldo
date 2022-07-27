@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components"
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   html {
     min-height: 100%;
   }
@@ -7,3 +7,5 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 `
+
+export default GlobalStyles
