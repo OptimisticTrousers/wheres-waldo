@@ -12,6 +12,7 @@ export const StyledGame = styled.main`
   }
   img {
 
+    width: ${(props) => props.theme.width};
     border-radius: 1.75%/2.3275%
   }
 `;
