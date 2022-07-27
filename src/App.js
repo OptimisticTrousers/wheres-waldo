@@ -1,10 +1,17 @@
 import Game from "./components/Game";
+import { GlobalStyles } from "./components/styled/Global.styled";
+import { ThemeProvider } from "styled-components";
 function App() {
+
+  const theme = {
+    width: "80%"
+  }
   
   return (
-    <div >
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <Game />
-    </div>
+    </ThemeProvider>
   );
 }
 
