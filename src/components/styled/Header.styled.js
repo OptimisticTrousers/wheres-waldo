@@ -18,8 +18,25 @@ export const StyledHeader = styled.header`
   }
 
   svg {
-    height: 24px;
-    width: 24px;
+    height: 26px;
+    width: 26px;
+  }
+
+  button {
+    width: 36px;
+    height: 36px;
+    background-color: inherit;
+    border: none;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+
+  button:hover {
+    background-color: #ebedf0;
+    cursor: pointer;
   }
 
   img {

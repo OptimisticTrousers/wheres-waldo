@@ -6,7 +6,9 @@ export default function Header() {
     <StyledHeader>
       <nav>
         <img src={headerLogo} alt="a smiling pair of pants" />
-        <BsMoon />
+        <button type="button">
+          <BsMoon />
+        </button>
       </nav>
     </StyledHeader>
   );
