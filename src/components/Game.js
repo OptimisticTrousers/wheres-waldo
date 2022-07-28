@@ -20,10 +20,6 @@ export default function Game() {
   return (
     <StyledGame >
       <Container onClick={handleClick}>
-        {/* <img
-          src={photo1}
-          alt="drawing of a beach with a lot of people"
-        /> */}
         <StyledSelection coordinates={coordinates}>
           Selection
         </StyledSelection>

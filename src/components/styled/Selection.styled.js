@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const StyledSelection = styled.div`
   position: absolute;
-  //right: ${(props) => props.coordinates.horizontalOffSet};
-  //top: ${(props) => props.coordinates.verticalOffSet};
+  top: ${(props) => props.coordinates.horizontalOffSet}px;
+  left: ${(props) => props.coordinates.verticalOffSet}px;
   width: 100px;
   height: 100px;
   border: none;
   border: 5px solid red;
+  background: none;
 `;
