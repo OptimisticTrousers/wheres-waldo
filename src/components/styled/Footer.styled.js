@@ -4,7 +4,11 @@ export const StyledFooter = styled.footer`
   background-color: rgb(56, 56, 56);
   padding: 1rem 0rem;
   color: white;
-  margin-top: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
 
   div {
     display: flex;
