@@ -7,28 +7,20 @@ export const StyledGame = styled.main`
   padding: 3rem;
   background: linear-gradient(150deg,#ddd 49.63%,#6e88a1 100%);
 
-  & > div {
+  div {
     display: flex;
     background-color: inherit;
-    justify-content: center;
-    position: relative;
+    justify-content:center;
   }
   img {
 
+    position: relative;
     margin-bottom: 3rem;
     width: min-content;
     height: min-content;
     border-radius: 1.75%/2.3275%
   }
 
-  & > div > div {
-    position: absolute;
-    right: ${(props) => console.log(props.coordinates)};
-    width: 100px;
-    height: 100px;
-    border: none;
-    border: 5px solid red;
-  }
   h1 {
     position: absolute;
   }

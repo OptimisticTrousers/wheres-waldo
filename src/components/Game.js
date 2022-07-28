@@ -1,6 +1,7 @@
 import { StyledGame } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
 import photo1 from "../assets/photo1.jpg";
+import { StyledSelection } from "./styled/Selection.styled";
 import { useState, useRef} from "react";
 export default function Game() {
 
@@ -17,15 +18,15 @@ export default function Game() {
     console.log("Vertical Offset: " + verticalOffSet)
   }
   return (
-    <StyledGame>
+    <StyledGame >
       <Container onClick={handleClick}>
         <img
           src={photo1}
           alt="drawing of a beach with a lot of people"
         />
-        <div coordinates={coordinates}>
+        <StyledSelection coordinates={coordinates}>
           Selection
-        </div>
+        </StyledSelection>
       </Container>
     </StyledGame>
   );
