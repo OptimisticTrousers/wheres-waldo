@@ -5,17 +5,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 function App() {
 
-  const theme = {
-    width: "80%"
-  }
-  
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyles />
       <Header />
       <Game />
       <Footer />
-    </ThemeProvider>
+    </>
   );
 }
 

@@ -23,6 +23,7 @@ export const StyledGame = styled.main`
 
   & > div > div {
     position: absolute;
+    right: ${(props) => console.log(props.coordinates)};
     width: 100px;
     height: 100px;
     border: none;

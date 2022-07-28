@@ -6,25 +6,24 @@ export default function Game() {
 
   const [clickInfo, setClickInfo] = useState({})
 
-  const image = useRef(null)
-
+  const [coordinates, setCoordinates] = useState(() => {})
 
   function handleClick(event) {
     console.log(event)
     const verticalOffSet = event.nativeEvent.offsetX;
     const horiontalOffSet= event.nativeEvent.offsetY
+    setCoordinates({verticalOffSet, horiontalOffSet});
     console.log("Horizontal Offset: " + horiontalOffSet)
     console.log("Vertical Offset: " + verticalOffSet)
   }
   return (
     <StyledGame>
-      <Container>
+      <Container onClick={handleClick}>
         <img
-          onClick={handleClick}
           src={photo1}
           alt="drawing of a beach with a lot of people"
         />
-        <div>
+        <div coordinates={coordinates}>
           Selection
         </div>
       </Container>
