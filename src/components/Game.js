@@ -16,19 +16,19 @@ export default function Game() {
   function handleClick(event) {
     let verticalOffSet, horizontalOffSet;
     // console.log(event)
-    if (event.target.parentNode.parentNode.nodeName === "MAIN") {
-      //verticalOffSet = event.target.parentNode.offsetParent.offsetLeft;
-      //horizontalOffSet = event.target.parentNode.offsetParent.offsetTop;
-      verticalOffSet = event.target.offsetParent.offsetX
-      horizontalOffSet = event.target.offsetParent.offsetY
-      console.log("Parent Vertical" + verticalOffSet)
-      console.log("Parent Horizontal" + horizontalOffSet)
-      setCoordinates({ verticalOffSet, horizontalOffSet });
-    } else {
+    if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
       verticalOffSet = event.nativeEvent.offsetX;
       horizontalOffSet = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffSet, horizontalOffSet });
-    }
+    } //else {
+      //verticalOffSet = event.target.parentNode.offsetParent.offsetLeft;
+      //horizontalOffSet = event.target.parentNode.offsetParent.offsetTop;
+      //verticalOffSet = event.target.offsetParent.offsetX
+      //horizontalOffSet = event.target.offsetParent.offsetY
+      //console.log("Parent Vertical" + verticalOffSet)
+      //console.log("Parent Horizontal" + horizontalOffSet)
+      //setCoordinates({ verticalOffSet, horizontalOffSet });
+    //}
     //console.log("Horizontal Offset: " + horizontalOffSet)
     //console.log("Vertical Offset: " + verticalOffSet)
   }
