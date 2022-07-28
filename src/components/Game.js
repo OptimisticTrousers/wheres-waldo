@@ -10,16 +10,16 @@ export default function Game() {
   const [coordinates, setCoordinates] = useState(() => ({horizontalOffSet: "50%", verticalOffSet: "0%"}))
 
   function handleClick(event) {
-    console.log(event)
     const verticalOffSet = event.nativeEvent.offsetX;
     const horizontalOffSet= event.nativeEvent.offsetY
     setCoordinates({verticalOffSet, horizontalOffSet});
     console.log("Horizontal Offset: " + horizontalOffSet)
     console.log("Vertical Offset: " + verticalOffSet)
   }
+
   return (
     <StyledGame >
-      <Container onClick={handleClick}>
+      <Container onClick={handleClick} >
         <StyledSelection coordinates={coordinates}>
           Selection
         </StyledSelection>
