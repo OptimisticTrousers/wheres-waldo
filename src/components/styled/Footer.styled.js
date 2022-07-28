@@ -4,6 +4,8 @@ export const StyledFooter = styled.footer`
   background-color: rgb(56, 56, 56);
   padding: 1rem 0rem;
   color: white;
+  margin-top: auto;
+
   div {
     display: flex;
     margin: 0 auto;
@@ -24,6 +26,6 @@ export const StyledFooter = styled.footer`
     text-decoration: none;
   }
   a:hover {
-    background-color: #22333B;
+    background-color: #22333b;
   }
 `;

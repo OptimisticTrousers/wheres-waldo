@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  height: 10%;
+  height: min-content;
   background-color: #ebfbff;
   display: flex;
   justify-content: center;

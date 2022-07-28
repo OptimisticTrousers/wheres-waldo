@@ -5,10 +5,15 @@ const GlobalStyles = createGlobalStyle`
   }
   html {
     min-height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background: linear-gradient(150deg,#ddd 49.63%,#6e88a1 100%);
   }
   body {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
