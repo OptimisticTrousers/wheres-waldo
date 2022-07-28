@@ -21,6 +21,9 @@ export const StyledGame = styled.main`
     background-repeat: no-repeat;
     border-radius: 1.75%/2.3275%
   }
+  ul {
+    float: left;
+  }
   /* img {
 
     margin-bottom: 3rem;

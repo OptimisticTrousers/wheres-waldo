@@ -1,13 +1,10 @@
 import { StyledGame } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
-import photo1 from "../assets/photo1.jpg";
-import { StyledSelection } from "./styled/Selection.styled";
-import { useState, useRef } from "react";
+import { Target } from "./styled/Target.styled";
+import { useState} from "react";
+import { TargetImage } from "./styled/TargetImage.styled";
+import { TargetMenu } from "./styled/TargetMenu.styled";
 export default function Game() {
-  const [clickInfo, setClickInfo] = useState({});
-
-  const container = useRef()
-
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffSet: "50%",
     verticalOffSet: "0%",
@@ -21,13 +18,13 @@ export default function Game() {
       horizontalOffSet = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffSet, horizontalOffSet });
     } //else {
-      //verticalOffSet = event.target.parentNode.offsetParent.offsetLeft;
-      //horizontalOffSet = event.target.parentNode.offsetParent.offsetTop;
-      //verticalOffSet = event.target.offsetParent.offsetX
-      //horizontalOffSet = event.target.offsetParent.offsetY
-      //console.log("Parent Vertical" + verticalOffSet)
-      //console.log("Parent Horizontal" + horizontalOffSet)
-      //setCoordinates({ verticalOffSet, horizontalOffSet });
+    //verticalOffSet = event.target.parentNode.offsetParent.offsetLeft;
+    //horizontalOffSet = event.target.parentNode.offsetParent.offsetTop;
+    //verticalOffSet = event.target.offsetParent.offsetX
+    //horizontalOffSet = event.target.offsetParent.offsetY
+    //console.log("Parent Vertical" + verticalOffSet)
+    //console.log("Parent Horizontal" + horizontalOffSet)
+    //setCoordinates({ verticalOffSet, horizontalOffSet });
     //}
     //console.log("Horizontal Offset: " + horizontalOffSet)
     //console.log("Vertical Offset: " + verticalOffSet)
@@ -35,8 +32,12 @@ export default function Game() {
 
   return (
     <StyledGame>
-      <Container ref={container} onClickCapture={handleClick}>
-        <StyledSelection coordinates={coordinates}>Selection</StyledSelection>
+      <Container onClickCapture={handleClick}>
+        <Target coordinates={coordinates}>
+          <TargetImage />
+          <TargetMenu />
+          
+        </Target>
       </Container>
     </StyledGame>
   );
