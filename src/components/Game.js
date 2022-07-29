@@ -34,9 +34,13 @@ export default function Game() {
     <StyledGame>
       <Container onClickCapture={handleClick}>
         <Target coordinates={coordinates}>
-          <TargetImage />
-          <TargetMenu />
-          
+
+          <TargetMenu>
+            <li>y</li>
+            <li>y</li>
+            <li>y</li>
+            <li>y</li>
+          </TargetMenu>
         </Target>
       </Container>
     </StyledGame>
