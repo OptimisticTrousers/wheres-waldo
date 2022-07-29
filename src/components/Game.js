@@ -1,9 +1,11 @@
 import { StyledGame } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
 import { Target } from "./styled/Target.styled";
-import { useState} from "react";
+import { useState } from "react";
 import { TargetImage } from "./styled/TargetImage.styled";
 import { TargetMenu } from "./styled/TargetMenu.styled";
+import { GoLocation } from "react-icons/go";
+import { HiLocationMarker } from "react-icons/hi";
 export default function Game() {
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffSet: "50%",
@@ -34,7 +36,6 @@ export default function Game() {
     <StyledGame>
       <Container onClickCapture={handleClick}>
         <Target coordinates={coordinates}>
-
           <TargetMenu>
             <li>y</li>
             <li>y</li>

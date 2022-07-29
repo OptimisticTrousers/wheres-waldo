@@ -14,4 +14,5 @@ flex-direction: column;
   height: ${selectionHeight}px;
   border: none;
   border: 5px solid red;
+  background: none !important;
 `;

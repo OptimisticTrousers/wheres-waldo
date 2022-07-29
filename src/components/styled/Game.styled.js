@@ -17,7 +17,6 @@ export const StyledGame = styled.main`
 
     position: relative;
     background-image: url(${photo});
-    background-size: contain;
     background-repeat: no-repeat;
     border-radius: 1.75%/2.3275%
   }
