@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const selectionWidth = 100;
-const selectionHeight = 100;
+const selectionHeight = 200;
 
 export const Target = styled.div`
 display: flex;
@@ -12,7 +12,6 @@ flex-direction: column;
     verticalOffSet - selectionWidth / 2}px;
   width: ${selectionWidth}px;
   height: ${selectionHeight}px;
-  border: none;
-  border: 5px solid red;
+  
   background: none !important;
 `;
