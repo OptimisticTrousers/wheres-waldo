@@ -12,6 +12,7 @@ flex-direction: column;
     verticalOffSet - selectionWidth / 2}px;
   width: ${selectionWidth}px;
   height: ${selectionHeight}px;
-  
+  border: none;
+  border: 5px solid red;
   background: none !important;
 `;
