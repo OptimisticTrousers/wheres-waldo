@@ -49,50 +49,59 @@ const db = getFirestore(app);
 
 export default function Game() {
   const [coordinates, setCoordinates] = useState(() => ({
-    horizontalOffSet: "50%",
-    verticalOffSet: "0%",
+    horizontalOffset: "50%",
+    verticalOffset: "0%",
   }));
 
+  const [userWon, setUserWon] = useState(() => false);
+
   useEffect(() => {
-
     async function queryCoordinates() {
-      const photoRef = doc(db, "photo1", "waldo")
-      const photoSnap = await getDoc(photoRef)
+      const photoRef = doc(db, "photo1", "waldo");
+      const photoSnap = await getDoc(photoRef);
 
-      if(photoSnap.exists()) {
-        console.log("Document data: ", photoSnap.data())
-      } else {
-        console.log("No such document!")
+      const photoData = photoSnap.data();
+
+      const { horizontalCoordinates, verticalCoordinates } = photoData;
+      const {horizontalOffset, verticalOffset} = coordinates
+
+      if (!photoSnap.exists()) return;
+
+      if (
+        verticalCoordinates - 20 <= verticalOffset &&
+        verticalCoordinates >= verticalOffset &&
+        horizontalCoordinates - 45 <= horizontalOffset &&
+        horizontalCoordinates >=horizontalOffset 
+      ) {
+        setUserWon((prevValue) => !prevValue);
       }
     }
 
     queryCoordinates();
-
-  }, [])
+  }, [coordinates]);
 
   function handleClick(event) {
-    let verticalOffSet, horizontalOffSet;
+    let verticalOffset, horizontalOffset;
     // console.log(event)
     if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
-      verticalOffSet = event.nativeEvent.offsetX;
-      horizontalOffSet = event.nativeEvent.offsetY;
-      console.log("Vertical: " + verticalOffSet);
-      console.log("Horizontal: " + horizontalOffSet);
-      setCoordinates({ verticalOffSet, horizontalOffSet });
+      verticalOffset = event.nativeEvent.offsetX;
+      horizontalOffset = event.nativeEvent.offsetY;
+      console.log("Vertical: " + verticalOffset);
+      console.log("Horizontal: " + horizontalOffset);
+      setCoordinates({ verticalOffset, horizontalOffset });
     }
 
-
     //else {
-    //verticalOffSet = event.target.parentNode.offsetParent.offsetLeft;
-    //horizontalOffSet = event.target.parentNode.offsetParent.offsetTop;
-    //verticalOffSet = event.target.offsetParent.offsetX
-    //horizontalOffSet = event.target.offsetParent.offsetY
-    //console.log("Parent Vertical" + verticalOffSet)
-    //console.log("Parent Horizontal" + horizontalOffSet)
-    //setCoordinates({ verticalOffSet, horizontalOffSet });
+    //verticalOffset = event.target.parentNode.offsetParent.offsetLeft;
+    //horizontalOffset = event.target.parentNode.offsetParent.offsetTop;
+    //verticalOffset = event.target.offsetParent.offsetX
+    //horizontalOffset = event.target.offsetParent.offsetY
+    //console.log("Parent Vertical" + verticalOffset)
+    //console.log("Parent Horizontal" + horizontalOffset)
+    //setCoordinates({ verticalOffset, horizontalOffset });
     //}
-    //console.log("Horizontal Offset: " + horizontalOffSet)
-    //console.log("Vertical Offset: " + verticalOffSet)
+    //console.log("Horizontal Offset: " + horizontalOffset)
+    //console.log("Vertical Offset: " + verticalOffset)
   }
 
   return (
@@ -101,6 +110,7 @@ export default function Game() {
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
+            <li>{userWon && "BOB JONESSS"}</li>
             <li>Waldo</li>
             <li>The Wizard</li>
             <li>Wilma</li>
