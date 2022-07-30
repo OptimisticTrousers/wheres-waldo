@@ -59,8 +59,25 @@ export default function Game() {
     if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
       verticalOffSet = event.nativeEvent.offsetX;
       horizontalOffSet = event.nativeEvent.offsetY;
+      console.log("Vertical: " + verticalOffSet);
+      console.log("Horizontal: " + horizontalOffSet);
       setCoordinates({ verticalOffSet, horizontalOffSet });
-    } //else {
+      queryCoordinates();
+    }
+
+    async function queryCoordinates() {
+      const photoRef = doc(db, "photo1", "waldo")
+      const photoSnap = await getDoc(photoRef)
+
+      if(photoSnap.exists()) {
+        console.log("Document data: ", photoSnap.data())
+      } else {
+        console.log("No such document!")
+      }
+
+    }
+
+    //else {
     //verticalOffSet = event.target.parentNode.offsetParent.offsetLeft;
     //horizontalOffSet = event.target.parentNode.offsetParent.offsetTop;
     //verticalOffSet = event.target.offsetParent.offsetX
