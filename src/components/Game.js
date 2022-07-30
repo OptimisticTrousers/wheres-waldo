@@ -96,10 +96,9 @@ export default function Game() {
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
-            <li>y</li>
-            <li>y</li>
-            <li>y</li>
-            <li>y</li>
+            <li>Waldo</li>
+            <li>The Wizard</li>
+            <li>Wilma</li>
           </TargetMenu>
         </Target>
       </Container>
