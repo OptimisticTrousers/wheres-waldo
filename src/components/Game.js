@@ -67,10 +67,16 @@ export default function Game() {
       return photoData;
     }
     if (dbCoordinates === null) {
-      setDbCoordinates(queryCoordinates());
+
+      queryCoordinates().then(databasePhotoData => {
+        setDbCoordinates(databasePhotoData.coordinates);
+      });
     } else {
       const { horizontalCoordinates, verticalCoordinates } = dbCoordinates;
       const { horizontalOffset, verticalOffset } = coordinates;
+
+      console.log("Database: " , dbCoordinates)
+      console.log("User: " , coordinates)
 
       if (
         verticalCoordinates - 20 <= verticalOffset &&
@@ -89,8 +95,8 @@ export default function Game() {
     if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
       verticalOffset = event.nativeEvent.offsetX;
       horizontalOffset = event.nativeEvent.offsetY;
-      console.log("Vertical: " + verticalOffset);
-      console.log("Horizontal: " + horizontalOffset);
+      // console.log("Vertical: " + verticalOffset);
+      // console.log("Horizontal: " + horizontalOffset);
       setCoordinates({ verticalOffset, horizontalOffset });
     }
 
