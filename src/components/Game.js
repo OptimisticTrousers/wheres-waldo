@@ -53,6 +53,8 @@ export default function Game() {
     verticalOffset: "0%",
   }));
 
+  const [dbCoordinates, setDbCoordinates] = useState(() => null);
+
   const [userWon, setUserWon] = useState(() => false);
 
   useEffect(() => {
@@ -62,22 +64,23 @@ export default function Game() {
 
       const photoData = photoSnap.data();
 
-      const { horizontalCoordinates, verticalCoordinates } = photoData;
-      const {horizontalOffset, verticalOffset} = coordinates
-
-      if (!photoSnap.exists()) return;
+      return photoData;
+    }
+    if (dbCoordinates === null) {
+      setDbCoordinates(queryCoordinates());
+    } else {
+      const { horizontalCoordinates, verticalCoordinates } = dbCoordinates;
+      const { horizontalOffset, verticalOffset } = coordinates;
 
       if (
         verticalCoordinates - 20 <= verticalOffset &&
         verticalCoordinates >= verticalOffset &&
         horizontalCoordinates - 45 <= horizontalOffset &&
-        horizontalCoordinates >=horizontalOffset 
+        horizontalCoordinates >= horizontalOffset
       ) {
         setUserWon((prevValue) => !prevValue);
       }
     }
-
-    queryCoordinates();
   }, [coordinates]);
 
   function handleClick(event) {
