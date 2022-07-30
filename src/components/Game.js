@@ -1,7 +1,7 @@
 import { StyledGame } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
 import { Target } from "./styled/Target.styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TargetImage } from "./styled/TargetImage.styled";
 import { TargetMenu } from "./styled/TargetMenu.styled";
 import { GoLocation } from "react-icons/go";
@@ -44,7 +44,7 @@ import { getPerformance } from "firebase/performance";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+//const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 export default function Game() {
@@ -53,17 +53,7 @@ export default function Game() {
     verticalOffSet: "0%",
   }));
 
-  function handleClick(event) {
-    let verticalOffSet, horizontalOffSet;
-    // console.log(event)
-    if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
-      verticalOffSet = event.nativeEvent.offsetX;
-      horizontalOffSet = event.nativeEvent.offsetY;
-      console.log("Vertical: " + verticalOffSet);
-      console.log("Horizontal: " + horizontalOffSet);
-      setCoordinates({ verticalOffSet, horizontalOffSet });
-      queryCoordinates();
-    }
+  useEffect(() => {
 
     async function queryCoordinates() {
       const photoRef = doc(db, "photo1", "waldo")
@@ -74,8 +64,23 @@ export default function Game() {
       } else {
         console.log("No such document!")
       }
-
     }
+
+    queryCoordinates();
+
+  }, [])
+
+  function handleClick(event) {
+    let verticalOffSet, horizontalOffSet;
+    // console.log(event)
+    if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
+      verticalOffSet = event.nativeEvent.offsetX;
+      horizontalOffSet = event.nativeEvent.offsetY;
+      console.log("Vertical: " + verticalOffSet);
+      console.log("Horizontal: " + horizontalOffSet);
+      setCoordinates({ verticalOffSet, horizontalOffSet });
+    }
+
 
     //else {
     //verticalOffSet = event.target.parentNode.offsetParent.offsetLeft;
