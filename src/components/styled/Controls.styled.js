@@ -12,4 +12,25 @@ export const StyledControls = styled.div`
   z-index: 6;
   backdrop-filter: blur(8px);
   justify-content: space-between;
+  background-color: black;
+  opacity: 0.9;
+
+  button {
+    background-color: #fff;
+    border: 1px transparent;
+    border-radius: 18px;
+    color: black;
+    padding: 10px 28px;
+    display: flex;
+    gap: 12px;
+    font-family: "GT Medium";
+    font-size: 16px;
+    transition: 0.3s all;
+    cursor: pointer;
+  }
+
+  button:hover {
+    transform: scale(1.03);
+    background-color: #45c1bc;
+  }
 `

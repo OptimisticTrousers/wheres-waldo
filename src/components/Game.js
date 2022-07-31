@@ -42,6 +42,7 @@ import {
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
 import { StyledControls } from "./styled/Controls.styled";
+import { ImageContainer } from "./styled/ImageContainer.styled";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -118,7 +119,7 @@ export default function Game() {
         <StyledControls>
           <button onClick={toggleFullScreen}>Fullscreen</button>
         </StyledControls>
-      <Container ref={gameContainer} onClickCapture={handleClick}>
+      <ImageContainer ref={gameContainer} onClickCapture={handleClick}>
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
@@ -126,7 +127,7 @@ export default function Game() {
             <li>Odlaw</li>
           </TargetMenu>
         </Target>
-      </Container>
+      </ImageContainer>
     </StyledGame>
   );
 }
