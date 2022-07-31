@@ -91,26 +91,11 @@ export default function Game() {
 
   function handleClick(event) {
     let verticalOffset, horizontalOffset;
-    // console.log(event)
     if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
       verticalOffset = event.nativeEvent.offsetX;
       horizontalOffset = event.nativeEvent.offsetY;
-      // console.log("Vertical: " + verticalOffset);
-      // console.log("Horizontal: " + horizontalOffset);
       setCoordinates({ verticalOffset, horizontalOffset });
     }
-
-    //else {
-    //verticalOffset = event.target.parentNode.offsetParent.offsetLeft;
-    //horizontalOffset = event.target.parentNode.offsetParent.offsetTop;
-    //verticalOffset = event.target.offsetParent.offsetX
-    //horizontalOffset = event.target.offsetParent.offsetY
-    //console.log("Parent Vertical" + verticalOffset)
-    //console.log("Parent Horizontal" + horizontalOffset)
-    //setCoordinates({ verticalOffset, horizontalOffset });
-    //}
-    //console.log("Horizontal Offset: " + horizontalOffset)
-    //console.log("Vertical Offset: " + verticalOffset)
   }
 
   return (
