@@ -3,17 +3,17 @@ import photo from "../../assets/photo1.jpg"
 export const StyledGame = styled.main`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
   padding: 3rem;
-  div {
+  & > div:not(div:nth-child(1)) {
 
     position: relative;
     background-image: url(${photo});
     background-size: contain;
     background-repeat: no-repeat;
     border-radius: 1.75%/2.3275%;
-  }
-  & > div {
     width: 1500px;
     height: 1500px;
   }

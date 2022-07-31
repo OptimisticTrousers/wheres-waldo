@@ -41,6 +41,7 @@ import {
 } from "firebase/storage";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
+import { StyledControls } from "./styled/Controls.styled";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -57,7 +58,7 @@ export default function Game() {
 
   const [userWon, setUserWon] = useState(() => false);
 
-  const gameContainer = useRef()
+  const gameContainer = useRef();
 
   useEffect(() => {
     async function queryCoordinates() {
@@ -69,19 +70,18 @@ export default function Game() {
       return photoData;
     }
     if (dbCoordinates === null) {
-
-      queryCoordinates().then(databasePhotoData => {
+      queryCoordinates().then((databasePhotoData) => {
         setDbCoordinates(databasePhotoData.coordinates);
       });
     } else {
       const { horizontalCoordinates, verticalCoordinates } = dbCoordinates;
       const { horizontalOffset, verticalOffset } = coordinates;
 
-      console.log("Database: " , dbCoordinates)
-      console.log("User: " , coordinates)
-      console.log("Inner width", window.innerWidth)
-      console.log("Inner height", window.innerHeight)
-      console.log("Width: " , gameContainer)
+      console.log("Database: ", dbCoordinates);
+      console.log("User: ", coordinates);
+      console.log("Inner width", window.innerWidth);
+      console.log("Inner height", window.innerHeight);
+      console.log("Width: ", gameContainer);
 
       if (
         verticalCoordinates - 20 <= verticalOffset &&
@@ -104,20 +104,21 @@ export default function Game() {
   }
 
   function toggleFullScreen() {
-    console.log(gameContainer.current)
-    const game = gameContainer.current
-    if(!game.fullscreenElement) {
+    console.log(gameContainer.current);
+    const game = gameContainer.current;
+    if (!game.fullscreenElement) {
       game.requestFullscreen();
-    }
-    else if(game.exitFullscreen) {
+    } else if (game.exitFullscreen) {
       game.exitFullscreen();
     }
   }
 
   return (
     <StyledGame>
+        <StyledControls>
+          <button onClick={toggleFullScreen}>Fullscreen</button>
+        </StyledControls>
       <Container ref={gameContainer} onClickCapture={handleClick}>
-        <button onClick={toggleFullScreen}>Fullscreen</button>
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
