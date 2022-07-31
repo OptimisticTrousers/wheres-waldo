@@ -11,11 +11,11 @@ export const StyledGame = styled.main`
     background-image: url(${photo});
     background-size: contain;
     background-repeat: no-repeat;
-    border-radius: 1.75%/2.3275%
+    border-radius: 1.75%/2.3275%;
   }
   & > div {
-    width: 1000px;
-    height: 1000px;
+    width: 1500px;
+    height: 1500px;
   }
 
   h1 {

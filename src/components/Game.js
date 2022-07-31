@@ -57,7 +57,7 @@ export default function Game() {
 
   const [userWon, setUserWon] = useState(() => false);
 
-  const gameContainer = useRef(null)
+  const gameContainer = useRef()
 
   useEffect(() => {
     async function queryCoordinates() {
@@ -103,9 +103,21 @@ export default function Game() {
     }
   }
 
+  function toggleFullScreen() {
+    console.log(gameContainer.current)
+    const game = gameContainer.current
+    if(!game.fullscreenElement) {
+      game.requestFullscreen();
+    }
+    else if(game.exitFullscreen) {
+      game.exitFullscreen();
+    }
+  }
+
   return (
     <StyledGame>
       <Container ref={gameContainer} onClickCapture={handleClick}>
+        <button onClick={toggleFullScreen}>Fullscreen</button>
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
