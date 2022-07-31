@@ -1,7 +1,7 @@
 import { StyledGame } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
 import { Target } from "./styled/Target.styled";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TargetImage } from "./styled/TargetImage.styled";
 import { TargetMenu } from "./styled/TargetMenu.styled";
 import { GoLocation } from "react-icons/go";
@@ -57,6 +57,8 @@ export default function Game() {
 
   const [userWon, setUserWon] = useState(() => false);
 
+  const gameContainer = useRef(null)
+
   useEffect(() => {
     async function queryCoordinates() {
       const photoRef = doc(db, "photo1", "waldo");
@@ -77,6 +79,9 @@ export default function Game() {
 
       console.log("Database: " , dbCoordinates)
       console.log("User: " , coordinates)
+      console.log("Inner width", window.innerWidth)
+      console.log("Inner height", window.innerHeight)
+      console.log("Width: " , gameContainer)
 
       if (
         verticalCoordinates - 20 <= verticalOffset &&
@@ -100,7 +105,7 @@ export default function Game() {
 
   return (
     <StyledGame>
-      <Container onClickCapture={handleClick}>
+      <Container ref={gameContainer} onClickCapture={handleClick}>
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
