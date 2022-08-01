@@ -45,6 +45,11 @@ import { getPerformance } from "firebase/performance";
 import { StyledControls } from "./styled/Controls.styled";
 import { ImageContainer } from "./styled/ImageContainer.styled";
 import beach from '../assets/beach.jpg'
+import fruitland from '../assets/fruitland.jpg'
+import hollywood from '../assets/hollywood.jpg'
+import space from '../assets/space.jpg'
+import track from '../assets/track.jpg'
+import winter from '../assets/winter.jpg'
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
