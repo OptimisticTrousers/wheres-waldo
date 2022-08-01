@@ -1,7 +1,7 @@
 import { StyledGame } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
 import { Target } from "./styled/Target.styled";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { TargetImage } from "./styled/TargetImage.styled";
 import { TargetMenu } from "./styled/TargetMenu.styled";
 import { GoLocation } from "react-icons/go";
@@ -23,6 +23,7 @@ import {
   query,
   orderBy,
   limit,
+  getDocs,
   where,
   onSnapshot,
   setDoc,
@@ -64,6 +65,17 @@ export default function Game() {
   useEffect(() => {
     async function queryCoordinates() {
       const photoRef = doc(db, "photo1", "waldo");
+
+      const photoCollection = collection(db, "photo1")
+
+      const querySnapshot = await getDocs(photoCollection)
+
+      querySnapshot.forEach(doc => {
+        console.log(doc.id, ": ", doc.data())
+      })
+      // photoCollection.then(data => {
+      //   console.log("DB DATA: " , data)
+      // })
       const photoSnap = await getDoc(photoRef);
 
       const photoData = photoSnap.data();
@@ -82,7 +94,6 @@ export default function Game() {
       console.log("User: ", coordinates);
       console.log("Inner width", window.innerWidth);
       console.log("Inner height", window.innerHeight);
-      console.log("Width: ", gameContainer);
 
       if (
         verticalCoordinates - 20 <= verticalOffset &&
@@ -95,6 +106,10 @@ export default function Game() {
     }
   }, [coordinates]);
 
+  function userWin() {
+    
+  }
+
   function handleClick(event) {
     let verticalOffset, horizontalOffset;
     if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
@@ -105,7 +120,6 @@ export default function Game() {
   }
 
   function toggleFullScreen() {
-    console.log(gameContainer.current);
     const game = gameContainer.current;
     if (!game.fullscreenElement) {
       game.requestFullscreen();
