@@ -8,7 +8,7 @@ export const StyledFooter = styled.footer`
   left: 0;
   right: 0;
   bottom: 0;
-  height: 40px;
+  height: 60px;
   width: 100%;
 
   div {

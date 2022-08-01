@@ -2,7 +2,7 @@ import styled from "styled-components"
 export const StyledControls = styled.div`
   display: flex;
   position: relative;
-  width: 630px;
+  width: 50%;
   height: 70px;
   box-sizing: border-box;
   padding: 14px 20px 15px 20px;
@@ -14,6 +14,7 @@ export const StyledControls = styled.div`
   justify-content: space-between;
   background-color: black;
   opacity: 0.9;
+  margin-bottom: 3rem;
 
   button {
     background-color: #fff;

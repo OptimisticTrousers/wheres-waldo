@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { Container } from "./Container.styled";
 import photo from "../../assets/photo1.jpg";
-export const ImageContainer = styled.div`
+export const ImageContainer = styled(Container)`
   position: relative;
   background-image: url(${photo});
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1.75%/2.3275%;
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 1024px;
 
   div {
     position: relative;
