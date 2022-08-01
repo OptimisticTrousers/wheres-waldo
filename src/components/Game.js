@@ -68,7 +68,7 @@ export default function Game() {
     async function queryCoordinates() {
       const photoRef = doc(db, "photo1", "waldo");
 
-      const photoCollection = collection(db, "photo1");
+      const photoCollection = collection(db, "beach");
 
       const querySnapshot = await getDocs(photoCollection);
 
