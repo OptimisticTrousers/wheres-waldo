@@ -56,9 +56,11 @@ export default function Game() {
     verticalOffset: "0%",
   }));
 
-  const [dbCoordinates, setDbCoordinates] = useState(() => null);
+  const [dbCoordinates, setDbCoordinates] = useState(null);
 
-  const [userWon, setUserWon] = useState(() => false);
+  const [userWon, setUserWon] = useState(false);
+
+  const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
   const gameContainer = useRef();
 
@@ -80,18 +82,22 @@ export default function Game() {
 
       const photoData = photoSnap.data();
 
-      return photoData;
+      return querySnapshot;
     }
     if (dbCoordinates === null) {
       queryCoordinates().then((databasePhotoData) => {
-        console.log(databasePhotoData)
-        setDbCoordinates(databasePhotoData.coordinates);
+        console.log(databasePhotoData);
+        setDbCoordinates(databasePhotoData.docChanges());
       });
     }
   }, [coordinates]);
 
-  function userWin() {
-    const { horizontalCoordinates, verticalCoordinates } = dbCoordinates;
+  function didUserFindCharacter(
+    horizontalCoordinates,
+    verticalCoordinates,
+    horizontalRange,
+    verticalRange
+  ) {
     const { horizontalOffset, verticalOffset } = coordinates;
 
     console.log("Database: ", dbCoordinates);
@@ -99,13 +105,17 @@ export default function Game() {
     console.log("Inner width", window.innerWidth);
     console.log("Inner height", window.innerHeight);
 
-    if (
-      verticalCoordinates - 20 <= verticalOffset &&
+      console.log("TRUE", numberOfCharactersFound)
+    if (numberOfCharactersFound === 5) {
+      setUserWon(true);
+    } else if (
+      verticalCoordinates - verticalRange <= verticalOffset &&
       verticalCoordinates >= verticalOffset &&
-      horizontalCoordinates - 45 <= horizontalOffset &&
+      horizontalCoordinates - horizontalRange <= horizontalOffset &&
       horizontalCoordinates >= horizontalOffset
     ) {
-      setUserWon((prevValue) => !prevValue);
+      console.log("TRUE");
+      setNumberOfCharactersFound((prevCount) => prevCount + 1);
     }
   }
 
@@ -115,6 +125,21 @@ export default function Game() {
       verticalOffset = event.nativeEvent.offsetX;
       horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
+      dbCoordinates.forEach(({ doc }) => {
+        const {
+          horizontalCoordinates,
+          verticalCoordinates,
+          horizontalRange,
+          verticalRange,
+        } = doc.data().coordinates;
+        console.log(doc.data().coordinates)
+        didUserFindCharacter(
+          horizontalCoordinates,
+          verticalCoordinates,
+          horizontalRange,
+          verticalRange
+        );
+      });
     }
   }
 
