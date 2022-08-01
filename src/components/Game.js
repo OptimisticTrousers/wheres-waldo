@@ -44,12 +44,12 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
 import { StyledControls } from "./styled/Controls.styled";
 import { ImageContainer } from "./styled/ImageContainer.styled";
-import beach from '../assets/beach.jpg'
-import fruitland from '../assets/fruitland.jpg'
-import hollywood from '../assets/hollywood.jpg'
-import space from '../assets/space.jpg'
-import track from '../assets/track.jpg'
-import winter from '../assets/winter.jpg'
+import beach from "../assets/beach.jpg";
+import fruitland from "../assets/fruitland.jpg";
+import hollywood from "../assets/hollywood.jpg";
+import space from "../assets/space.jpg";
+import track from "../assets/track.jpg";
+import winter from "../assets/winter.jpg";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -63,7 +63,7 @@ export default function Game() {
 
   const images = [beach, fruitland, hollywood, space, track, winter];
 
-  const [imageIndex, setImageIndex] = useState(0)
+  const [imageIndex, setImageIndex] = useState(0);
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
@@ -114,7 +114,7 @@ export default function Game() {
     console.log("Inner width", window.innerWidth);
     console.log("Inner height", window.innerHeight);
 
-      console.log("TRUE", numberOfCharactersFound)
+    console.log("TRUE", numberOfCharactersFound);
     if (numberOfCharactersFound === 5) {
       setUserWon(true);
     } else if (
@@ -141,7 +141,7 @@ export default function Game() {
           horizontalRange,
           verticalRange,
         } = doc.data().coordinates;
-        console.log(doc.data().coordinates)
+        console.log(doc.data().coordinates);
         didUserFindCharacter(
           horizontalCoordinates,
           verticalCoordinates,
@@ -161,15 +161,31 @@ export default function Game() {
     }
   }
 
+  function previousImageClick() {
+    if (imageIndex !== 0) {
+      setImageIndex((prevIndex) => prevIndex - 1);
+    }
+  }
+
+  function nextImageClick() {
+    if (imageIndex !== 5) {
+      setImageIndex((prevIndex) => prevIndex + 1);
+    }
+  }
+
   return (
     <StyledGame>
       <StyledControls>
-        <button onClick={toggleFullScreen}>Previous Level</button>
+        <button onClick={previousImageClick}>Previous Level</button>
         <button onClick={toggleFullScreen}>Fullscreen</button>
         <button onClick={toggleFullScreen}>Levels</button>
-        <button onClick={toggleFullScreen}>Next Level</button>
+        <button onClick={nextImageClick}>Next Level</button>
       </StyledControls>
-      <ImageContainer ref={gameContainer} onClickCapture={handleClick} image={images[imageIndex]}>
+      <ImageContainer
+        ref={gameContainer}
+        onClickCapture={handleClick}
+        image={images[imageIndex]}
+      >
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
