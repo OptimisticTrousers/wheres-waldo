@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Container } from "./Container.styled";
-import photo from "../../assets/photo1.jpg";
+import photo from "../../assets/beach.jpg";
 export const ImageContainer = styled(Container)`
-  background-image: url(${photo});
+  background-image: url(${({image}) => image});
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1.75%/2.3275%;
@@ -11,7 +11,7 @@ export const ImageContainer = styled(Container)`
 
   div {
     position: relative;
-    background-image: url(${photo});
+    background-image: url(${({image}) => image});
     background-size: none !important;
     background-repeat: no-repeat;
     border-radius: 1.75%/2.3275%;

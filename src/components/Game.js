@@ -44,7 +44,7 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
 import { StyledControls } from "./styled/Controls.styled";
 import { ImageContainer } from "./styled/ImageContainer.styled";
-
+import beach from '../assets/beach.jpg'
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -160,7 +160,7 @@ export default function Game() {
         <button onClick={toggleFullScreen}>Levels</button>
         <button onClick={toggleFullScreen}>Next Level</button>
       </StyledControls>
-      <ImageContainer ref={gameContainer} onClickCapture={handleClick}>
+      <ImageContainer ref={gameContainer} onClickCapture={handleClick} image={beach}>
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
