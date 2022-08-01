@@ -121,21 +121,9 @@ export default function Game() {
 
   useEffect(() => {
     async function queryCoordinates() {
-      const photoRef = doc(db, "photo1", "waldo");
-
       const photoCollection = collection(db, images[imageIndex].name);
 
       const querySnapshot = await getDocs(photoCollection);
-
-      // querySnapshot.forEach((doc) => {
-      //   console.log(doc.id, ": ", doc.data());
-      // });
-      // // photoCollection.then(data => {
-      // //   console.log("DB DATA: " , data)
-      // // })
-      const photoSnap = await getDoc(photoRef);
-
-      const photoData = photoSnap.data();
 
       return querySnapshot;
     }
@@ -241,7 +229,7 @@ export default function Game() {
       </StyledControls>
       <ImageContainer
         ref={gameContainer}
-        onClickCapture={handleClick}
+        onClick={handleClick}
         image={images[imageIndex].image}
       >
         <Target coordinates={coordinates}>
