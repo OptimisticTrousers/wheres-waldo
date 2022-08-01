@@ -61,7 +61,32 @@ export default function Game() {
     verticalOffset: "0%",
   }));
 
-  const images = [beach, fruitland, hollywood, space, track, winter];
+  // const images = [beach, fruitland, hollywood, space, track, winter];
+
+  const images = [
+    {
+      name: "beach",
+      image: beach,
+    },
+    {
+      name: "fruitland",
+      image: fruitland
+    }, 
+    {
+      name: "hollywood",
+      image: hollywood
+    }, {
+      name: "space",
+      image: space
+    },
+    {
+      name: "track",
+      image: track
+    }, {
+      name: "winter",
+      image: winter
+    }
+  ]
 
   const [imageIndex, setImageIndex] = useState(0);
 
