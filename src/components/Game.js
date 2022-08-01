@@ -90,7 +90,7 @@ export default function Game() {
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
-  const [userWon, setUserWon] = useState(false);
+  const [userWins, setUserWins] = useState([false, false, false, false, false, false])
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -139,7 +139,13 @@ export default function Game() {
 
     console.log("TRUE", numberOfCharactersFound);
     if (numberOfCharactersFound === 5) {
-      setUserWon(true);
+      setUserWins(prevWins => {
+        const newWins = [...prevWins]
+
+        newWins[imageIndex] = true
+
+        return newWins
+      });
     } else if (
       verticalCoordinates - verticalRange <= verticalOffset &&
       verticalCoordinates >= verticalOffset + 10 &&
@@ -212,7 +218,7 @@ export default function Game() {
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
-            <li>{userWon && "BOB JONES"}</li>
+            <li>{userWins[imageIndex] && "BOB JONES"}</li>
             <li>The Wizard</li>
             <li>Odlaw</li>
           </TargetMenu>
