@@ -66,13 +66,13 @@ export default function Game() {
     async function queryCoordinates() {
       const photoRef = doc(db, "photo1", "waldo");
 
-      const photoCollection = collection(db, "photo1")
+      const photoCollection = collection(db, "photo1");
 
-      const querySnapshot = await getDocs(photoCollection)
+      const querySnapshot = await getDocs(photoCollection);
 
-      querySnapshot.forEach(doc => {
-        console.log(doc.id, ": ", doc.data())
-      })
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, ": ", doc.data());
+      });
       // photoCollection.then(data => {
       //   console.log("DB DATA: " , data)
       // })
@@ -84,30 +84,29 @@ export default function Game() {
     }
     if (dbCoordinates === null) {
       queryCoordinates().then((databasePhotoData) => {
+        console.log(databasePhotoData)
         setDbCoordinates(databasePhotoData.coordinates);
       });
-    } else {
-      const { horizontalCoordinates, verticalCoordinates } = dbCoordinates;
-      const { horizontalOffset, verticalOffset } = coordinates;
-
-      console.log("Database: ", dbCoordinates);
-      console.log("User: ", coordinates);
-      console.log("Inner width", window.innerWidth);
-      console.log("Inner height", window.innerHeight);
-
-      if (
-        verticalCoordinates - 20 <= verticalOffset &&
-        verticalCoordinates >= verticalOffset &&
-        horizontalCoordinates - 45 <= horizontalOffset &&
-        horizontalCoordinates >= horizontalOffset
-      ) {
-        setUserWon((prevValue) => !prevValue);
-      }
     }
   }, [coordinates]);
 
   function userWin() {
-    
+    const { horizontalCoordinates, verticalCoordinates } = dbCoordinates;
+    const { horizontalOffset, verticalOffset } = coordinates;
+
+    console.log("Database: ", dbCoordinates);
+    console.log("User: ", coordinates);
+    console.log("Inner width", window.innerWidth);
+    console.log("Inner height", window.innerHeight);
+
+    if (
+      verticalCoordinates - 20 <= verticalOffset &&
+      verticalCoordinates >= verticalOffset &&
+      horizontalCoordinates - 45 <= horizontalOffset &&
+      horizontalCoordinates >= horizontalOffset
+    ) {
+      setUserWon((prevValue) => !prevValue);
+    }
   }
 
   function handleClick(event) {
