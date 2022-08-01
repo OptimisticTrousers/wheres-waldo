@@ -123,6 +123,7 @@ export default function Game() {
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
+            <li>{userWon && "BOB JONES"}</li>
             <li>The Wizard</li>
             <li>Odlaw</li>
           </TargetMenu>
