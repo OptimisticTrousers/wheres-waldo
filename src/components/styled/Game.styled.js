@@ -3,8 +3,9 @@ import photo from "../../assets/photo1.jpg"
 export const StyledGame = styled.main`
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  flex: 1;
-  padding: 3rem;
-  
+  padding: 3rem; 
+  height: 100%;
+  width: 100%;
 `;

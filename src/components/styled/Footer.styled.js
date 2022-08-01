@@ -9,6 +9,7 @@ export const StyledFooter = styled.footer`
   right: 0;
   bottom: 0;
   height: 40px;
+  width: 100%;
 
   div {
     display: flex;

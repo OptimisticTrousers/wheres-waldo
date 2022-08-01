@@ -8,6 +8,7 @@ export const StyledHeader = styled.header`
   align-items: center;
   box-shadow: 0 3px 7.5px rgb(0 0 0 / 10%);
   background-color: #fff;
+  width: 100%;
 
   div{
     display: flex;

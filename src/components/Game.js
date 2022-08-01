@@ -115,11 +115,11 @@ export default function Game() {
   }
 
   return (
-    <StyledGame>
+    <StyledGame ref={gameContainer}>
         <StyledControls>
           <button onClick={toggleFullScreen}>Fullscreen</button>
         </StyledControls>
-      <ImageContainer ref={gameContainer} onClickCapture={handleClick}>
+      <ImageContainer onClickCapture={handleClick}>
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
