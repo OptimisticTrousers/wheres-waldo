@@ -94,6 +94,29 @@ export default function Game() {
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
+  const [charactersFound, setCharactersFound] = useState([
+    {
+      name: "odlaw",
+      found: false
+    }, 
+    {
+      name: "waldo",
+      found: false
+    },
+    {
+      name: "wilma",
+      found: false
+    },
+    {
+      name: "wizard",
+      found: false
+    },
+    {
+      name: "woof",
+      found: false
+    }
+  ])
+
   const gameContainer = useRef();
 
   useEffect(() => {
@@ -104,12 +127,12 @@ export default function Game() {
 
       const querySnapshot = await getDocs(photoCollection);
 
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, ": ", doc.data());
-      });
-      // photoCollection.then(data => {
-      //   console.log("DB DATA: " , data)
-      // })
+      // querySnapshot.forEach((doc) => {
+      //   console.log(doc.id, ": ", doc.data());
+      // });
+      // // photoCollection.then(data => {
+      // //   console.log("DB DATA: " , data)
+      // // })
       const photoSnap = await getDoc(photoRef);
 
       const photoData = photoSnap.data();
@@ -118,7 +141,6 @@ export default function Game() {
     }
     if (dbCoordinates === null) {
       queryCoordinates().then((databasePhotoData) => {
-        console.log(databasePhotoData);
         setDbCoordinates(databasePhotoData.docChanges());
       });
     }
@@ -128,16 +150,15 @@ export default function Game() {
     horizontalCoordinates,
     verticalCoordinates,
     horizontalRange,
-    verticalRange
+    verticalRange,
+    name
   ) {
     const { horizontalOffset, verticalOffset } = coordinates;
 
-    console.log("Database: ", dbCoordinates);
+    console.log("Database Horizontal: ", horizontalCoordinates);
+    console.log("Database Vertical: ", verticalCoordinates);
     console.log("User: ", coordinates);
-    console.log("Inner width", window.innerWidth);
-    console.log("Inner height", window.innerHeight);
-
-    console.log("TRUE", numberOfCharactersFound);
+    console.log("Characters Found:", numberOfCharactersFound);
     if (numberOfCharactersFound === 5) {
       setUserWins(prevWins => {
         const newWins = [...prevWins]
@@ -147,13 +168,20 @@ export default function Game() {
         return newWins
       });
     } else if (
-      verticalCoordinates - verticalRange <= verticalOffset &&
-      verticalCoordinates >= verticalOffset + 10 &&
-      horizontalCoordinates - horizontalRange <= horizontalOffset &&
-      horizontalCoordinates >= horizontalOffset + 10
+      verticalCoordinates - verticalRange <= verticalOffset&&
+      verticalCoordinates >= verticalOffset&&
+      horizontalCoordinates - horizontalRange <= horizontalOffset&&
+      horizontalCoordinates >= horizontalOffset
     ) {
-      console.log("TRUE");
-      setNumberOfCharactersFound((prevCount) => prevCount + 1);
+      if(charactersFound.find((character) => character.name === name).found === false) {
+
+        setCharactersFound(prevCharactersFound => {
+          const characterIndex = prevCharactersFound.findIndex((character) => character.name === name)
+
+          return [...prevCharactersFound.slice(0, characterIndex), {...prevCharactersFound[characterIndex], found: true}, ...prevCharactersFound.slice(characterIndex + 1)]
+        })
+        setNumberOfCharactersFound((prevCount) => prevCount + 1);
+      }
     }
   }
 
@@ -170,12 +198,13 @@ export default function Game() {
           horizontalRange,
           verticalRange,
         } = doc.data().coordinates;
-        console.log(doc.data().coordinates);
+        console.log(doc.id)
         didUserFindCharacter(
           horizontalCoordinates,
           verticalCoordinates,
           horizontalRange,
-          verticalRange
+          verticalRange,
+          doc.id
         );
       });
     }
