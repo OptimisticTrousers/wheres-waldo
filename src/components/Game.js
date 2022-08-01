@@ -110,9 +110,9 @@ export default function Game() {
       setUserWon(true);
     } else if (
       verticalCoordinates - verticalRange <= verticalOffset &&
-      verticalCoordinates >= verticalOffset &&
+      verticalCoordinates >= verticalOffset + 10 &&
       horizontalCoordinates - horizontalRange <= horizontalOffset &&
-      horizontalCoordinates >= horizontalOffset
+      horizontalCoordinates >= horizontalOffset + 10
     ) {
       console.log("TRUE");
       setNumberOfCharactersFound((prevCount) => prevCount + 1);
@@ -155,7 +155,10 @@ export default function Game() {
   return (
     <StyledGame>
       <StyledControls>
+        <button onClick={toggleFullScreen}>Previous Level</button>
         <button onClick={toggleFullScreen}>Fullscreen</button>
+        <button onClick={toggleFullScreen}>Levels</button>
+        <button onClick={toggleFullScreen}>Next Level</button>
       </StyledControls>
       <ImageContainer ref={gameContainer} onClickCapture={handleClick}>
         <Target coordinates={coordinates}>
