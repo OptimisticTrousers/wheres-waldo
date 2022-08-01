@@ -61,9 +61,7 @@ export default function Game() {
     verticalOffset: "0%",
   }));
 
-  // const images = [beach, fruitland, hollywood, space, track, winter];
-
-  const images = [
+    const images = [
     {
       name: "beach",
       image: beach,
@@ -102,7 +100,7 @@ export default function Game() {
     async function queryCoordinates() {
       const photoRef = doc(db, "photo1", "waldo");
 
-      const photoCollection = collection(db, "beach");
+      const photoCollection = collection(db, images[imageIndex].name);
 
       const querySnapshot = await getDocs(photoCollection);
 
@@ -209,7 +207,7 @@ export default function Game() {
       <ImageContainer
         ref={gameContainer}
         onClickCapture={handleClick}
-        image={images[imageIndex]}
+        image={images[imageIndex].image}
       >
         <Target coordinates={coordinates}>
           <TargetImage />
