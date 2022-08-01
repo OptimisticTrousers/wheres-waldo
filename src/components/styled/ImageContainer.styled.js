@@ -7,8 +7,8 @@ export const ImageContainer = styled(Container)`
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 1.75%/2.3275%;
+  height: calc(100vh - 135px);
   width: 100%;
-  height: 1024px;
 
   div {
     position: relative;
