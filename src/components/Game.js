@@ -61,6 +61,10 @@ export default function Game() {
     verticalOffset: "0%",
   }));
 
+  const images = [beach, fruitland, hollywood, space, track, winter];
+
+  const [imageIndex, setImageIndex] = useState(0)
+
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
   const [userWon, setUserWon] = useState(false);
@@ -165,7 +169,7 @@ export default function Game() {
         <button onClick={toggleFullScreen}>Levels</button>
         <button onClick={toggleFullScreen}>Next Level</button>
       </StyledControls>
-      <ImageContainer ref={gameContainer} onClickCapture={handleClick} image={beach}>
+      <ImageContainer ref={gameContainer} onClickCapture={handleClick} image={images[imageIndex]}>
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
