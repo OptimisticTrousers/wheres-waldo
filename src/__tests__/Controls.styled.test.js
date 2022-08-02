@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-node-access */
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -27,4 +28,17 @@ describe("Controls", () => {
 
     expect(screen.getByTestId('image-level')).toEqual(fruitland)
   });
+  it("fullscreen mode", async () => {
+    render(<Game/>)
+
+    const user = userEvent.setup()
+
+    const game = await screen.findByTestId("image-level")
+
+    const fullscreenButton = await screen.findByRole("button", {name: "Fullscreen"})
+
+    await user.click(fullscreenButton)
+
+    expect(game.fullscreenElement).toBe(true)
+  })
 });
