@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from 'prop-types'
 
 const selectionWidth = 100;
 const selectionHeight = 200;
@@ -16,3 +17,7 @@ export const Target = styled.div`
   border: 5px solid red;
   background: none !important;
 `;
+
+Target.propTypes = {
+  coordinates: PropTypes.object
+}

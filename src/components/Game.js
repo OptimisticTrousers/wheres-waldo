@@ -132,6 +132,26 @@ export default function Game() {
         setDbCoordinates(databasePhotoData.docChanges());
       });
     }
+    else {
+
+      dbCoordinates.forEach(({ doc }) => {
+        const {
+          horizontalCoordinates,
+          verticalCoordinates,
+          horizontalRange,
+          verticalRange,
+        } = doc.data().coordinates;
+        console.log(doc.id)
+        didUserFindCharacter(
+          horizontalCoordinates,
+          verticalCoordinates,
+          horizontalRange,
+          verticalRange,
+          doc.id
+        );
+      });
+    }
+
   }, [coordinates]);
 
   function didUserFindCharacter(
@@ -179,22 +199,6 @@ export default function Game() {
       verticalOffset = event.nativeEvent.offsetX;
       horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
-      dbCoordinates.forEach(({ doc }) => {
-        const {
-          horizontalCoordinates,
-          verticalCoordinates,
-          horizontalRange,
-          verticalRange,
-        } = doc.data().coordinates;
-        console.log(doc.id)
-        didUserFindCharacter(
-          horizontalCoordinates,
-          verticalCoordinates,
-          horizontalRange,
-          verticalRange,
-          doc.id
-        );
-      });
     }
   }
 
