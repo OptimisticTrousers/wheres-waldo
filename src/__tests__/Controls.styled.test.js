@@ -21,7 +21,7 @@ describe("Controls", () => {
 
     await user.click(nextLevelButton)
 
-    expect(screen.getByTestId('image-level').style.backgroundImage).toEqual(beach)
+    expect(screen.getByTestId('image-level')).toEqual(beach)
 
     await user.click(previousLevelButton)
 
