@@ -19,11 +19,17 @@ describe("TargetMenu", () => {
     render(
       <Target coordinates={mockCoordinates}>
         <TargetImage />
-        <TargetMenu />
+        <TargetMenu>
+          <li data-testid="character">Odlaw</li>
+          <li data-testid="character">Waldo</li>
+          <li data-testid="character">Wilma</li>
+          <li data-testid="character">The Wizard</li>
+          <li data-testid="character">Woof</li>
+        </TargetMenu>
       </Target>
     );
 
-    const unorderedMenu = screen.getByRole("list");
+    const unorderedMenu = screen.queryAllByTestId("character");
 
     expect(unorderedMenu).toBe();
   });

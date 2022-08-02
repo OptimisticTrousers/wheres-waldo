@@ -240,9 +240,9 @@ export default function Game() {
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
-            <li>{userWins[imageIndex] && "BOB JONES"}</li>
-            <li>The Wizard</li>
-            <li>Odlaw</li>
+            <li data-testid="character">{userWins[imageIndex] && "BOB JONES"}</li>
+            <li data-testid="character">The Wizard</li>
+            <li data-testid="character">Odlaw</li>
           </TargetMenu>
         </Target>
       </ImageContainer>
