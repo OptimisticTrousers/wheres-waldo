@@ -232,6 +232,7 @@ export default function Game() {
         <button onClick={nextImageClick}>Next Level</button>
       </StyledControls>
       <ImageContainer
+      data-testid="image-level"
         ref={gameContainer}
         onClick={handleClick}
         image={images[imageIndex].image}

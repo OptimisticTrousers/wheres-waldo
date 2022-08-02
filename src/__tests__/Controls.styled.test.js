@@ -21,10 +21,10 @@ describe("Controls", () => {
 
     await user.click(nextLevelButton)
 
-    expect(screen.queryByRole("img").src).toEqual(beach)
+    expect(screen.getByTestId('image-level').style.backgroundImage).toEqual(beach)
 
     await user.click(previousLevelButton)
 
-    expect(screen.queryByRole("img").src).toEqual(fruitland)
+    expect(screen.getByTestId('image-level')).toEqual(fruitland)
   });
 });
