@@ -6,3 +6,4 @@ import Game from "../components/Game";
 import userEvent from "@testing-library/user-event";
 import beach from '../assets/beach.jpg'
 import fruitland from '../assets/fruitland.jpg'
+
