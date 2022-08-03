@@ -51,6 +51,7 @@ import space from "../assets/space.jpg";
 import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
 import { StyledDropdown } from "./styled/Dropdown.styled";
+import { StyledDropdownImage } from "./styled/DropdownImage.styled";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -265,8 +266,8 @@ export default function Game({ targetAppearance }) {
     }
   }
 
-  const sidebarBtn = useRef(null)
-  const sidebarBox = useRef(null)
+  const sidebarBtn = useRef(null);
+  const sidebarBox = useRef(null);
 
   function handleSidebarClick(event) {
     sidebarBtn.classList.toggle("active");
@@ -274,34 +275,32 @@ export default function Game({ targetAppearance }) {
   }
 
   function wrapperClick(event) {
-    if(sidebarBox.classList.contains('active')) {
-      sidebarBtn.classList.remove('active')
-      sidebarBox.classList.remove('active')
+    if (sidebarBox.classList.contains("active")) {
+      sidebarBtn.classList.remove("active");
+      sidebarBox.classList.remove("active");
     }
   }
 
   useEffect(() => {
-
     const windowCallback = (event) => {
-
-      if(sidebarBox.classList.contains('active') && event.keyCode === 27) {
-        sidebarBtn.classList.remove('active')
-        sidebarBox.classList.remove('active')
+      if (sidebarBox.classList.contains("active") && event.keyCode === 27) {
+        sidebarBtn.classList.remove("active");
+        sidebarBox.classList.remove("active");
       }
-    }
-    window.addEventListener("keydown", windowCallback)
+    };
+    window.addEventListener("keydown", windowCallback);
 
-    return () => window.removeEventListener("keydown", windowCallback)
-  })
+    return () => window.removeEventListener("keydown", windowCallback);
+  });
 
-  const [isMenuActive, setIsMenuActive] = useState()
+  const [isMenuActive, setIsMenuActive] = useState();
 
   function handleMenuClick() {
-    setIsMenuActive(prevValue => !prevValue)
+    setIsMenuActive((prevValue) => !prevValue);
   }
 
   function changeImage(index) {
-    setImageIndex(index)
+    setImageIndex(index);
   }
 
   return (
@@ -312,20 +311,36 @@ export default function Game({ targetAppearance }) {
         <button onClick={toggleFullScreen}>Levels</button>
         <button onClick={nextImageClick}>Next Level</button>
       </StyledControls> */}
-      <StyledDropdown >
-        <div id="btn" className={`${isMenuActive && "active"}`} onClick={handleMenuClick}>
+      <StyledDropdown>
+        <div
+          id="btn"
+          className={`${isMenuActive && "active"}`}
+          onClick={handleMenuClick}
+        >
           <div id="top"></div>
           <div id="middle"></div>
           <div id="bottom"></div>
         </div>
         <div id="box" className={`${isMenuActive && "active"}`}>
           <div id="items">
-            <div class="item" onClick={() => changeImage(0)}>Item 1</div>
-            <div class="item" onClick={() => changeImage(1)}>Item 2</div>
-            <div class="item" onClick={() => changeImage(2)}>Item 3</div>
-            <div class="item" onClick={() => changeImage(3)}>Item 4</div>
-            <div class="item" onClick={() => changeImage(4)}>Item 5</div>
-            <div class="item" onClick={() => changeImage(5)}>Item 6</div>
+            <div class="item" onClick={() => changeImage(0)}>
+              <StyledDropdownImage src={images[0].image} />
+            </div>
+            <div class="item" onClick={() => changeImage(1)}>
+              <StyledDropdownImage src={images[1].image} />
+            </div>
+            <div class="item" onClick={() => changeImage(2)}>
+              <StyledDropdownImage src={images[2].image} />
+            </div>
+            <div class="item" onClick={() => changeImage(3)}>
+              <StyledDropdownImage src={images[3].image} />
+            </div>
+            <div class="item" onClick={() => changeImage(4)}>
+              <StyledDropdownImage src={images[4].image} />
+            </div>
+            <div class="item" onClick={() => changeImage(5)}>
+              <StyledDropdownImage src={images[5].image} />
+            </div>
           </div>
         </div>
       </StyledDropdown>

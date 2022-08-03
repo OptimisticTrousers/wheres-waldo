@@ -111,6 +111,7 @@ export const StyledDropdown = styled.div`
 
 #btn.active {
 	left: 230px;
+  top: 1%;
 	& > div {
 		background-color: var(--black-color);
 	}
@@ -148,7 +149,7 @@ export const StyledDropdown = styled.div`
 
 #items {
 	position: relative;
-	top: 50%;
+	top: 55%;
 	transform: translateY(-50%);
 	& > .item {
 		position: relative;
