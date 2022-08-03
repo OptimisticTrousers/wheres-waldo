@@ -18,7 +18,16 @@ function App() {
     }
   }
 
+  function timer() {
+    let sec = 30
+
+    let timer = setInterval(function() {
+
+    })
+  }
+
   return (
+
     <div onClick={handleClick}>
       <GlobalStyles />
       <Header />
