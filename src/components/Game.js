@@ -50,12 +50,65 @@ import hollywood from "../assets/hollywood.jpg";
 import space from "../assets/space.jpg";
 import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-export default function Game() {
+  const levelProgress = {
+    waldo: {
+      name: "waldo",
+      found: false,
+    },
+    odlaw: {
+      name: "waldo",
+      found: false,
+    },
+    wilma: {
+      name: "waldo",
+      found: false,
+    },
+    wizard: {
+      name: "waldo",
+      found: false,
+    },
+    woof: {
+      name: "waldo",
+      found: false,
+    },
+    userWon: false
+  };
+
+  const images = [
+    {
+      name: "beach",
+      image: beach,
+    },
+    {
+      name: "fruitland",
+      image: fruitland,
+    },
+    {
+      name: "hollywood",
+      image: hollywood,
+    },
+    {
+      name: "space",
+      image: space,
+    },
+    {
+      name: "track",
+      image: track,
+    },
+    {
+      name: "winter",
+      image: winter,
+    },
+  ];
+
+
+export default function Game({targetAppearance}) {
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
     verticalOffset: "0%",
@@ -73,6 +126,8 @@ export default function Game() {
     false,
     false,
   ]);
+
+  const [userProgress, setUserProgress] = useState(new Array(images.length).fill({...levelProgress}));
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -128,34 +183,7 @@ export default function Game() {
         );
       });
     }
-  }, [coordinates]);
-
-  const images = [
-    {
-      name: "beach",
-      image: beach,
-    },
-    {
-      name: "fruitland",
-      image: fruitland,
-    },
-    {
-      name: "hollywood",
-      image: hollywood,
-    },
-    {
-      name: "space",
-      image: space,
-    },
-    {
-      name: "track",
-      image: track,
-    },
-    {
-      name: "winter",
-      image: winter,
-    },
-  ];
+  }, [coordinates, didUserFindCharacter, dbCoordinates, images]);
 
   const gameContainer = useRef();
 
@@ -250,7 +278,7 @@ export default function Game() {
         onClick={handleClick}
         image={images[imageIndex].image}
       >
-        <Target coordinates={coordinates}>
+        {targetAppearance && <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
             <li data-testid="character">
@@ -258,11 +286,11 @@ export default function Game() {
             </li>
             <li data-testid="character">Odlaw</li>
             <li data-testid="character">Waldo</li>
-            {/* <li data-testid="character">Wilma</li>
+            <li data-testid="character">Wilma</li>
             <li data-testid="character">The Wizard</li>
-            <li data-testid="character">Woof</li> */}
+            <li data-testid="character">Woof</li>
           </TargetMenu>
-        </Target>
+        </Target>}
       </ImageContainer>
     </StyledGame>
   );
