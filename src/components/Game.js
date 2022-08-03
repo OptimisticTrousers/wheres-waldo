@@ -86,6 +86,8 @@ export default function Game() {
     }
   ]
 
+  const [timer, setTimer] = useState(Date.now())
+
   const [imageIndex, setImageIndex] = useState(0);
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
@@ -153,6 +155,14 @@ export default function Game() {
     }
 
   }, [coordinates]);
+
+  function timerInterval() {
+
+    setInterval(() => {
+
+      setTimer(Date.now())
+    }, 1000)
+  }
 
   function didUserFindCharacter(
     horizontalCoordinates,
@@ -231,6 +241,7 @@ export default function Game() {
         <button onClick={toggleFullScreen}>Levels</button>
         <button onClick={nextImageClick}>Next Level</button>
       </StyledControls>
+      <p>Timer: </p>
       <ImageContainer
       data-testid="image-level"
         ref={gameContainer}
@@ -241,8 +252,11 @@ export default function Game() {
           <TargetImage />
           <TargetMenu>
             <li data-testid="character">{userWins[imageIndex] && "BOB JONES"}</li>
-            <li data-testid="character">The Wizard</li>
             <li data-testid="character">Odlaw</li>
+            <li data-testid="character">Waldo</li>
+            {/* <li data-testid="character">Wilma</li>
+            <li data-testid="character">The Wizard</li>
+            <li data-testid="character">Woof</li> */}
           </TargetMenu>
         </Target>
       </ImageContainer>
