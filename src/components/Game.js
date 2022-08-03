@@ -322,6 +322,7 @@ export default function Game({ targetAppearance }) {
           <div id="bottom"></div>
         </div>
         <div id="box" className={`${isMenuActive && "active"}`}>
+          <h2>Pick Your Level!</h2>
           <div id="items">
             <div class="item" onClick={() => changeImage(0)}>
               <StyledDropdownImage src={images[0].image} />

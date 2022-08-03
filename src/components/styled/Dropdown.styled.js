@@ -93,6 +93,9 @@ export const StyledDropdown = styled.div`
   --blue-color: #00dffc;
   --dull-white-color: #f6f6f6;
   --easing: cubic-bezier(0.6, 0.05, 0.28, 0.91);
+  h2 {
+    padding-left: 2rem;
+  }
   #btn {
 	position: fixed;
 	z-index: 5;
@@ -159,7 +162,7 @@ export const StyledDropdown = styled.div`
 		transition: all 250ms;
 		&:hover {
 			padding: 15px 45px;
-			background-color: var(--black-color);
+			background-color: white;
 		}
 	}
 }
