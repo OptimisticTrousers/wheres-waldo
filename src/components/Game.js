@@ -50,6 +50,7 @@ import hollywood from "../assets/hollywood.jpg";
 import space from "../assets/space.jpg";
 import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
+import { StyledDropdown } from "./styled/Dropdown.styled";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -264,15 +265,65 @@ export default function Game({ targetAppearance }) {
     }
   }
 
+  const sidebarBtn = useRef(null)
+  const sidebarBox = useRef(null)
+
+  function handleSidebarClick(event) {
+    sidebarBtn.classList.toggle("active");
+    sidebarBox.classList.toggle("active");
+  }
+
+  function wrapperClick(event) {
+    if(sidebarBox.classList.contains('active')) {
+      sidebarBtn.classList.remove('active')
+      sidebarBox.classList.remove('active')
+    }
+  }
+
+  useEffect(() => {
+
+    const windowCallback = (event) => {
+
+      if(sidebarBox.classList.contains('active') && event.keyCode === 27) {
+        sidebarBtn.classList.remove('active')
+        sidebarBox.classList.remove('active')
+      }
+    }
+    window.addEventListener("keydown", windowCallback)
+
+    return () => window.removeEventListener("keydown", windowCallback)
+  })
+
+  const [isMenuActive, setIsMenuActive] = useState()
+
+  function handleMenuClick() {
+    setIsMenuActive(prevValue => !prevValue)
+  }
+
   return (
     <>
-      <StyledControls>
+      {/* <StyledControls>
         <button onClick={previousImageClick}>Previous Level</button>
         <button onClick={toggleFullScreen}>Fullscreen</button>
         <button onClick={toggleFullScreen}>Levels</button>
         <button onClick={nextImageClick}>Next Level</button>
-      </StyledControls>
-      <p>Timer: </p>
+      </StyledControls> */}
+      <StyledDropdown >
+        <div id="btn" className="active" onClick={handleMenuClick}>
+          <div id="top"></div>
+          <div id="middle"></div>
+          <div id="bottom"></div>
+        </div>
+        <div id="box" className="active">
+          <div id="items">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+            <div class="item">Item 5</div>
+          </div>
+        </div>
+      </StyledDropdown>
       <ImageContainer
         data-testid="image-level"
         ref={gameContainer}

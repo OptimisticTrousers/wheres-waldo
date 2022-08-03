@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { StyledContent } from "./components/styled/Game.styled";
+import { StyledDropdown } from "./components/styled/Dropdown.styled";
 function App({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
 
@@ -18,7 +19,7 @@ function App({ children }) {
   }
 
   return (
-    <div>
+    <>
       <GlobalStyles />
       <Header />
       <StyledContent>
@@ -26,7 +27,7 @@ function App({ children }) {
       </StyledContent>
       {/* <Game targetAppearance={targetAppearance}/> */}
       <Footer />
-    </div>
+    </>
   );
 }
 
