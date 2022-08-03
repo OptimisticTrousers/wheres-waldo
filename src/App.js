@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { StyledContent } from "./components/styled/Game.styled";
 function App({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
 
@@ -20,7 +21,9 @@ function App({ children }) {
     <div>
       <GlobalStyles />
       <Header />
+      <StyledContent>
         <Outlet />
+      </StyledContent>
       {/* <Game targetAppearance={targetAppearance}/> */}
       <Footer />
     </div>

@@ -1,4 +1,4 @@
-import { StyledGame } from "./styled/Game.styled";
+import { StyledContent } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
 import { Target } from "./styled/Target.styled";
 import { useEffect, useRef, useState, useMemo } from "react";
@@ -56,59 +56,58 @@ const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-  const levelProgress = {
-    waldo: {
-      name: "waldo",
-      found: false,
-    },
-    odlaw: {
-      name: "waldo",
-      found: false,
-    },
-    wilma: {
-      name: "waldo",
-      found: false,
-    },
-    wizard: {
-      name: "waldo",
-      found: false,
-    },
-    woof: {
-      name: "waldo",
-      found: false,
-    },
-    userWon: false
-  };
+const levelProgress = {
+  waldo: {
+    name: "waldo",
+    found: false,
+  },
+  odlaw: {
+    name: "waldo",
+    found: false,
+  },
+  wilma: {
+    name: "waldo",
+    found: false,
+  },
+  wizard: {
+    name: "waldo",
+    found: false,
+  },
+  woof: {
+    name: "waldo",
+    found: false,
+  },
+  userWon: false,
+};
 
-  const images = [
-    {
-      name: "beach",
-      image: beach,
-    },
-    {
-      name: "fruitland",
-      image: fruitland,
-    },
-    {
-      name: "hollywood",
-      image: hollywood,
-    },
-    {
-      name: "space",
-      image: space,
-    },
-    {
-      name: "track",
-      image: track,
-    },
-    {
-      name: "winter",
-      image: winter,
-    },
-  ];
+const images = [
+  {
+    name: "beach",
+    image: beach,
+  },
+  {
+    name: "fruitland",
+    image: fruitland,
+  },
+  {
+    name: "hollywood",
+    image: hollywood,
+  },
+  {
+    name: "space",
+    image: space,
+  },
+  {
+    name: "track",
+    image: track,
+  },
+  {
+    name: "winter",
+    image: winter,
+  },
+];
 
-
-export default function Game({targetAppearance}) {
+export default function Game({ targetAppearance }) {
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
     verticalOffset: "0%",
@@ -127,7 +126,9 @@ export default function Game({targetAppearance}) {
     false,
   ]);
 
-  const [userProgress, setUserProgress] = useState(new Array(images.length).fill({...levelProgress}));
+  const [userProgress, setUserProgress] = useState(
+    new Array(images.length).fill({ ...levelProgress })
+  );
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -264,7 +265,7 @@ export default function Game({targetAppearance}) {
   }
 
   return (
-    <StyledGame>
+    <>
       <StyledControls>
         <button onClick={previousImageClick}>Previous Level</button>
         <button onClick={toggleFullScreen}>Fullscreen</button>
@@ -278,20 +279,22 @@ export default function Game({targetAppearance}) {
         onClick={handleClick}
         image={images[imageIndex].image}
       >
-        {targetAppearance && <Target coordinates={coordinates}>
-          <TargetImage />
-          <TargetMenu>
-            <li data-testid="character">
-              {userWins[imageIndex] && "BOB JONES"}
-            </li>
-            <li data-testid="character">Odlaw</li>
-            <li data-testid="character">Waldo</li>
-            <li data-testid="character">Wilma</li>
-            <li data-testid="character">The Wizard</li>
-            <li data-testid="character">Woof</li>
-          </TargetMenu>
-        </Target>}
+        {targetAppearance && (
+          <Target coordinates={coordinates}>
+            <TargetImage />
+            <TargetMenu>
+              <li data-testid="character">
+                {userWins[imageIndex] && "BOB JONES"}
+              </li>
+              <li data-testid="character">Odlaw</li>
+              <li data-testid="character">Waldo</li>
+              <li data-testid="character">Wilma</li>
+              <li data-testid="character">The Wizard</li>
+              <li data-testid="character">Woof</li>
+            </TargetMenu>
+          </Target>
+        )}
       </ImageContainer>
-    </StyledGame>
+    </>
   );
 }
