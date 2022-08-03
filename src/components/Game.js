@@ -61,65 +61,43 @@ export default function Game() {
     verticalOffset: "0%",
   }));
 
-    const images = [
-    {
-      name: "beach",
-      image: beach,
-    },
-    {
-      name: "fruitland",
-      image: fruitland
-    }, 
-    {
-      name: "hollywood",
-      image: hollywood
-    }, {
-      name: "space",
-      image: space
-    },
-    {
-      name: "track",
-      image: track
-    }, {
-      name: "winter",
-      image: winter
-    }
-  ]
-
-  const [timer, setTimer] = useState(Date.now())
-
   const [imageIndex, setImageIndex] = useState(0);
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
-  const [userWins, setUserWins] = useState([false, false, false, false, false, false])
+  const [userWins, setUserWins] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
   const [charactersFound, setCharactersFound] = useState([
     {
       name: "odlaw",
-      found: false
-    }, 
+      found: false,
+    },
     {
       name: "waldo",
-      found: false
+      found: false,
     },
     {
       name: "wilma",
-      found: false
+      found: false,
     },
     {
       name: "wizard",
-      found: false
+      found: false,
     },
     {
       name: "woof",
-      found: false
-    }
-  ])
-
-  const gameContainer = useRef();
+      found: false,
+    },
+  ]);
 
   useEffect(() => {
     async function queryCoordinates() {
@@ -133,9 +111,7 @@ export default function Game() {
       queryCoordinates().then((databasePhotoData) => {
         setDbCoordinates(databasePhotoData.docChanges());
       });
-    }
-    else {
-
+    } else {
       dbCoordinates.forEach(({ doc }) => {
         const {
           horizontalCoordinates,
@@ -143,7 +119,6 @@ export default function Game() {
           horizontalRange,
           verticalRange,
         } = doc.data().coordinates;
-        console.log(doc.id)
         didUserFindCharacter(
           horizontalCoordinates,
           verticalCoordinates,
@@ -153,16 +128,36 @@ export default function Game() {
         );
       });
     }
-
   }, [coordinates]);
 
-  function timerInterval() {
+  const images = [
+    {
+      name: "beach",
+      image: beach,
+    },
+    {
+      name: "fruitland",
+      image: fruitland,
+    },
+    {
+      name: "hollywood",
+      image: hollywood,
+    },
+    {
+      name: "space",
+      image: space,
+    },
+    {
+      name: "track",
+      image: track,
+    },
+    {
+      name: "winter",
+      image: winter,
+    },
+  ];
 
-    setInterval(() => {
-
-      setTimer(Date.now())
-    }, 1000)
-  }
+  const gameContainer = useRef();
 
   function didUserFindCharacter(
     horizontalCoordinates,
@@ -178,36 +173,43 @@ export default function Game() {
     console.log("User: ", coordinates);
     console.log("Characters Found:", numberOfCharactersFound);
     if (numberOfCharactersFound === 5) {
-      setUserWins(prevWins => {
-        const newWins = [...prevWins]
+      setUserWins((prevWins) => {
+        const newWins = [...prevWins];
 
-        newWins[imageIndex] = true
+        newWins[imageIndex] = true;
 
-        return newWins
+        return newWins;
       });
     } else if (
-      verticalCoordinates - verticalRange <= verticalOffset&&
-      verticalCoordinates >= verticalOffset&&
-      horizontalCoordinates - horizontalRange <= horizontalOffset&&
+      verticalCoordinates - verticalRange <= verticalOffset &&
+      verticalCoordinates >= verticalOffset &&
+      horizontalCoordinates - horizontalRange <= horizontalOffset &&
       horizontalCoordinates >= horizontalOffset
     ) {
-      if(charactersFound.find((character) => character.name === name).found === false) {
+      if (
+        charactersFound.find((character) => character.name === name).found ===
+        false
+      ) {
+        setCharactersFound((prevCharactersFound) => {
+          const characterIndex = prevCharactersFound.findIndex(
+            (character) => character.name === name
+          );
 
-        setCharactersFound(prevCharactersFound => {
-          const characterIndex = prevCharactersFound.findIndex((character) => character.name === name)
-
-          return [...prevCharactersFound.slice(0, characterIndex), {...prevCharactersFound[characterIndex], found: true}, ...prevCharactersFound.slice(characterIndex + 1)]
-        })
+          return [
+            ...prevCharactersFound.slice(0, characterIndex),
+            { ...prevCharactersFound[characterIndex], found: true },
+            ...prevCharactersFound.slice(characterIndex + 1),
+          ];
+        });
         setNumberOfCharactersFound((prevCount) => prevCount + 1);
       }
     }
   }
 
   function handleClick(event) {
-    let verticalOffset, horizontalOffset;
     if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
-      verticalOffset = event.nativeEvent.offsetX;
-      horizontalOffset = event.nativeEvent.offsetY;
+      const verticalOffset = event.nativeEvent.offsetX;
+      const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
     }
   }
@@ -243,7 +245,7 @@ export default function Game() {
       </StyledControls>
       <p>Timer: </p>
       <ImageContainer
-      data-testid="image-level"
+        data-testid="image-level"
         ref={gameContainer}
         onClick={handleClick}
         image={images[imageIndex].image}
@@ -251,7 +253,9 @@ export default function Game() {
         <Target coordinates={coordinates}>
           <TargetImage />
           <TargetMenu>
-            <li data-testid="character">{userWins[imageIndex] && "BOB JONES"}</li>
+            <li data-testid="character">
+              {userWins[imageIndex] && "BOB JONES"}
+            </li>
             <li data-testid="character">Odlaw</li>
             <li data-testid="character">Waldo</li>
             {/* <li data-testid="character">Wilma</li>
