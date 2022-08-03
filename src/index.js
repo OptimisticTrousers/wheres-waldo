@@ -2,19 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
+import Game from "./components/Game";
+import Leaderboard from "./components/Leaderboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Game />} />
           <Route path="leaderboard" element={<Leaderboard />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
     <App />
   </React.StrictMode>
 );

@@ -4,12 +4,11 @@ import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react";
-function App() {
+function App({children}) {
 
   const [targetAppearance, setTargetAppearance] = useState(false)
 
   function handleClick(event) {
-    console.log("EVENT: ", event)
     if(event.target.parentNode.nodeName === "MAIN") {
       setTargetAppearance(true)
     }
@@ -18,20 +17,13 @@ function App() {
     }
   }
 
-  function timer() {
-    let sec = 30
-
-    let timer = setInterval(function() {
-
-    })
-  }
-
   return (
 
     <div onClick={handleClick}>
       <GlobalStyles />
       <Header />
-      <Game targetAppearance={targetAppearance}/>
+      {...children}
+      {/* <Game targetAppearance={targetAppearance}/> */}
       <Footer />
     </div>
   );
