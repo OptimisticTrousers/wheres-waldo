@@ -309,12 +309,12 @@ export default function Game({ targetAppearance }) {
         <button onClick={nextImageClick}>Next Level</button>
       </StyledControls> */}
       <StyledDropdown >
-        <div id="btn" className="active" onClick={handleMenuClick}>
+        <div id="btn" className={`${isMenuActive && "active"}`} onClick={handleMenuClick}>
           <div id="top"></div>
           <div id="middle"></div>
           <div id="bottom"></div>
         </div>
-        <div id="box" className="active">
+        <div id="box" className={`${isMenuActive && "active"}`}>
           <div id="items">
             <div class="item">Item 1</div>
             <div class="item">Item 2</div>

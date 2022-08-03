@@ -96,7 +96,7 @@ export const StyledDropdown = styled.div`
   #btn {
 	position: fixed;
 	z-index: 5;
-	top: 15px;
+	top: 120px;
 	left: 15px;
 	cursor: pointer;
 	transition: left 500ms var(--easing);
