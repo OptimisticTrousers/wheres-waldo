@@ -4,25 +4,23 @@ import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react";
-function App({children}) {
-
-  const [targetAppearance, setTargetAppearance] = useState(false)
+import { Outlet } from "react-router-dom";
+function App({ children }) {
+  const [targetAppearance, setTargetAppearance] = useState(false);
 
   function handleClick(event) {
-    if(event.target.parentNode.nodeName === "MAIN") {
-      setTargetAppearance(true)
-    }
-    else {
-      setTargetAppearance(false)
+    if (event.target.parentNode.nodeName === "MAIN") {
+      setTargetAppearance(true);
+    } else {
+      setTargetAppearance(false);
     }
   }
 
   return (
-
-    <div onClick={handleClick}>
+    <div>
       <GlobalStyles />
       <Header />
-      {...children}
+        <Outlet />
       {/* <Game targetAppearance={targetAppearance}/> */}
       <Footer />
     </div>
