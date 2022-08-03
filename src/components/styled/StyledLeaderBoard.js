@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
 export const StyledLeaderBoard = styled.main`
-  height: 100%;
+  height: 100vh;
   width: 90%;
 
   div {
     background-color: white;
     border-radius: 5px;
     margin: 1rem;
-  }
-
-  th {
   }
 
   caption {
