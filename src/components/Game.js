@@ -300,6 +300,10 @@ export default function Game({ targetAppearance }) {
     setIsMenuActive(prevValue => !prevValue)
   }
 
+  function changeImage(index) {
+    setImageIndex(index)
+  }
+
   return (
     <>
       {/* <StyledControls>
@@ -316,11 +320,12 @@ export default function Game({ targetAppearance }) {
         </div>
         <div id="box" className={`${isMenuActive && "active"}`}>
           <div id="items">
-            <div class="item">Item 1</div>
-            <div class="item">Item 2</div>
-            <div class="item">Item 3</div>
-            <div class="item">Item 4</div>
-            <div class="item">Item 5</div>
+            <div class="item" onClick={() => changeImage(0)}>Item 1</div>
+            <div class="item" onClick={() => changeImage(1)}>Item 2</div>
+            <div class="item" onClick={() => changeImage(2)}>Item 3</div>
+            <div class="item" onClick={() => changeImage(3)}>Item 4</div>
+            <div class="item" onClick={() => changeImage(4)}>Item 5</div>
+            <div class="item" onClick={() => changeImage(5)}>Item 6</div>
           </div>
         </div>
       </StyledDropdown>
