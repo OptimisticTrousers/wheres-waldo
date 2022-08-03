@@ -10,11 +10,26 @@ export const StyledHeader = styled.header`
   background-color: #fff;
   width: 100%;
 
-  div{
+  a {
+    all: unset;
+  }
+  a:hover {
+    color: gray;
+    cursor: pointer;
+  }
+
+  & > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0rem;
+  }
+
+  & > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
 
   svg {
