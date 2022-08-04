@@ -94,7 +94,10 @@ export const StyledDropdown = styled.div`
   --blue-color: #00dffc;
   --dull-white-color: #f6f6f6;
   --easing: cubic-bezier(0.6, 0.05, 0.28, 0.91);
+  --menu-background: ${({theme: {mode}}) => mode === "light" ? "white" : "black"};
+  --menu-text: ${({theme: {mode}}) => mode === "light" ? "black" : "white"};
   h2 {
+    color: var(--menu-text);
     padding-left: 2rem;
   }
   #btn {
@@ -115,10 +118,10 @@ export const StyledDropdown = styled.div`
   }
 
   #btn.active {
-    left: 230px;
+    left: 220px;
     top: 2%;
     & > div {
-      background-color: var(--black-color);
+      background-color: var(--menu-text);
     }
     & > #top {
       transform: translateY(10px) rotate(-135deg);
@@ -142,7 +145,7 @@ export const StyledDropdown = styled.div`
     opacity: 0;
     padding: 20px 0px;
     height: 100%;
-    background-color: var(--dull-white-color);
+    background-color: var(--menu-background);
     color: var(--black-color);
     transition: all 350ms var(--easing);
   }
