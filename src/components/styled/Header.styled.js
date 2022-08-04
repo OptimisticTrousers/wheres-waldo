@@ -124,6 +124,13 @@ export const StyledHeader = styled.header`
   }
   @media(max-width: 470px) {
     & {
+      flex-direction: row-reverse;
+      padding: 0.25rem;
+    }
+    .logo {
+      display: block;
+    }
+    & {
       justify-content: flex-start;
     }
     .theme-button{
