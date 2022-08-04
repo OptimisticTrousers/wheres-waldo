@@ -93,7 +93,7 @@ export function ImageProvider({ children }) {
     setImageIndex(index);
   }
 
-  function handleClick(event) {
+  function changeTargetAppearance(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
       setTargetAppearance(true);
     } else {
@@ -102,7 +102,7 @@ export function ImageProvider({ children }) {
   }
 
   return (
-    <ImageContext.Provider value={{ images, imageIndex, setImageIndex, targetAppearance, handleClick, charactersFound, setCharactersFound}}>
+    <ImageContext.Provider value={{ images, imageIndex, setImageIndex, targetAppearance, changeTargetAppearance, charactersFound, setCharactersFound}}>
       {children}
     </ImageContext.Provider>
   );

@@ -60,13 +60,18 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export default function Game() {
-
-  const {images, imageIndex, setImageIndex, targetAppearance, charactersFound, setCharactersFound} = useContext(ImageContext);
+  const {
+    images,
+    imageIndex,
+    setImageIndex,
+    targetAppearance,
+    charactersFound,
+    setCharactersFound,
+  } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
     verticalOffset: "0%",
   }));
-
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
@@ -80,7 +85,6 @@ export default function Game() {
   ]);
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
-
 
   useEffect(() => {
     async function queryCoordinates() {
@@ -160,7 +164,7 @@ export default function Game() {
     }
   }
 
-  function handleClick(event) {
+  function changeCoordinates(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
@@ -216,7 +220,7 @@ export default function Game() {
       </StyledDropdown>
       <ImageContainer
         data-testid="image-level"
-        onClick={handleClick}
+        onClick={changeCoordinates}
         image={images[imageIndex].image}
       >
         {targetAppearance && (

@@ -8,19 +8,19 @@ import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
 import { useContext, useState } from "react";
 import { ImageContext } from "../context/Store";
-import uniqid from 'uniqid'
+import uniqid from "uniqid";
 
 export default function Leaderboard() {
   const { images } = useContext(ImageContext);
   const [userClickedImage, setUserClickedImage] = useState(false);
 
-  function handleClick() {
+  function handleLevelClick() {
     setUserClickedImage((prevValue) => !prevValue);
   }
 
   const renderedImages = images.map(({ image, name }, index) => {
     return (
-      <div onClick={handleClick} key={uniqid()}>
+      <div onClick={handleLevelClick} key={uniqid()}>
         <img src={image} alt={name} />
         <p>Level {index + 1}</p>
       </div>
