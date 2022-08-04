@@ -5,9 +5,15 @@ export const StyledHeader = styled.header`
     mode === "light" ? "white" : "rgb(56, 56, 56)"};
   --header-text-color: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(56, 56, 56)" : "white"};
-    --link-background: ${({ theme: { mode } }) =>
-      mode === "light" ? "#ebedf0" : "black"}
-    --header-accent: "#ebedf0"
+  --link-background: ${({ theme: { mode } }) =>
+    mode === "light" ? "#ebedf0" : "black"};
+  --header-accent: "#ebedf0";
+  --button-background-color: ${({ theme: { mode } }) =>
+      mode === "light" ? "rgb(56, 56, 56)" : "white"};
+  --button-text-color: ${({ theme: { mode } }) =>
+      mode === "light" ? "white" : "rgb(56, 56, 56)"};
+       --button-hover-background-color: ${({ theme: { mode } }) =>
+    mode === "light" ?  "rgb(100, 100, 100)": "#ebedf0" };
   height: min-content;
   display: flex;
   justify-content: center;
@@ -50,7 +56,7 @@ export const StyledHeader = styled.header`
     width: 26px;
   }
 
-  button {
+  .theme-button {
     width: 36px;
     height: 36px;
     background-color: white;
@@ -70,7 +76,7 @@ export const StyledHeader = styled.header`
     color: var(--header-text-color);
   }
 
-  button:hover {
+  .theme-button:hover {
     background-color: #ebedf0;
     cursor: pointer;
   }
@@ -81,13 +87,25 @@ export const StyledHeader = styled.header`
     margin-left: 1rem;
     border-radius: 100px;
     margin: 0 auto;
+    object-fit: contain;
+  }
+  .instructions {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 32px;
+    padding: 0.25rem 0.5rem;
+  }
+  .instructions:hover {
+    cursor: pointer;
+    background-color: var(--button-hover-background-color);
   }
 
   img:hover {
     opacity: 0.7;
     cursor: pointer;
   }
-  @media(max-width: 930px) {
+  @media (max-width: 930px) {
     .logo {
       display: none;
     }
@@ -95,13 +113,13 @@ export const StyledHeader = styled.header`
       display: none;
     }
   }
-  @media(max-width: 650px) { 
+  @media (max-width: 650px) {
     img {
       width: 50px;
       height: 50px;
     }
   }
-  @media(max-width: 570px) { 
+  @media (max-width: 570px) {
     img {
       display: none;
     }

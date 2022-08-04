@@ -8,12 +8,20 @@ import { Outlet } from "react-router-dom";
 import { StyledContent } from "./components/styled/Game.styled";
 import { StyledDropdown } from "./components/styled/Dropdown.styled";
 import { Modal } from "./components/styled/Modal.styled";
+import odlaw from "./assets/odlaw.jpg";
+import waldo from "./assets/waldo.jpg";
+import wenda from "./assets/wenda.jpg";
+import wizard from "./assets/wizard.jpg";
 function App({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
 
-  const [theme, setTheme] =  useState({mode: "light"})
+  const [theme, setTheme] = useState({ mode: "light" });
 
-  const [gameStarted, setGameStarted] = useState(false)
+  const [gameStarted, setGameStarted] = useState(false);
+
+  function changeGameState() {
+    setGameStarted((prevValue) => !prevValue);
+  }
 
   function handleClick(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
@@ -24,34 +32,52 @@ function App({ children }) {
   }
 
   function changeTheme() {
-    setTheme(prevTheme => {
-      if(prevTheme.mode === "light") {
-        return {mode: "dark"}
+    setTheme((prevTheme) => {
+      if (prevTheme.mode === "light") {
+        return { mode: "dark" };
+      } else if (prevTheme.mode === "dark") {
+        return { mode: "light" };
       }
-      else if(prevTheme.mode === "dark") {
-        return {mode: "light"}
-      }
-    })
+    });
   }
 
-  function hasUserStarted() {
-
-  }
+  function hasUserStarted() {}
 
   return (
     <ThemeProvider theme={theme}>
-      <Modal>
-        <div>
-          <p>Here is some modal text</p>
-          <p>Here is some modal text</p>
+      {gameStarted === false && (
+        <Modal>
           <div>
+            <p>Search for these characters as fast as possible!</p>
+            <p>Click anywhere on the image to select and find the characters</p>
+            <div>
+              <div>
+                <img src={odlaw} />
+                <p>Text</p>
+              </div>
+              <div>
+                <img src={waldo} />
+                <p>Text</p>
+              </div>
+              <div>
+                <img src={wenda} />
+                <p>Text</p>
+              </div>
+              <div>
+                <img src={wizard} />
+                <p>Text</p>
+              </div>
+            </div>
+            <button type="button" onClick={changeGameState}>
+              Start
+            </button>
           </div>
-        </div>
-      </Modal>
+        </Modal>
+      )}
       <GlobalStyles />
-      <Header changeTheme={changeTheme} theme={theme}/>
+      <Header changeTheme={changeTheme} theme={theme} />
       <StyledContent>
-        <Outlet targetAppearance={targetAppearance}/>
+        <Outlet targetAppearance={targetAppearance} />
       </StyledContent>
       <Footer />
     </ThemeProvider>

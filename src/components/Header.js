@@ -38,7 +38,8 @@ export default function Header({ changeTheme, theme }) {
         </div>
         <div>
           <Link to="leaderboard">Leaderboard</Link>
-          <button type="button" onClick={changeTheme}>
+          <button type="button" className="instructions">Instructions</button>
+          <button type="button" onClick={changeTheme} className="theme-button">
             {theme.mode === "light" ? <BsMoon /> : <BsSun />}
           </button>
         </div>
