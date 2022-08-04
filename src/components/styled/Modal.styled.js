@@ -57,4 +57,18 @@ export const Modal = styled.div`
     border: 1px solid var(--border-color);
     border-radius: 5%;
   }
+  @media(max-width: 500px) {
+    & > div{
+      width: 98%;
+    }
+  }
+  @media(max-width: 400px) {
+    img {
+      width: 40px;
+      height: 40px;
+    }
+    button {
+      width: 80%;
+    }
+  }
 `;
