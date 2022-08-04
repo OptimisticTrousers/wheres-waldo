@@ -33,6 +33,7 @@ export default function Leaderboard() {
     );
   });
 
+
   return (
     <StyledLeaderBoard>
       <div>
@@ -48,7 +49,7 @@ export default function Leaderboard() {
           </thead>
           <tbody>
             {console.log(dbLeaderboard[leaderboardIndex]?.leaderboard)}
-            {dbLeaderboard[leaderboardIndex]?.leaderboard?.map((data, index) => {
+            {dbLeaderboard[leaderboardIndex]?.leaderboard?.sort((a, b) => a.time - b.time).map((data, index) => {
               return (
                 <tr key={uniqid()} >
                   <td>#{index + 1}</td>
