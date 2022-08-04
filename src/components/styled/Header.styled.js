@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   --header-background-color: ${({ theme: { mode } }) =>
-    mode === "light" ? "white" : "black"};
+    mode === "light" ? "white" : "rgb(56, 56, 56)"};
   --header-text-color: ${({ theme: { mode } }) =>
-    mode === "light" ? "black" : "white"};
-    --link-background: ${({theme: {mode}}) => mode === "light" ? "#ebedf0" : "black"}
+    mode === "light" ? "rgb(56, 56, 56)" : "white"};
+    --link-background: ${({ theme: { mode } }) =>
+      mode === "light" ? "#ebedf0" : "black"}
     --header-accent: "#ebedf0"
   height: min-content;
   display: flex;

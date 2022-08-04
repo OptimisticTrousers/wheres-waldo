@@ -88,14 +88,16 @@ import styled from "styled-components";
 
 export const StyledDropdown = styled.div`
   position: absolute;
-  top: 5.10%;
+  top: 5.1%;
   left: 2%;
   --black-color: black;
   --blue-color: #00dffc;
   --dull-white-color: #f6f6f6;
   --easing: cubic-bezier(0.6, 0.05, 0.28, 0.91);
-  --menu-background: ${({theme: {mode}}) => mode === "light" ? "white" : "black"};
-  --menu-text: ${({theme: {mode}}) => mode === "light" ? "black" : "white"};
+  --menu-background: ${({ theme: { mode } }) =>
+    mode === "light" ? "white" : "rgb(56, 56, 56)"};
+  --menu-text: ${({ theme: { mode } }) =>
+    mode === "light" ? "rgb(56, 56, 56)" : "white"};
   h2 {
     color: var(--menu-text);
     padding-left: 2rem;
@@ -103,7 +105,7 @@ export const StyledDropdown = styled.div`
   #btn {
     position: fixed;
     z-index: 5;
-    top: 5.10%;
+    top: 5.1%;
     left: 2%;
     cursor: pointer;
     transition: left 500ms var(--easing);

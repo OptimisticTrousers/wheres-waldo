@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-  background-color: rgb(56, 56, 56);
+  --background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "white" : "rgb(56, 56, 56)"};
+  --text-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "rgb(56, 56, 56)" : "white"};
+  --logo-background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "#ebedf0" : "rgb(56, 56, 56)"};
+  background-color: var(--background-color);
   padding: 1rem 0rem;
-  color: white;
+  color: var(--text-color);
   position: absolute;
   left: 0;
   right: 0;
@@ -21,7 +27,7 @@ export const StyledFooter = styled.footer`
   a {
     border: 1px solid #fff;
     border-radius: 50%;
-    color: #fff;
+    color: var(--text-color);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -31,6 +37,6 @@ export const StyledFooter = styled.footer`
     text-decoration: none;
   }
   a:hover {
-    background-color: #22333b;
+    background-color: var(--logo-background-color);
   }
 `;
