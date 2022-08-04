@@ -14,7 +14,7 @@ export default function Header({ changeTheme, theme }) {
       <Container>
         <div>
           <Link to="/">
-            <img src={headerLogo} alt="a smiling pair of pants" />
+            <img className="logo" src={headerLogo} alt="a smiling pair of pants" />
           </Link>
           <h1>Optimistic Games</h1>
         </div>

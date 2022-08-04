@@ -26,6 +26,10 @@ export const StyledHeader = styled.header`
     color: red;
   }
 
+  div:nth-child(2) {
+    margin: 0 1rem;
+  }
+
   & > div {
     display: flex;
     justify-content: space-between;
@@ -61,6 +65,7 @@ export const StyledHeader = styled.header`
   }
   p {
     text-align: center;
+    font-size: 0.5rem;
     color: var(--header-text-color);
   }
 
@@ -80,5 +85,38 @@ export const StyledHeader = styled.header`
   img:hover {
     opacity: 0.7;
     cursor: pointer;
+  }
+  @media(max-width: 910px) {
+    .logo {
+      display: none;
+    }
+    h1 {
+      display: none;
+    }
+  }
+  @media(max-width: 620px) { 
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  @media(max-width: 511px) { 
+    & {
+      gap: 0;
+    }
+    div:nth-child(2) {
+      margin: 4px 8px;
+    }
+    a {
+      margin-left: 4px;
+    }
+    img {
+      width: 25px;
+      height: 25px;
+    }
+    svg {
+      width: 50%;
+      height: 50%;
+    }
   }
 `;
