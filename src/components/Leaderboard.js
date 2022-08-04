@@ -18,13 +18,16 @@ export default function Leaderboard() {
   //   console.log(doc.id, " => ", doc.data())
   // })
 
+  const [leaderboardIndex, setLeaderboardIndex] = useState(0)
+
+
   function handleLevelClick() {
     setUserClickedImage((prevValue) => !prevValue);
   }
 
   const renderedImages = images.map(({ image, name }, index) => {
     return (
-      <div onClick={handleLevelClick} key={uniqid()}>
+      <div onClick={() => setLeaderboardIndex(index)} key={uniqid()}>
         <img src={image} alt={name} />
         <p>Level {index + 1}</p>
       </div>
@@ -45,8 +48,8 @@ export default function Leaderboard() {
             </tr>
           </thead>
           <tbody>
-            {console.log(dbLeaderboard[imageIndex]?.leaderboard)}
-            {dbLeaderboard[imageIndex]?.leaderboard?.map((data, index) => {
+            {console.log(dbLeaderboard[leaderboardIndex]?.leaderboard)}
+            {dbLeaderboard[leaderboardIndex]?.leaderboard?.map((data, index) => {
               console.log(data)
               return (
                 <tr key={uniqid()}>
