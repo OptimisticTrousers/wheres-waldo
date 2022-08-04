@@ -25,9 +25,9 @@ function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
 
-  const { images, imageIndex } = useContext(ImageContext);
+  const { images, imageIndex,time } = useContext(ImageContext);
 
-  const [gameStarted, setGameStarted] = useState(false);
+  const [gameStarted, setGameStarted] = useState(true);
 
   function changeGameState() {
     setGameStarted((prevValue) => !prevValue);
@@ -70,6 +70,7 @@ function App() {
       )}
       <GlobalStyles />
         <Header
+        time={time}
           changeTheme={changeTheme}
           theme={theme}
           changeGameState={changeGameState}

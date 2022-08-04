@@ -150,13 +150,46 @@ export function ImageProvider({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
-  useEffect(() => {
-    charactersFound.map(character => {
-      return {...character, found: false}
-    })
+  const [time, setTime] = useState({ms: 0, s: 0, m:0, h:0})
+  const [interv, setInterv] = useState();
+  const [status, setStatus] = useState(0)
 
-  }, [imageIndex, targetAppearance])
+  function start() {
+    run();
+    setStatus(1);
+    setInterv(setInterv(run, 10))
 
+  }
+
+  let updatedMs = time.ms, updatedS = time.s, updatedM = time.m, updatedH = time.h;
+
+  function run() {
+    if(updatedM === 60) {
+      updatedH++;
+      updatedM = 0;
+    }
+    if(updatedS === 60) {
+      updatedM++;
+      updatedS = 0;
+    }
+    if(updatedMs === 100) {
+      updatedS++;
+      updatedMs = 0;
+    }
+    updatedMs++;
+    return setTime({ms: updatedMs, s:updatedS, m:updatedM, h:updatedH})
+  }
+
+  function stop() {
+    clearInterval(interv)
+    setStatus(2)
+  }
+  
+  function reset() {
+    clearInterval(interv)
+    setStatus(0)
+    setTime({ms: 0, s:0, m:0, h:0})
+  }
   const [charactersFound, setCharactersFound] = useState([
     {
       name: "odlaw",
@@ -180,6 +213,14 @@ export function ImageProvider({ children }) {
     },
   ]);
 
+
+  useEffect(() => {
+    charactersFound.map(character => {
+      return {...character, found: false}
+    })
+
+  }, [imageIndex, charactersFound])
+
   function changeImage(index) {
     setImageIndex(index);
   }
@@ -193,7 +234,7 @@ export function ImageProvider({ children }) {
   }
 
   return (
-    <ImageContext.Provider value={{ images, imageIndex, setImageIndex, targetAppearance, changeTargetAppearance, charactersFound, setCharactersFound}}>
+    <ImageContext.Provider value={{ images, imageIndex, setImageIndex, targetAppearance, changeTargetAppearance, charactersFound, setCharactersFound, time}}>
       {children}
     </ImageContext.Provider>
   );

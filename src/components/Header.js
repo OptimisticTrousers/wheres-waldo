@@ -12,7 +12,7 @@ import { ImageContext } from "../context/Store";
 import { useContext } from "react";
 import uniqid from "uniqid";
 
-export default function Header({ changeTheme, theme, changeGameState }) {
+export default function Header({ changeTheme, theme, changeGameState, time }) {
   const { images, imageIndex, charactersFound } = useContext(ImageContext);
 
 
@@ -38,7 +38,7 @@ export default function Header({ changeTheme, theme, changeGameState }) {
               alt="a smiling pair of pants"
             />
           </Link>
-          <h2>Optimistic Games</h2>
+          <h2>OptimisticTrousers</h2>
         </div>
         <div>{renderedImages}</div>
         <div>
