@@ -19,6 +19,7 @@ export const StyledHeader = styled.header`
 
   a {
     all: unset;
+    font-size: 1.25rem;
     color: var(--header-text-color);
   }
   a:hover {
@@ -86,7 +87,7 @@ export const StyledHeader = styled.header`
     opacity: 0.7;
     cursor: pointer;
   }
-  @media(max-width: 910px) {
+  @media(max-width: 930px) {
     .logo {
       display: none;
     }
@@ -94,13 +95,13 @@ export const StyledHeader = styled.header`
       display: none;
     }
   }
-  @media(max-width: 640px) { 
+  @media(max-width: 650px) { 
     img {
       width: 50px;
       height: 50px;
     }
   }
-  @media(max-width: 560px) { 
+  @media(max-width: 570px) { 
     img {
       display: none;
     }
