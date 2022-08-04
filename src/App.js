@@ -67,7 +67,7 @@ function App({ children }) {
                 <p>Text</p>
               </div>
             </div>
-            <p>See your name in the leaderboards!</p>
+            <p>NOTE: If you select a different level while you're in the middle of the game, all of your previous progress will be lost!</p>
             <button type="button" onClick={changeGameState}>
               Start
             </button>
