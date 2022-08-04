@@ -18,9 +18,8 @@ import hollywood from "./assets/hollywood.jpg";
 import space from "./assets/space.jpg";
 import track from "./assets/track.jpg";
 import winter from "./assets/winter.jpg";
-function App({ children }) {
-  const [targetAppearance, setTargetAppearance] = useState(false);
-
+import { ImageProvider } from "./context/Store";
+function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
   const [gameStarted, setGameStarted] = useState(false);
@@ -54,14 +53,6 @@ function App({ children }) {
 
   function changeGameState() {
     setGameStarted((prevValue) => !prevValue);
-  }
-
-  function handleClick(event) {
-    if (event.target.parentNode.nodeName === "MAIN") {
-      setTargetAppearance(true);
-    } else {
-      setTargetAppearance(false);
-    }
   }
 
   function changeTheme() {
@@ -116,7 +107,9 @@ function App({ children }) {
         changeGameState={changeGameState}
       />
       <StyledContent>
-        <Outlet targetAppearance={targetAppearance} images={images}/>
+        <ImageProvider>
+          <Outlet />
+        </ImageProvider>
       </StyledContent>
       <Footer />
     </ThemeProvider>

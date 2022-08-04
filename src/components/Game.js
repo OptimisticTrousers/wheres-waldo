@@ -1,7 +1,7 @@
 import { StyledContent } from "./styled/Game.styled";
 import { Container } from "./styled/Container.styled";
 import { Target } from "./styled/Target.styled";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, useContext } from "react";
 import { TargetImage } from "./styled/TargetImage.styled";
 import { TargetMenu } from "./styled/TargetMenu.styled";
 import { GoLocation } from "react-icons/go";
@@ -52,6 +52,7 @@ import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
 import { StyledDropdown } from "./styled/Dropdown.styled";
 import { StyledDropdownImage } from "./styled/DropdownImage.styled";
+import { ImageContext } from "../context/Store";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -82,40 +83,42 @@ const levelProgress = {
   userWon: false,
 };
 
-const images = [
-  {
-    name: "beach",
-    image: beach,
-  },
-  {
-    name: "fruitland",
-    image: fruitland,
-  },
-  {
-    name: "hollywood",
-    image: hollywood,
-  },
-  {
-    name: "space",
-    image: space,
-  },
-  {
-    name: "track",
-    image: track,
-  },
-  {
-    name: "winter",
-    image: winter,
-  },
-];
+// const images = [
+//   {
+//     name: "beach",
+//     image: beach,
+//   },
+//   {
+//     name: "fruitland",
+//     image: fruitland,
+//   },
+//   {
+//     name: "hollywood",
+//     image: hollywood,
+//   },
+//   {
+//     name: "space",
+//     image: space,
+//   },
+//   {
+//     name: "track",
+//     image: track,
+//   },
+//   {
+//     name: "winter",
+//     image: winter,
+//   },
+// ];
 
-export default function Game({ targetAppearance}) {
+export default function Game() {
+
+  const {images, imageIndex, setImageIndex, targetAppearance} = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
     verticalOffset: "0%",
   }));
 
-  const [imageIndex, setImageIndex] = useState(0);
+  // const [imageIndex, setImageIndex] = useState(0);
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
