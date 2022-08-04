@@ -53,6 +53,7 @@ import winter from "../assets/winter.jpg";
 import { StyledDropdown } from "./styled/Dropdown.styled";
 import { StyledDropdownImage } from "./styled/DropdownImage.styled";
 import { ImageContext } from "../context/Store";
+import uniqid from "uniqid";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -67,7 +68,7 @@ export default function Game() {
     targetAppearance,
     charactersFound,
     setCharactersFound,
-    changeTargetApperance
+    changeTargetApperance,
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
@@ -170,7 +171,7 @@ export default function Game() {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
-      changeTargetApperance(event)
+      changeTargetApperance(event);
     }
   }
 
@@ -225,18 +226,20 @@ export default function Game() {
         onClick={changeCoordinates}
         image={images[imageIndex].image}
       >
-        {(
+        {
           <Target coordinates={coordinates}>
-            <TargetImage />
             <TargetMenu>
-              <li data-testid="character">Odlaw</li>
-              <li data-testid="character">Waldo</li>
-              <li data-testid="character">Wilma</li>
-              <li data-testid="character">The Wizard</li>
-              <li data-testid="character">Woof</li>
+              {images[imageIndex].characters.map(({ character, name }) => {
+                return (
+                  <li key={uniqid()}>
+                    <img src={character} alt={name} />
+                    <p>{name}</p>
+                  </li>
+                );
+              })}
             </TargetMenu>
           </Target>
-        )}
+        }
       </ImageContainer>
     </>
   );

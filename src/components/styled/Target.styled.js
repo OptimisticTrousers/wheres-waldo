@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import PropTypes from 'prop-types'
 
-const selectionWidth = 100;
-const selectionHeight = 200;
+const selectionWidth = 60;
+const selectionHeight = 60;
 
 export const Target = styled.div`
+position: relative;
   display: flex;
   flex-direction: column;
   top: ${({ coordinates: { horizontalOffset } }) =>
@@ -14,8 +15,12 @@ export const Target = styled.div`
   width: ${selectionWidth}px;
   height: ${selectionHeight}px;
   border: none;
-  border: 5px solid red;
+  border: 5px solid rgb(254, 254, 254);
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: rgb(51, 51, 51) 0px 0px 5px 2px, rgb(51, 51, 51) 0px 0px 5px 1px inset;
   background: none !important;
+  transition: 0.2s;
 `;
 
 Target.propTypes = {
