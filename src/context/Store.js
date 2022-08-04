@@ -9,6 +9,47 @@ import odlaw from "../assets/odlaw.jpg";
 import waldo from "../assets/waldo.jpg";
 import wenda from "../assets/wenda.jpg";
 import wizard from "../assets/wizard.jpg";
+import { firebaseConfig } from "../firebase-config";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import {
+  getAuth,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  limit,
+  getDocs,
+  where,
+  onSnapshot,
+  setDoc,
+  updateDoc,
+  doc,
+  serverTimestamp,
+  getDocFromCache,
+  getDoc,
+  DocumentSnapshot,
+} from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { getPerformance } from "firebase/performance";
+
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+//const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
 export const ImageContext = createContext();
 
@@ -154,7 +195,16 @@ export function ImageProvider({ children }) {
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
 
-  const [userWon, setUserWon] = useState(true);
+  useEffect(() => {
+    async function getLeaderboardData() {
+      const data = collection(db, images[imageIndex].name, "leaderboard")
+      console.log(data)
+    }
+
+    getLeaderboardData();
+  }, [])
+
+  const [userWon, setUserWon] = useState(false);
 
   function start() {
     run();

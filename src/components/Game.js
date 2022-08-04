@@ -104,6 +104,10 @@ export default function Game() {
       });
     } else {
       dbCoordinates.forEach(({ doc }) => {
+
+        console.log(doc.data())
+
+        if(doc.data().coordinates === undefined) return 
         const {
           horizontalCoordinates,
           verticalCoordinates,

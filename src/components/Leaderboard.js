@@ -18,6 +18,7 @@ export default function Leaderboard() {
     setUserClickedImage((prevValue) => !prevValue);
   }
 
+
   const renderedImages = images.map(({ image, name }, index) => {
     return (
       <div onClick={handleLevelClick} key={uniqid()}>
@@ -40,6 +41,21 @@ export default function Leaderboard() {
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>#1</td>
+              <td>Leandro Rezende</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>#1</td>
+              <td>Leandro Rezende</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>#1</td>
+              <td>Leandro Rezende</td>
+              <td>12</td>
+            </tr>
             <tr>
               <td>#1</td>
               <td>Leandro Rezende</td>
