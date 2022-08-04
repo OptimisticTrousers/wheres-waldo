@@ -11,7 +11,8 @@ import { ImageContext } from "../context/Store";
 import uniqid from "uniqid";
 
 export default function Leaderboard() {
-  const { images } = useContext(ImageContext);
+  const { images, dbLeaderboard } = useContext(ImageContext);
+  console.log(dbLeaderboard)
   const [userClickedImage, setUserClickedImage] = useState(false);
 
   function handleLevelClick() {
@@ -41,11 +42,14 @@ export default function Leaderboard() {
             </tr>
           </thead>
           <tbody>
+            {dbLeaderboard.map((data, index) => (
+
             <tr>
-              <td>#1</td>
-              <td>Leandro Rezende</td>
-              <td>12</td>
+              <td>#{index + 1}</td>
+              <td>{data.name}</td>
+              <td>{data.time}</td>
             </tr>
+            ))}
             <tr>
               <td>#1</td>
               <td>Leandro Rezende</td>

@@ -199,22 +199,29 @@ export function ImageProvider({ children }) {
 
   useEffect(() => {
     async function getLeaderboardData(index) {
-      const data = collection(db, images[index].name, "leaderboard");
+      const data = collection(db, "leaderboards");
 
-      const leaderboard = await getDocs(data);
+      const array = await getDocs(data)
 
-      return leaderboard;
+      return array
+
     }
 
-    setDbLeaderboard(() => {
-      let leaderboard;
-      for (let i = 0; i < imageIndex; i++) {
-        leaderboard.push(getLeaderboardData(i));
-      }
+    getLeaderboardData().then((data) => {
+      setDbLeaderboard(data.docChanges()[0].doc.data().levels)
+    })
 
-      return leaderboard;
-    });
 
+    // setDbLeaderboard(() => {
+    //   let leaderboard;
+    //   // for (let i = 0; i < imageIndex; i++) {
+    //   getLeaderboardData().then((data) => {
+    //     leaderboard.push(getLeaderboardData());
+    //   });
+    //   // }
+
+    //   return leaderboard;
+    // });
   }, []);
 
   const [userWon, setUserWon] = useState(false);
@@ -311,6 +318,7 @@ export function ImageProvider({ children }) {
         time,
         setUserWon,
         userWon,
+        dbLeaderboard,
       }}
     >
       {children}
