@@ -151,11 +151,7 @@ export const StyledDropdown = styled.div`
 }
 
 #items {
-	position: relative;
-	top: 55%;
-	transform: translateY(-50%);
 	& > .item {
-		position: relative;
 		cursor: pointer;
 		font-size: 2em;
 		padding: 15px 30px;
@@ -174,4 +170,5 @@ export const StyledDropdown = styled.div`
 #box {
 	will-change: transform, opacity;
 }
+
 `;

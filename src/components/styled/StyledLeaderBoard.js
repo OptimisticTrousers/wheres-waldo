@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledLeaderBoard = styled.main`
-  height: 100vh;
-  width: 90%;
+  height: auto;
+  width: 95%;
 
   div {
     background-color: white;

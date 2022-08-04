@@ -3,13 +3,14 @@ import { Container } from "./Container.styled";
 import photo from "../../assets/beach.jpg";
 import PropTypes from 'prop-types';
 
-export const ImageContainer = styled(Container)`
+export const ImageContainer = styled.div`
   background-image: url(${({image}) => image});
-  background-size: contain;
+  overflow-y: auto;
+  background-size: cover;
   background-repeat: no-repeat;
   border-radius: 1.75%/2.3275%;
-  height: 826px;
-  width: 1190px;
+  width: 100%;
+  height: 100%;
 
   div {
     position: relative;
