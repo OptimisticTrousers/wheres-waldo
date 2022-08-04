@@ -200,6 +200,14 @@ export function ImageProvider({ children }) {
 
   const [dbLeaderboard, setDbLeaderboard] = useState([]);
 
+  const [resetTimer, setResetTimer] = useState(false)
+  const [timer, setTimer] = useState("")
+  const [userWon, setUserWon] = useState(false);
+
+  useEffect(() => {
+    setResetTimer(true)
+  }, [imageIndex])
+
   useEffect(() => {
     async function getLeaderboardData(index) {
       const leaderboardsRef = collection(db, "leaderboards");
@@ -242,7 +250,6 @@ export function ImageProvider({ children }) {
       .catch((err) => alert("ERROR: ",err));
   }, []);
 
-  const [userWon, setUserWon] = useState(false);
 
   const [charactersFound, setCharactersFound] = useState([
     {
@@ -298,6 +305,10 @@ export function ImageProvider({ children }) {
         setUserWon,
         userWon,
         dbLeaderboard,
+        resetTimer,
+        setTimer,
+        timer,
+        setResetTimer
       }}
     >
       {children}

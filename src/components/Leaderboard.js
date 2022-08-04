@@ -9,9 +9,16 @@ import winter from "../assets/winter.jpg";
 import { useContext, useEffect, useState } from "react";
 import { ImageContext } from "../context/Store";
 import uniqid from "uniqid";
+import { useRef } from "react";
 
 export default function Leaderboard() {
   const { images, dbLeaderboard, imageIndex } = useContext(ImageContext);
+
+  const [resetTimer, setResetTimer] = useState(false)
+
+  useEffect(() => {
+    setResetTimer(true)
+  }, [imageIndex])
 
   const [userClickedImage, setUserClickedImage] = useState(false);
   // dbLeaderboard.forEach((doc) => {

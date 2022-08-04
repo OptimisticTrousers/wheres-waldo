@@ -24,7 +24,7 @@ import uniqid from "uniqid";
 function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
-  const { images, imageIndex, time, userWon } = useContext(ImageContext);
+  const { images, imageIndex, userWon, timer } = useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
 
@@ -48,14 +48,14 @@ function App() {
         <Modal userWon>
           <div>
             <h2>
-              You finished in {time.m}:{time.s}
+              You finished in {timer}
             </h2>
             <p>Enter your name to save your score on the leaderboard!</p>
             <form>
               <label>Username</label>
               <input value="bob" />
             <div className="buttons">
-              <button type="button" cancel>Cancel</button>
+              <button type="button" >Cancel</button>
               <button type="button">Submit Score</button>
             </div>
             </form>
@@ -87,7 +87,6 @@ function App() {
       )}
       <GlobalStyles />
       <Header
-        time={time}
         changeTheme={changeTheme}
         theme={theme}
         changeGameState={changeGameState}

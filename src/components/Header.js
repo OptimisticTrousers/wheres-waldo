@@ -9,23 +9,34 @@ import waldo from "../assets/waldo.jpg";
 import wenda from "../assets/wenda.jpg";
 import wizard from "../assets/wizard.jpg";
 import { ImageContext } from "../context/Store";
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import uniqid from "uniqid";
+import ReactStopwatch from "react-stopwatch";
+import { Modal } from "./styled/Modal.styled";
 
-export default function Header({ changeTheme, theme, changeGameState}) {
-  const { images, imageIndex, charactersFound} = useContext(ImageContext);
+export default function Header({ changeTheme, theme, changeGameState }) {
+  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon} = useContext(ImageContext);
 
-  const renderedImages = images[imageIndex].characters.map((character, index) => {
-  const characterStyle = {
-    opacity: charactersFound[index].found && "0.7"
-  }
-    return (
-      <div key={uniqid()}>
-        <img src={character.character} alt={character.name} style={characterStyle}/>
-        <p>{character.name}</p>
-      </div>
-    );
-  });
+
+
+  const renderedImages = images[imageIndex].characters.map(
+    (character, index) => {
+      const characterStyle = {
+        opacity: charactersFound[index].found && "0.7",
+      };
+      return (
+        <div key={uniqid()}>
+          <img
+            src={character.character}
+            alt={character.name}
+            style={characterStyle}
+          />
+          <p>{character.name}</p>
+        </div>
+      );
+    }
+  );
+
   return (
     <StyledHeader>
       <Container className="content">
@@ -37,6 +48,26 @@ export default function Header({ changeTheme, theme, changeGameState}) {
               alt="a smiling pair of pants"
             />
           </Link>
+          <ReactStopwatch
+            seconds={0}
+            minutes={0}
+            hours={0}
+            limit="00:00:10"
+            autoStart={resetTimer === false}
+            onChange={(props) => {
+              console.log(props)
+
+            }}
+            onCallback={() => {
+            }}
+            render={({ formatted, hours, minutes, seconds }) => {
+              return (
+                <div>
+                  <p>{formatted}</p>
+                </div>
+              );
+            }}
+          />
         </div>
         <div>{renderedImages}</div>
         <div>
