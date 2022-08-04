@@ -22,6 +22,10 @@ export const StyledLeaderBoard = styled.main`
     border-radius: 5px;
     margin: 1rem;
   }
+  caption {
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
 
   caption {
     width: 100%;
