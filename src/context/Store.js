@@ -189,7 +189,7 @@ const images = [
   },
 ];
 
-const chance = new Chance()
+const chance = new Chance();
 
 const DEFAULT_OBJECT = {
   time: Math.floor(Math.random() * 1000) + 100,
@@ -206,24 +206,44 @@ export function ImageProvider({ children }) {
 
   useEffect(() => {
     async function getLeaderboardData(index) {
-      const data = collection(db, "leaderboards");
+      const leaderboardsRef = collection(db, "leaderboards");
 
-      const array = await getDocs(data);
+      // const q = query(leaderboardsRef, orderBy("time", "desc"), limit(7));
 
-      return array;
+      const leaderboardData = await getDocs(leaderboardsRef);
+
+      console.log(leaderboardData.docs)
+      return leaderboardData;
+      // const data = await getDocs(collection(db, "leaderboards"), orderBy("time", "desc"), limit(7));
+
+      // return data;
     }
 
     async function addStuff() {
       await setDoc(doc(db, "leaderboards", "space"), {
-        leaderboard: Array.from(new Array(7), user => ({name: chance.name(), time: Math.floor(Math.random() * 1000) + 100})),
+        leaderboard: Array.from(new Array(7), (user) => ({
+          name: chance.name(),
+          time: Math.floor(Math.random() * 1000) + 100,
+        })),
       });
     }
 
     // addStuff();
 
-    getLeaderboardData().then((data) => {
-      setDbLeaderboard(data.docChanges()[0].doc.data().levels);
-    });
+    getLeaderboardData()
+      .then((data) => {
+        let leaderboard = [];
+
+        data.docs.forEach((doc) => {
+          leaderboard.push({ ...doc.data(), id: doc.id });
+        });
+
+        setDbLeaderboard(leaderboard)
+
+        // setDbLeaderboard(data.docs);
+        // setDbLeaderboard(data.docChanges()[0].doc.data().levels);
+      })
+      .catch((err) => alert("ERROR: ",err));
   }, []);
 
   const [userWon, setUserWon] = useState(false);

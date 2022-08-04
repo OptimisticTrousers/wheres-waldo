@@ -6,19 +6,21 @@ import hollywood from "../assets/hollywood.jpg";
 import space from "../assets/space.jpg";
 import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ImageContext } from "../context/Store";
 import uniqid from "uniqid";
 
 export default function Leaderboard() {
-  const { images, dbLeaderboard } = useContext(ImageContext);
-  console.log(dbLeaderboard)
+  const { images, dbLeaderboard, imageIndex } = useContext(ImageContext);
+
   const [userClickedImage, setUserClickedImage] = useState(false);
+  // dbLeaderboard.forEach((doc) => {
+  //   console.log(doc.id, " => ", doc.data())
+  // })
 
   function handleLevelClick() {
     setUserClickedImage((prevValue) => !prevValue);
   }
-
 
   const renderedImages = images.map(({ image, name }, index) => {
     return (
@@ -28,6 +30,7 @@ export default function Leaderboard() {
       </div>
     );
   });
+
   return (
     <StyledLeaderBoard>
       <div>
@@ -42,44 +45,17 @@ export default function Leaderboard() {
             </tr>
           </thead>
           <tbody>
-            {dbLeaderboard.map((data, index) => (
-
-            <tr key={uniqid()}>
-              <td>#{index + 1}</td>
-              <td>{data.name}</td>
-              <td>{data.time}</td>
-            </tr>
-            ))}
-            <tr>
-              <td>#1</td>
-              <td>Leandro Rezende</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>#1</td>
-              <td>Leandro Rezende</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>#1</td>
-              <td>Leandro Rezende</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>#1</td>
-              <td>Leandro Rezende</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>#1</td>
-              <td>Leandro Rezende</td>
-              <td>12</td>
-            </tr>
-            <tr>
-              <td>#1</td>
-              <td>Leandro Rezende</td>
-              <td>12</td>
-            </tr>
+            {console.log(dbLeaderboard[imageIndex]?.leaderboard)}
+            {dbLeaderboard[imageIndex]?.leaderboard?.map((data, index) => {
+              console.log(data)
+              return (
+                <tr key={uniqid()}>
+                  <td>#{index + 1}</td>
+                  <td>{data.name}</td>
+                  <td>{data.time}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
