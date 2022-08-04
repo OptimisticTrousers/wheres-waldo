@@ -133,5 +133,11 @@ export const StyledHeader = styled.header`
     .theme-button{
       display: none;
     }
+    & > div > div {
+      gap: 0.2rem;
+    }
+    div:nth-child(2) {
+      margin: 0 9px;
+    }
   }
 `;
