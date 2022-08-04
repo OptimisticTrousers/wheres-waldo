@@ -8,7 +8,16 @@ export const StyledLeaderBoard = styled.main`
   --text-color: ${({ theme: { mode } }) =>
     mode === "light" ? "black" : "white"};
   border: 10px solid var(--text-color);
-    div {
+  animation: fadeIn ease 1s;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  div {
     background-color: var(--background-color);
     border-radius: 5px;
     margin: 1rem;
