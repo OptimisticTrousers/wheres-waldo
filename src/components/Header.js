@@ -9,12 +9,11 @@ import waldo from "../assets/waldo.jpg";
 import wenda from "../assets/wenda.jpg";
 import wizard from "../assets/wizard.jpg";
 import { ImageContext } from "../context/Store";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import uniqid from "uniqid";
 
-export default function Header({ changeTheme, theme, changeGameState, time }) {
-  const { images, imageIndex, charactersFound } = useContext(ImageContext);
-
+export default function Header({ changeTheme, theme, changeGameState}) {
+  const { images, imageIndex, charactersFound} = useContext(ImageContext);
 
   const renderedImages = images[imageIndex].characters.map((character, index) => {
   const characterStyle = {
@@ -38,7 +37,6 @@ export default function Header({ changeTheme, theme, changeGameState, time }) {
               alt="a smiling pair of pants"
             />
           </Link>
-          <h2>OptimisticTrousers</h2>
         </div>
         <div>{renderedImages}</div>
         <div>

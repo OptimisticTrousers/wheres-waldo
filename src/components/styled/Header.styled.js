@@ -36,6 +36,10 @@ export const StyledHeader = styled.header`
   div:nth-child(2) {
     margin: 0 1rem;
   }
+  .logo:hover{
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
   & > div {
     display: flex;
