@@ -8,37 +8,44 @@ import odlaw from "../assets/odlaw.jpg";
 import waldo from "../assets/waldo.jpg";
 import wenda from "../assets/wenda.jpg";
 import wizard from "../assets/wizard.jpg";
-export default function Header({ changeTheme, theme, changeGameState}) {
+import { ImageContext } from "../context/Store";
+import { useContext } from "react";
+import uniqid from "uniqid";
+
+export default function Header({ changeTheme, theme, changeGameState }) {
+  const { images, imageIndex } = useContext(ImageContext);
+
+  const renderedImages = images[imageIndex].characters.map((character) => {
+    return (
+      <div key={uniqid()}>
+        <img src={character.character} alt={character.name} />
+        <p>{character.name}</p>
+      </div>
+    );
+  });
   return (
     <StyledHeader>
       <Container>
         <div>
           <Link to="/">
-            <img className="logo" src={headerLogo} alt="a smiling pair of pants" />
+            <img
+              className="logo"
+              src={headerLogo}
+              alt="a smiling pair of pants"
+            />
           </Link>
           <h1>Optimistic Games</h1>
         </div>
-        <div>
-          <div>
-            <img src={odlaw} alt="odlaw" />
-            <p>Odlaw</p>
-          </div>
-          <div>
-            <img src={waldo} alt="waldo" />
-            <p>Waldo</p>
-          </div>
-          <div>
-            <img src={wenda} alt="wenda" />
-            <p>Wenda</p>
-          </div>
-          <div>
-            <img src={wizard} alt="wizard" />
-            <p>Wizard</p>
-          </div>
-        </div>
+        <div>{renderedImages}</div>
         <div>
           <Link to="leaderboard">Leaderboard</Link>
-          <button type="button" className="instructions" onClick={changeGameState}>Instructions</button>
+          <button
+            type="button"
+            className="instructions"
+            onClick={changeGameState}
+          >
+            Instructions
+          </button>
           <button type="button" onClick={changeTheme} className="theme-button">
             {theme.mode === "light" ? <BsMoon /> : <BsSun />}
           </button>

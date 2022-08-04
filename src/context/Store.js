@@ -5,6 +5,10 @@ import hollywood from "../assets/hollywood.jpg";
 import space from "../assets/space.jpg";
 import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
+import odlaw from "../assets/odlaw.jpg";
+import waldo from "../assets/waldo.jpg";
+import wenda from "../assets/wenda.jpg";
+import wizard from "../assets/wizard.jpg";
 
 export const ImageContext = createContext();
 
@@ -12,6 +16,24 @@ const images = [
   {
     name: "beach",
     image: beach,
+    characters: [
+      {
+        name: "odlaw",
+        character: odlaw
+      },
+      {
+        name: "waldo",
+        character:waldo 
+      },
+      {
+        name: "wenda",
+        character:wenda
+      },
+      {
+        name: "wizard",
+        character:wizard
+      }
+    ]
   },
   {
     name: "fruitland",

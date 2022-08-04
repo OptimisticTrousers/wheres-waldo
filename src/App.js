@@ -101,16 +101,16 @@ function App() {
         </Modal>
       )}
       <GlobalStyles />
-      <Header
-        changeTheme={changeTheme}
-        theme={theme}
-        changeGameState={changeGameState}
-      />
-      <StyledContent>
-        <ImageProvider>
+      <ImageProvider>
+        <Header
+          changeTheme={changeTheme}
+          theme={theme}
+          changeGameState={changeGameState}
+        />
+        <StyledContent>
           <Outlet />
-        </ImageProvider>
-      </StyledContent>
+        </StyledContent>
+      </ImageProvider>
       <Footer />
     </ThemeProvider>
   );
