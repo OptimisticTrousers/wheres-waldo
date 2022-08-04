@@ -59,57 +59,6 @@ const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-const levelProgress = {
-  waldo: {
-    name: "waldo",
-    found: false,
-  },
-  odlaw: {
-    name: "waldo",
-    found: false,
-  },
-  wilma: {
-    name: "waldo",
-    found: false,
-  },
-  wizard: {
-    name: "waldo",
-    found: false,
-  },
-  woof: {
-    name: "waldo",
-    found: false,
-  },
-  userWon: false,
-};
-
-// const images = [
-//   {
-//     name: "beach",
-//     image: beach,
-//   },
-//   {
-//     name: "fruitland",
-//     image: fruitland,
-//   },
-//   {
-//     name: "hollywood",
-//     image: hollywood,
-//   },
-//   {
-//     name: "space",
-//     image: space,
-//   },
-//   {
-//     name: "track",
-//     image: track,
-//   },
-//   {
-//     name: "winter",
-//     image: winter,
-//   },
-// ];
-
 export default function Game() {
 
   const {images, imageIndex, setImageIndex, targetAppearance} = useContext(ImageContext);
@@ -117,8 +66,6 @@ export default function Game() {
     horizontalOffset: "50%",
     verticalOffset: "0%",
   }));
-
-  // const [imageIndex, setImageIndex] = useState(0);
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
