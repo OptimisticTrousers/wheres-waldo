@@ -305,12 +305,6 @@ export default function Game({ targetAppearance }) {
 
   return (
     <>
-      {/* <StyledControls>
-        <button onClick={previousImageClick}>Previous Level</button>
-        <button onClick={toggleFullScreen}>Fullscreen</button>
-        <button onClick={toggleFullScreen}>Levels</button>
-        <button onClick={nextImageClick}>Next Level</button>
-      </StyledControls> */}
       <StyledDropdown>
         <div
           id="btn"
