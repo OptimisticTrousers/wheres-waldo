@@ -65,7 +65,7 @@ export function ImageProvider({ children }) {
       return {...character, found: false}
     })
 
-  }, [imageIndex])
+  }, [imageIndex, targetAppearance])
 
   const [charactersFound, setCharactersFound] = useState([
     {

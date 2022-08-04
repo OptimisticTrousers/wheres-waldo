@@ -79,6 +79,12 @@ export default function Game() {
 
   const [isCharacterMenuVisible, setIsCharacterMenuVisible] = useState(false)
 
+  const [gameStarted, setGameStarted] = useState(false);
+
+  function changeGameState() {
+    setGameStarted((prevValue) => !prevValue);
+  }
+
   const [userWins, setUserWins] = useState([
     false,
     false,

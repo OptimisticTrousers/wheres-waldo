@@ -20,13 +20,14 @@ import track from "./assets/track.jpg";
 import winter from "./assets/winter.jpg";
 import { ImageProvider } from "./context/Store";
 import { ImageContext } from "./context/Store";
-import uniqid from "uniqid";
+import uniqid from 'uniqid'
 function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
-  const [gameStarted, setGameStarted] = useState(false);
 
   const { images, imageIndex } = useContext(ImageContext);
+
+  const [gameStarted, setGameStarted] = useState(false);
 
   function changeGameState() {
     setGameStarted((prevValue) => !prevValue);
@@ -68,14 +69,14 @@ function App() {
         </Modal>
       )}
       <GlobalStyles />
-      <Header
-        changeTheme={changeTheme}
-        theme={theme}
-        changeGameState={changeGameState}
-      />
-      <StyledContent>
-        <Outlet />
-      </StyledContent>
+        <Header
+          changeTheme={changeTheme}
+          theme={theme}
+          changeGameState={changeGameState}
+        />
+        <StyledContent>
+          <Outlet />
+        </StyledContent>
       <Footer />
     </ThemeProvider>
   );
