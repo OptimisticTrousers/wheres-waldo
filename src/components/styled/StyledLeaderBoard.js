@@ -3,9 +3,13 @@ import styled from "styled-components";
 export const StyledLeaderBoard = styled.main`
   height: auto;
   width: 95%;
-
-  div {
-    background-color: white;
+  --background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "white" : "rgb(56, 56, 56)"};
+  --text-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "black" : "white"};
+  border: 10px solid var(--text-color);
+    div {
+    background-color: var(--background-color);
     border-radius: 5px;
     margin: 1rem;
   }
@@ -15,9 +19,13 @@ export const StyledLeaderBoard = styled.main`
     text-align: start;
     padding: 1rem;
     border-bottom: 1px solid #f8f9f9;
+    color: var(--text-color);
   }
   th {
+    color: black;
+    font-weight: 900;
     padding: 1rem;
+    background-color: #ebedf0;
   }
   table {
     width: 100%;
