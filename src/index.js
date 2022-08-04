@@ -5,19 +5,22 @@ import reportWebVitals from "./reportWebVitals";
 import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
 import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
+import { ImageProvider } from "./context/Store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Game />} />
-          <Route path="leaderboard" element={<Leaderboard />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <ImageProvider>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Game />} />
+            <Route path="leaderboard" element={<Leaderboard />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </React.StrictMode>
+  </ImageProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
