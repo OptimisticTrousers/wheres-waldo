@@ -47,7 +47,7 @@ function App({ children }) {
       {gameStarted === false && (
         <Modal>
           <div>
-            <p>Search for these characters as fast as possible!</p>
+            <h2>Search for these characters as fast as possible!</h2>
             <p>Click anywhere on the image to select and find the characters</p>
             <div>
               <div>
@@ -67,6 +67,7 @@ function App({ children }) {
                 <p>Text</p>
               </div>
             </div>
+            <p>See your name in the leaderboards!</p>
             <button type="button" onClick={changeGameState}>
               Start
             </button>

@@ -84,7 +84,6 @@ export const StyledHeader = styled.header`
   img {
     height: 75px;
     width: 75px;
-    margin-left: 1rem;
     border-radius: 100px;
     margin: 0 auto;
     object-fit: contain;
@@ -105,7 +104,7 @@ export const StyledHeader = styled.header`
     opacity: 0.7;
     cursor: pointer;
   }
-  @media (max-width: 930px) {
+  @media (max-width: 1030px) {
     .logo {
       display: none;
     }
@@ -113,17 +112,25 @@ export const StyledHeader = styled.header`
       display: none;
     }
   }
-  @media (max-width: 650px) {
+  @media (max-width: 750px) {
     img {
       width: 50px;
       height: 50px;
     }
   }
-  @media (max-width: 570px) {
+  @media (max-width: 680px) {
     img {
       display: none;
     }
     p {
+      display: none;
+    }
+  }
+  @media(max-width: 470px) {
+    & {
+      justify-content: flex-start;
+    }
+    .theme-button{
       display: none;
     }
   }
