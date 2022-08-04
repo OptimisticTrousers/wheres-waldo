@@ -42,6 +42,7 @@ export const Modal = styled.div`
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 8%;
   }
   & > div > div {
     display: flex;
