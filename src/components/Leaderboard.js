@@ -14,12 +14,6 @@ import { useRef } from "react";
 export default function Leaderboard() {
   const { images, dbLeaderboard, imageIndex } = useContext(ImageContext);
 
-  const [resetTimer, setResetTimer] = useState(false)
-
-  useEffect(() => {
-    setResetTimer(true)
-  }, [imageIndex])
-
   const [userClickedImage, setUserClickedImage] = useState(false);
   // dbLeaderboard.forEach((doc) => {
   //   console.log(doc.id, " => ", doc.data())

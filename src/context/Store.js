@@ -47,6 +47,7 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
 import Chance from "chance";
 
+import ReactStopwatch from "react-stopwatch";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -200,13 +201,13 @@ export function ImageProvider({ children }) {
 
   const [dbLeaderboard, setDbLeaderboard] = useState([]);
 
-  const [resetTimer, setResetTimer] = useState(false)
-  const [timer, setTimer] = useState("")
+  const [resetTimer, setResetTimer] = useState(false);
+  const [timer, setTimer] = useState("");
   const [userWon, setUserWon] = useState(false);
 
   useEffect(() => {
-    setResetTimer(true)
-  }, [imageIndex])
+    setResetTimer(true);
+  }, [imageIndex]);
 
   useEffect(() => {
     async function getLeaderboardData(index) {
@@ -216,7 +217,7 @@ export function ImageProvider({ children }) {
 
       const leaderboardData = await getDocs(leaderboardsRef);
 
-      console.log(leaderboardData.docs)
+      console.log(leaderboardData.docs);
       return leaderboardData;
       // const data = await getDocs(collection(db, "leaderboards"), orderBy("time", "desc"), limit(7));
 
@@ -242,14 +243,13 @@ export function ImageProvider({ children }) {
           leaderboard.push({ ...doc.data(), id: doc.id });
         });
 
-        setDbLeaderboard(leaderboard)
+        setDbLeaderboard(leaderboard);
 
         // setDbLeaderboard(data.docs);
         // setDbLeaderboard(data.docChanges()[0].doc.data().levels);
       })
-      .catch((err) => alert("ERROR: ",err));
+      .catch((err) => alert("ERROR: ", err));
   }, []);
-
 
   const [charactersFound, setCharactersFound] = useState([
     {
@@ -292,6 +292,27 @@ export function ImageProvider({ children }) {
     }
   }
 
+  const timerComponent = (
+    <ReactStopwatch
+      seconds={0}
+      minutes={0}
+      hours={0}
+      limit="00:00:10"
+      autoStart={resetTimer === false && userWon === false}
+      onChange={(props) => {
+        console.log(props);
+      }}
+      onCallback={() => {}}
+      render={({ formatted, hours, minutes, seconds }) => {
+        return (
+          <div>
+            <p>{formatted}</p>
+          </div>
+        );
+      }}
+    />
+  );
+
   return (
     <ImageContext.Provider
       value={{
@@ -308,7 +329,8 @@ export function ImageProvider({ children }) {
         resetTimer,
         setTimer,
         timer,
-        setResetTimer
+        setResetTimer,
+        timerComponent
       }}
     >
       {children}

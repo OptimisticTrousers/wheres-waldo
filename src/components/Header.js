@@ -11,11 +11,10 @@ import wizard from "../assets/wizard.jpg";
 import { ImageContext } from "../context/Store";
 import React, { useContext, useEffect, useState } from "react";
 import uniqid from "uniqid";
-import ReactStopwatch from "react-stopwatch";
 import { Modal } from "./styled/Modal.styled";
 
 export default function Header({ changeTheme, theme, changeGameState }) {
-  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon} = useContext(ImageContext);
+  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon, timerComponent} = useContext(ImageContext);
 
 
 
@@ -48,26 +47,9 @@ export default function Header({ changeTheme, theme, changeGameState }) {
               alt="a smiling pair of pants"
             />
           </Link>
-          <ReactStopwatch
-            seconds={0}
-            minutes={0}
-            hours={0}
-            limit="00:00:10"
-            autoStart={resetTimer === false}
-            onChange={(props) => {
-              console.log(props)
-
-            }}
-            onCallback={() => {
-            }}
-            render={({ formatted, hours, minutes, seconds }) => {
-              return (
-                <div>
-                  <p>{formatted}</p>
-                </div>
-              );
-            }}
-          />
+          <h2>
+            {timerComponent}
+          </h2>
         </div>
         <div>{renderedImages}</div>
         <div>

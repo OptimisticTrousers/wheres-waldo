@@ -24,7 +24,7 @@ import uniqid from "uniqid";
 function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
-  const { images, imageIndex, userWon, timer } = useContext(ImageContext);
+  const { images, imageIndex, userWon, timer, timerComponent } = useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
 
@@ -48,7 +48,7 @@ function App() {
         <Modal userWon>
           <div>
             <h2>
-              You finished in {timer}
+              You finished in {timerComponent}
             </h2>
             <p>Enter your name to save your score on the leaderboard!</p>
             <form>
