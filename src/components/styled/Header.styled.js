@@ -143,4 +143,9 @@ export const StyledHeader = styled.header`
       margin: 0 9px;
     }
   }
+  @media(max-width: 380px) {
+    .logo {
+      display: none;
+    }
+  }
 `;
