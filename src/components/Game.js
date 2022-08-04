@@ -69,6 +69,8 @@ export default function Game() {
     charactersFound,
     setCharactersFound,
     changeTargetApperance,
+    userWon,
+    setUserWon
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
@@ -77,7 +79,7 @@ export default function Game() {
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
-  const [isCharacterMenuVisible, setIsCharacterMenuVisible] = useState(false)
+  const [isCharacterMenuVisible, setIsCharacterMenuVisible] = useState(false);
 
   const [gameStarted, setGameStarted] = useState(false);
 
@@ -85,14 +87,6 @@ export default function Game() {
     setGameStarted((prevValue) => !prevValue);
   }
 
-  const [userWins, setUserWins] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -125,7 +119,13 @@ export default function Game() {
         );
       });
     }
-  }, [coordinates, didUserFindCharacter, dbCoordinates, images, changeCoordinates]);
+  }, [
+    coordinates,
+    didUserFindCharacter,
+    dbCoordinates,
+    images,
+    changeCoordinates,
+  ]);
 
   function didUserFindCharacter(
     horizontalCoordinates,
@@ -141,13 +141,7 @@ export default function Game() {
     console.log("User: ", coordinates);
     console.log("Characters Found:", numberOfCharactersFound);
     if (numberOfCharactersFound === 5) {
-      setUserWins((prevWins) => {
-        const newWins = [...prevWins];
-
-        newWins[imageIndex] = true;
-
-        return newWins;
-      });
+      setUserWon(true);
     } else if (
       verticalCoordinates - verticalRange <= verticalOffset &&
       verticalCoordinates >= verticalOffset &&
@@ -175,20 +169,18 @@ export default function Game() {
   }
   const [isMenuActive, setIsMenuActive] = useState();
 
-  const [showTargetMenu, setShowTargetMenu] = useState(false)
+  const [showTargetMenu, setShowTargetMenu] = useState(false);
 
   function changeCoordinates(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
-      
     }
   }
 
-
   function handleTargetMenu() {
-    setShowTargetMenu(prevValue => !prevValue)
+    setShowTargetMenu((prevValue) => !prevValue);
   }
 
   function handleMenuClick() {
@@ -240,8 +232,9 @@ export default function Game() {
         onMouseMove={changeCoordinates}
         image={images[imageIndex].image}
       >
-          <Target coordinates={coordinates} onClick={handleTargetMenu}>
-            {showTargetMenu && <TargetMenu>
+        <Target coordinates={coordinates} onClick={handleTargetMenu}>
+          {showTargetMenu && (
+            <TargetMenu>
               {images[imageIndex].characters.map(({ character, name }) => {
                 return (
                   <li key={uniqid()}>
@@ -250,8 +243,9 @@ export default function Game() {
                   </li>
                 );
               })}
-            </TargetMenu>}
-          </Target>
+            </TargetMenu>
+          )}
+        </Target>
       </ImageContainer>
     </>
   );

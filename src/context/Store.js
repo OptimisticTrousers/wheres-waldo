@@ -19,21 +19,21 @@ const images = [
     characters: [
       {
         name: "odlaw",
-        character: odlaw
+        character: odlaw,
       },
       {
         name: "waldo",
-        character:waldo 
+        character: waldo,
       },
       {
         name: "wenda",
-        character:wenda
+        character: wenda,
       },
       {
         name: "wizard",
-        character:wizard
+        character: wizard,
       },
-    ]
+    ],
   },
   {
     name: "fruitland",
@@ -41,21 +41,21 @@ const images = [
     characters: [
       {
         name: "odlaw",
-        character: odlaw
+        character: odlaw,
       },
       {
         name: "waldo",
-        character:waldo 
+        character: waldo,
       },
       {
         name: "wenda",
-        character:wenda
+        character: wenda,
       },
       {
         name: "wizard",
-        character:wizard
+        character: wizard,
       },
-    ]
+    ],
   },
   {
     name: "hollywood",
@@ -63,21 +63,21 @@ const images = [
     characters: [
       {
         name: "odlaw",
-        character: odlaw
+        character: odlaw,
       },
       {
         name: "waldo",
-        character:waldo 
+        character: waldo,
       },
       {
         name: "wenda",
-        character:wenda
+        character: wenda,
       },
       {
         name: "wizard",
-        character:wizard
+        character: wizard,
       },
-    ]
+    ],
   },
   {
     name: "space",
@@ -85,21 +85,21 @@ const images = [
     characters: [
       {
         name: "odlaw",
-        character: odlaw
+        character: odlaw,
       },
       {
         name: "waldo",
-        character:waldo 
+        character: waldo,
       },
       {
         name: "wenda",
-        character:wenda
+        character: wenda,
       },
       {
         name: "wizard",
-        character:wizard
+        character: wizard,
       },
-    ]
+    ],
   },
   {
     name: "track",
@@ -107,21 +107,21 @@ const images = [
     characters: [
       {
         name: "odlaw",
-        character: odlaw
+        character: odlaw,
       },
       {
         name: "waldo",
-        character:waldo 
+        character: waldo,
       },
       {
         name: "wenda",
-        character:wenda
+        character: wenda,
       },
       {
         name: "wizard",
-        character:wizard
+        character: wizard,
       },
-    ]
+    ],
   },
   {
     name: "winter",
@@ -129,66 +129,70 @@ const images = [
     characters: [
       {
         name: "odlaw",
-        character: odlaw
+        character: odlaw,
       },
       {
         name: "waldo",
-        character:waldo 
+        character: waldo,
       },
       {
         name: "wenda",
-        character:wenda
+        character: wenda,
       },
       {
         name: "wizard",
-        character:wizard
+        character: wizard,
       },
-    ]
+    ],
   },
 ];
 export function ImageProvider({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
-  const [time, setTime] = useState({ms: 0, s: 0, m:0, h:0})
+  const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
   const [interv, setInterv] = useState();
-  const [status, setStatus] = useState(0)
+  const [status, setStatus] = useState(0);
+
+  const [userWon, setUserWon] = useState(true);
 
   function start() {
     run();
     setStatus(1);
-    setInterv(setInterv(run, 10))
-
+    setInterv(setInterv(run, 10));
   }
 
-  let updatedMs = time.ms, updatedS = time.s, updatedM = time.m, updatedH = time.h;
+  let updatedMs = time.ms,
+    updatedS = time.s,
+    updatedM = time.m,
+    updatedH = time.h;
 
   function run() {
-    if(updatedM === 60) {
+    if (updatedM === 60) {
       updatedH++;
       updatedM = 0;
     }
-    if(updatedS === 60) {
+    if (updatedS === 60) {
       updatedM++;
       updatedS = 0;
     }
-    if(updatedMs === 100) {
+    if (updatedMs === 100) {
       updatedS++;
       updatedMs = 0;
     }
     updatedMs++;
-    return setTime({ms: updatedMs, s:updatedS, m:updatedM, h:updatedH})
+    return setTime({ ms: updatedMs, s: updatedS, m: updatedM, h: updatedH });
   }
 
   function stop() {
-    clearInterval(interv)
-    setStatus(2)
+    clearInterval(interv);
+    setStatus(2);
   }
-  
+
   function reset() {
-    clearInterval(interv)
-    setStatus(0)
-    setTime({ms: 0, s:0, m:0, h:0})
+    clearInterval(interv);
+    setStatus(0);
+    setTime({ ms: 0, s: 0, m: 0, h: 0 });
   }
   const [charactersFound, setCharactersFound] = useState([
     {
@@ -213,13 +217,11 @@ export function ImageProvider({ children }) {
     },
   ]);
 
-
   useEffect(() => {
-    charactersFound.map(character => {
-      return {...character, found: false}
-    })
-
-  }, [imageIndex, charactersFound])
+    charactersFound.map((character) => {
+      return { ...character, found: false };
+    });
+  }, [imageIndex, charactersFound]);
 
   function changeImage(index) {
     setImageIndex(index);
@@ -234,7 +236,20 @@ export function ImageProvider({ children }) {
   }
 
   return (
-    <ImageContext.Provider value={{ images, imageIndex, setImageIndex, targetAppearance, changeTargetAppearance, charactersFound, setCharactersFound, time}}>
+    <ImageContext.Provider
+      value={{
+        images,
+        imageIndex,
+        setImageIndex,
+        targetAppearance,
+        changeTargetAppearance,
+        charactersFound,
+        setCharactersFound,
+        time,
+        setUserWon,
+        userWon,
+      }}
+    >
       {children}
     </ImageContext.Provider>
   );

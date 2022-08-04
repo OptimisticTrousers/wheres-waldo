@@ -20,12 +20,11 @@ import track from "./assets/track.jpg";
 import winter from "./assets/winter.jpg";
 import { ImageProvider } from "./context/Store";
 import { ImageContext } from "./context/Store";
-import uniqid from 'uniqid'
+import uniqid from "uniqid";
 function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
-
-  const { images, imageIndex,time } = useContext(ImageContext);
+  const { images, imageIndex, time, userWon } = useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
 
@@ -45,6 +44,24 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      {userWon && (
+        <Modal userWon>
+          <div>
+            <h2>
+              You finished in {time.m}:{time.s}
+            </h2>
+            <p>Enter your name to save your score on the leaderboard!</p>
+            <form>
+              <label>Username</label>
+              <input value="bob" />
+            <div className="buttons">
+              <button type="button" cancel>Cancel</button>
+              <button type="button">Submit Score</button>
+            </div>
+            </form>
+          </div>
+        </Modal>
+      )}
       {gameStarted === false && (
         <Modal>
           <div>
@@ -69,15 +86,15 @@ function App() {
         </Modal>
       )}
       <GlobalStyles />
-        <Header
+      <Header
         time={time}
-          changeTheme={changeTheme}
-          theme={theme}
-          changeGameState={changeGameState}
-        />
-        <StyledContent>
-          <Outlet />
-        </StyledContent>
+        changeTheme={changeTheme}
+        theme={theme}
+        changeGameState={changeGameState}
+      />
+      <StyledContent>
+        <Outlet />
+      </StyledContent>
       <Footer />
     </ThemeProvider>
   );

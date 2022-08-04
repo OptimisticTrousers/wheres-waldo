@@ -41,14 +41,45 @@ export const Modal = styled.div`
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: ${({userWon}) => userWon ? "50%" : "80%"};
     border-radius: 8%;
   }
   & > div > div {
     display: flex;
+    justify-content:   center;
+    align-items: center;
+    gap: 1rem;
+  }
+  input {
+    border: none;
+    padding: 1rem;
+    outline: 2px solid transparent;
+    line-height: inherit;
+    color:inherit; 
+    border-radius: 0.375rem;
+    border-width: 1px;
+    font-size: 100%;
+    width: 40%;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    text-align: start;
+  }
+  button:nth-child(1) {
+    background-color: ${({userWon}) => userWon && "inherit"};
+    color: #0085fe;
+  }
+  label {
+    font-weight: 900;
+  }
+  .buttons {
+    display: flex;
+    gap: 2rem;
   }
   img {
     width: 80px;
