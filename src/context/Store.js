@@ -38,22 +38,112 @@ const images = [
   {
     name: "fruitland",
     image: fruitland,
+    characters: [
+      {
+        name: "odlaw",
+        character: odlaw
+      },
+      {
+        name: "waldo",
+        character:waldo 
+      },
+      {
+        name: "wenda",
+        character:wenda
+      },
+      {
+        name: "wizard",
+        character:wizard
+      },
+    ]
   },
   {
     name: "hollywood",
     image: hollywood,
+    characters: [
+      {
+        name: "odlaw",
+        character: odlaw
+      },
+      {
+        name: "waldo",
+        character:waldo 
+      },
+      {
+        name: "wenda",
+        character:wenda
+      },
+      {
+        name: "wizard",
+        character:wizard
+      },
+    ]
   },
   {
     name: "space",
     image: space,
+    characters: [
+      {
+        name: "odlaw",
+        character: odlaw
+      },
+      {
+        name: "waldo",
+        character:waldo 
+      },
+      {
+        name: "wenda",
+        character:wenda
+      },
+      {
+        name: "wizard",
+        character:wizard
+      },
+    ]
   },
   {
     name: "track",
     image: track,
+    characters: [
+      {
+        name: "odlaw",
+        character: odlaw
+      },
+      {
+        name: "waldo",
+        character:waldo 
+      },
+      {
+        name: "wenda",
+        character:wenda
+      },
+      {
+        name: "wizard",
+        character:wizard
+      },
+    ]
   },
   {
     name: "winter",
     image: winter,
+    characters: [
+      {
+        name: "odlaw",
+        character: odlaw
+      },
+      {
+        name: "waldo",
+        character:waldo 
+      },
+      {
+        name: "wenda",
+        character:wenda
+      },
+      {
+        name: "wizard",
+        character:wizard
+      },
+    ]
   },
 ];
 export function ImageProvider({ children }) {
