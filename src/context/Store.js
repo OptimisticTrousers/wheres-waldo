@@ -64,6 +64,7 @@ export function ImageProvider({ children }) {
     charactersFound.map(character => {
       return {...character, found: false}
     })
+
   }, [imageIndex])
 
   const [charactersFound, setCharactersFound] = useState([

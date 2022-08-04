@@ -170,6 +170,7 @@ export default function Game() {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
+      changeTargetApperance(event)
     }
   }
 
@@ -221,7 +222,7 @@ export default function Game() {
       </StyledDropdown>
       <ImageContainer
         data-testid="image-level"
-        onClick={changeTargetApperance}
+        onClick={changeCoordinates}
         image={images[imageIndex].image}
       >
         {(

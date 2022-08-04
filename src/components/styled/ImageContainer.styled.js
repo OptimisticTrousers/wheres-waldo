@@ -8,9 +8,10 @@ export const ImageContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 1.75%/2.3275%;
-  width: 100%;
-  height: 100%;
-  transition: 1s;
+  width: 100vw;
+  height:100vh;
+  overflow: auto;
+  transition: 0.2s;
 
   div {
     position: relative;
