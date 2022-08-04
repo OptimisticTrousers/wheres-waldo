@@ -77,6 +77,8 @@ export default function Game() {
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
+  const [isCharacterMenuVisible, setIsCharacterMenuVisible] = useState(false)
+
   const [userWins, setUserWins] = useState([
     false,
     false,
@@ -117,7 +119,7 @@ export default function Game() {
         );
       });
     }
-  }, [coordinates, didUserFindCharacter, dbCoordinates, images]);
+  }, [coordinates, didUserFindCharacter, dbCoordinates, images, changeCoordinates]);
 
   function didUserFindCharacter(
     horizontalCoordinates,
@@ -171,7 +173,7 @@ export default function Game() {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
-      changeTargetApperance(event);
+      setIsCharacterMenuVisible(true)
     }
   }
 
@@ -226,9 +228,8 @@ export default function Game() {
         onClick={changeCoordinates}
         image={images[imageIndex].image}
       >
-        {
-          <Target coordinates={coordinates}>
-            <TargetMenu>
+          <Target coordinates={coordinates} >
+            {isCharacterMenuVisible && <TargetMenu>
               {images[imageIndex].characters.map(({ character, name }) => {
                 return (
                   <li key={uniqid()}>
@@ -237,9 +238,8 @@ export default function Game() {
                   </li>
                 );
               })}
-            </TargetMenu>
+            </TargetMenu>}
           </Target>
-        }
       </ImageContainer>
     </>
   );
