@@ -17,7 +17,7 @@ export const StyledLeaderBoard = styled.main`
       opacity: 1;
     }
   }
-  div {
+  & > div {
     background-color: var(--background-color);
     border-radius: 5px;
     margin: 1rem;
