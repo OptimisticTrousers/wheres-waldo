@@ -16,6 +16,7 @@ export const StyledFooter = styled.footer`
   bottom: 0;
   height: 60px;
   width: 100%;
+  transition: 1s;
 
   div {
     display: flex;
