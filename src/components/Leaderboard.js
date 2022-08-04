@@ -20,14 +20,13 @@ export default function Leaderboard() {
 
   const [leaderboardIndex, setLeaderboardIndex] = useState(0)
 
-
   function handleLevelClick() {
     setUserClickedImage((prevValue) => !prevValue);
   }
 
   const renderedImages = images.map(({ image, name }, index) => {
     return (
-      <div onClick={() => setLeaderboardIndex(index)} key={uniqid()}>
+      <div onClick={() => setLeaderboardIndex(index)} key={uniqid()} style={{backgroundColor: index === leaderboardIndex && "rgb(254, 226, 226, 1)"}}>
         <img src={image} alt={name} />
         <p>Level {index + 1}</p>
       </div>
@@ -50,9 +49,8 @@ export default function Leaderboard() {
           <tbody>
             {console.log(dbLeaderboard[leaderboardIndex]?.leaderboard)}
             {dbLeaderboard[leaderboardIndex]?.leaderboard?.map((data, index) => {
-              console.log(data)
               return (
-                <tr key={uniqid()}>
+                <tr key={uniqid()} >
                   <td>#{index + 1}</td>
                   <td>{data.name}</td>
                   <td>{data.time}</td>
