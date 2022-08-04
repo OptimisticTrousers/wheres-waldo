@@ -100,10 +100,6 @@ export const StyledHeader = styled.header`
     background-color: var(--button-hover-background-color);
   }
 
-  img:hover {
-    opacity: 0.7;
-    cursor: pointer;
-  }
   @media (max-width: 1030px) {
     .logo {
       display: none;

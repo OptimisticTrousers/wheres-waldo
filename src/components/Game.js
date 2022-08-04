@@ -61,11 +61,12 @@ const db = getFirestore(app);
 
 export default function Game() {
 
-  const {images, imageIndex, setImageIndex, targetAppearance} = useContext(ImageContext);
+  const {images, imageIndex, setImageIndex, targetAppearance, charactersFound, setCharactersFound} = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
     verticalOffset: "0%",
   }));
+
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
@@ -80,28 +81,6 @@ export default function Game() {
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
-  const [charactersFound, setCharactersFound] = useState([
-    {
-      name: "odlaw",
-      found: false,
-    },
-    {
-      name: "waldo",
-      found: false,
-    },
-    {
-      name: "wilma",
-      found: false,
-    },
-    {
-      name: "wizard",
-      found: false,
-    },
-    {
-      name: "woof",
-      found: false,
-    },
-  ]);
 
   useEffect(() => {
     async function queryCoordinates() {

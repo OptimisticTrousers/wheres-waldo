@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import beach from "../assets/beach.jpg";
 import fruitland from "../assets/fruitland.jpg";
 import hollywood from "../assets/hollywood.jpg";
@@ -32,7 +32,7 @@ const images = [
       {
         name: "wizard",
         character:wizard
-      }
+      },
     ]
   },
   {
@@ -60,6 +60,35 @@ export function ImageProvider({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
+  useEffect(() => {
+    charactersFound.map(character => {
+      return {...character, found: false}
+    })
+  }, [imageIndex])
+
+  const [charactersFound, setCharactersFound] = useState([
+    {
+      name: "odlaw",
+      found: false,
+    },
+    {
+      name: "waldo",
+      found: false,
+    },
+    {
+      name: "wilma",
+      found: false,
+    },
+    {
+      name: "wizard",
+      found: false,
+    },
+    {
+      name: "woof",
+      found: false,
+    },
+  ]);
+
   function changeImage(index) {
     setImageIndex(index);
   }
@@ -73,7 +102,7 @@ export function ImageProvider({ children }) {
   }
 
   return (
-    <ImageContext.Provider value={{ images, imageIndex, setImageIndex, targetAppearance, handleClick}}>
+    <ImageContext.Provider value={{ images, imageIndex, setImageIndex, targetAppearance, handleClick, charactersFound, setCharactersFound}}>
       {children}
     </ImageContext.Provider>
   );

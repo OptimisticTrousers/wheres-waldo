@@ -13,16 +13,25 @@ import { useContext } from "react";
 import uniqid from "uniqid";
 
 export default function Header({ changeTheme, theme, changeGameState }) {
-  const { images, imageIndex } = useContext(ImageContext);
+  const { images, imageIndex, charactersFound } = useContext(ImageContext);
 
-  const renderedImages = images[imageIndex].characters.map((character) => {
-    return (
-      <div key={uniqid()}>
-        <img src={character.character} alt={character.name} />
-        <p>{character.name}</p>
-      </div>
-    );
-  });
+  const renderedImages = images[imageIndex].characters.map(
+    (character, index) => {
+      const characterStyle = {
+        opacity: charactersFound[index].found && "0.7",
+      };
+      return (
+        <div key={uniqid()}>
+          <img
+            src={character.character}
+            alt={character.name}
+            style={characterStyle}
+          />
+          <p>{character.name}</p>
+        </div>
+      );
+    }
+  );
   return (
     <StyledHeader>
       <Container>

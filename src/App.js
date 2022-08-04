@@ -3,7 +3,7 @@ import GlobalStyles from "./components/styled/Global.styled";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { StyledContent } from "./components/styled/Game.styled";
 import { StyledDropdown } from "./components/styled/Dropdown.styled";
@@ -23,6 +23,7 @@ function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
   const [gameStarted, setGameStarted] = useState(false);
+
 
   const images = [
     {
@@ -101,16 +102,16 @@ function App() {
         </Modal>
       )}
       <GlobalStyles />
-      <ImageProvider>
-        <Header
-          changeTheme={changeTheme}
-          theme={theme}
-          changeGameState={changeGameState}
-        />
-        <StyledContent>
+        <ImageProvider>
+      <Header
+        changeTheme={changeTheme}
+        theme={theme}
+        changeGameState={changeGameState}
+      />
+      <StyledContent>
           <Outlet />
-        </StyledContent>
-      </ImageProvider>
+      </StyledContent>
+        </ImageProvider>
       <Footer />
     </ThemeProvider>
   );
