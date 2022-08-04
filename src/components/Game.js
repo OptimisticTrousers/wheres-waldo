@@ -167,17 +167,23 @@ export default function Game() {
       }
     }
   }
+  const [isMenuActive, setIsMenuActive] = useState();
+
+  const [showTargetMenu, setShowTargetMenu] = useState(false)
 
   function changeCoordinates(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
-      setIsCharacterMenuVisible(true)
+      
     }
   }
 
-  const [isMenuActive, setIsMenuActive] = useState();
+
+  function handleTargetMenu() {
+    setShowTargetMenu(prevValue => !prevValue)
+  }
 
   function handleMenuClick() {
     setIsMenuActive((prevValue) => !prevValue);
@@ -228,8 +234,8 @@ export default function Game() {
         onMouseMove={changeCoordinates}
         image={images[imageIndex].image}
       >
-          <Target coordinates={coordinates} >
-            {isCharacterMenuVisible && <TargetMenu>
+          <Target coordinates={coordinates} onClick={handleTargetMenu}>
+            {showTargetMenu && <TargetMenu>
               {images[imageIndex].characters.map(({ character, name }) => {
                 return (
                   <li key={uniqid()}>

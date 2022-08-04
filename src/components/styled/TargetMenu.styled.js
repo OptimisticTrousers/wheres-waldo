@@ -5,7 +5,7 @@ export const TargetMenu = styled.ul`
   background-color: rgb(37, 38, 43);
   position: absolute;
   top: 55px;
-  left: 52px;
+  left: -6px;
   li {
     list-style: none;
     width: 100%;
