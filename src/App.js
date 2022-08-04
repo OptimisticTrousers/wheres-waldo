@@ -10,6 +10,8 @@ import { StyledDropdown } from "./components/styled/Dropdown.styled";
 function App({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
 
+  const [theme, setTheme] =  useState("light")
+
   function handleClick(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
       setTargetAppearance(true);
@@ -18,16 +20,27 @@ function App({ children }) {
     }
   }
 
+  function changeTheme() {
+    setTheme(prevTheme => {
+      if(prevTheme === "light") {
+        return "dark"
+      }
+      else if(prevTheme === "dark") {
+        return "light"
+      }
+    })
+  }
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Header />
+      <Header changeTheme={changeTheme}/>
       <StyledContent>
-        <Outlet />
+        <Outlet targetAppearance={targetAppearance}/>
       </StyledContent>
       {/* <Game targetAppearance={targetAppearance}/> */}
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 

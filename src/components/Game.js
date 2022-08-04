@@ -238,7 +238,7 @@ export default function Game({ targetAppearance }) {
   }
 
   function handleClick(event) {
-    if (event.target.parentNode.parentNode.nodeName !== "MAIN") {
+    if (event.target.parentNode.nodeName === "MAIN") {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
@@ -355,9 +355,6 @@ export default function Game({ targetAppearance }) {
           <Target coordinates={coordinates}>
             <TargetImage />
             <TargetMenu>
-              <li data-testid="character">
-                {userWins[imageIndex] && "BOB JONES"}
-              </li>
               <li data-testid="character">Odlaw</li>
               <li data-testid="character">Waldo</li>
               <li data-testid="character">Wilma</li>

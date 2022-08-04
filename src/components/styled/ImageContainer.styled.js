@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 export const ImageContainer = styled.div`
   background-image: url(${({image}) => image});
-  overflow-y: auto;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 1.75%/2.3275%;

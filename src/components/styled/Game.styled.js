@@ -4,5 +4,6 @@ position: relative;
   height: calc(100vh - (32px + 120px));
   display: grid;
   place-items: center;
-  background-color: #f5f7f8;
+  background-color: white;
+  transition: 1s;
 `;
