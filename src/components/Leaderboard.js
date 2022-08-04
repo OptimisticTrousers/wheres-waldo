@@ -6,9 +6,11 @@ import hollywood from "../assets/hollywood.jpg";
 import space from "../assets/space.jpg";
 import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ImageContext } from "../context/Store";
 
 export default function Leaderboard() {
+  const { images } = useContext(ImageContext);
   const [userClickedImage, setUserClickedImage] = useState(false);
 
   function handleClick(event) {
@@ -18,35 +20,19 @@ export default function Leaderboard() {
   const style = {
     backgroundColor: userClickedImage && "rgb(254, 226, 226, 1)",
   };
+
+  const renderedImages = images.map(({ image, name }, index) => {
+    return (
+      <div onClick={handleClick}>
+        <img src={image} alt={name} />
+        <p>Level {index + 1}</p>
+      </div>
+    );
+  });
   return (
     <StyledLeaderBoard>
       <div>
-        <LeaderboardImages>
-          <div onClick={handleClick}>
-            <img src={beach} />
-            <p>Level 1</p>
-          </div>
-          <div onClick={handleClick}>
-            <img src={fruitland} />
-            <p>Level 2</p>
-          </div>
-          <div onClick={handleClick}>
-            <img src={hollywood} />
-            <p>Level 3</p>
-          </div>
-          <div onClick={handleClick}>
-            <img src={space} />
-            <p>Level 4</p>
-          </div>
-          <div onClick={handleClick}>
-            <img src={track} />
-            <p>Level 5</p>
-          </div>
-          <div onClick={handleClick}>
-            <img src={winter} />
-            <p>Level 6</p>
-          </div>
-        </LeaderboardImages>
+        <LeaderboardImages>{renderedImages}</LeaderboardImages>
         <table>
           <caption>Leaderboard</caption>
           <thead>
