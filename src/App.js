@@ -7,10 +7,13 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { StyledContent } from "./components/styled/Game.styled";
 import { StyledDropdown } from "./components/styled/Dropdown.styled";
+import { Modal } from "./components/styled/Modal.styled";
 function App({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
 
   const [theme, setTheme] =  useState({mode: "light"})
+
+  const [gameStarted, setGameStarted] = useState(false)
 
   function handleClick(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
@@ -31,14 +34,25 @@ function App({ children }) {
     })
   }
 
+  function hasUserStarted() {
+
+  }
+
   return (
     <ThemeProvider theme={theme}>
+      <Modal>
+        <div>
+          <p>Here is some modal text</p>
+          <p>Here is some modal text</p>
+          <div>
+          </div>
+        </div>
+      </Modal>
       <GlobalStyles />
       <Header changeTheme={changeTheme} theme={theme}/>
       <StyledContent>
         <Outlet targetAppearance={targetAppearance}/>
       </StyledContent>
-      {/* <Game targetAppearance={targetAppearance}/> */}
       <Footer />
     </ThemeProvider>
   );

@@ -10,6 +10,7 @@ export const ImageContainer = styled.div`
   border-radius: 1.75%/2.3275%;
   width: 100%;
   height: 100%;
+  transition: 1s;
 
   div {
     position: relative;
