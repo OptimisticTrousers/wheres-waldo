@@ -1,21 +1,28 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
+  --header-background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "white" : "black"};
+  --header-text-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "black" : "white"};
+    --link-background: ${({theme: {mode}}) => mode === "light" ? "#ebedf0" : "black"}
+    --header-accent: "#ebedf0"
   height: min-content;
-  background-color: #ebfbff;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 3px 7.5px rgb(0 0 0 / 10%);
-  background-color: #fff;
+  background-color: var(--header-background-color);
   width: 100%;
+  transition: 1s;
 
   a {
     all: unset;
+    color: var(--header-text-color);
   }
   a:hover {
-    color: gray;
     cursor: pointer;
+    color: red;
   }
 
   & > div {
@@ -40,7 +47,7 @@ export const StyledHeader = styled.header`
   button {
     width: 36px;
     height: 36px;
-    background-color: inherit;
+    background-color: white;
     border: none;
     box-sizing: border-box;
     display: flex;

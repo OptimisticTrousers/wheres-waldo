@@ -34,7 +34,7 @@ function App({ children }) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Header changeTheme={changeTheme}/>
+      <Header changeTheme={changeTheme} theme={theme}/>
       <StyledContent>
         <Outlet targetAppearance={targetAppearance}/>
       </StyledContent>

@@ -3,7 +3,8 @@ import headerLogo from "../assets/optimistictrousers.jpg";
 import { BsMoon } from "react-icons/bs";
 import { Container } from "./styled/Container.styled";
 import { Link } from "react-router-dom";
-export default function Header({changeTheme}) {
+import { BsSun } from "react-icons/bs";
+export default function Header({changeTheme, theme}) {
   return (
     <StyledHeader>
       <Container>
@@ -13,7 +14,7 @@ export default function Header({changeTheme}) {
         <div>
           <Link to="leaderboard">Leaderboard</Link>
           <button type="button" onClick={changeTheme}>
-            <BsMoon />
+            {theme.mode === "light" ? <BsMoon /> : <BsSun />}
           </button>
         </div>
       </Container>
