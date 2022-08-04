@@ -324,22 +324,22 @@ export default function Game({ targetAppearance }) {
         <div id="box" className={`${isMenuActive && "active"}`}>
           <h2>Pick Your Level!</h2>
           <div id="items">
-            <div class="item" onClick={() => changeImage(0)}>
+            <div className="item" onClick={() => changeImage(0)}>
               <StyledDropdownImage src={images[0].image} />
             </div>
-            <div class="item" onClick={() => changeImage(1)}>
+            <div className="item" onClick={() => changeImage(1)}>
               <StyledDropdownImage src={images[1].image} />
             </div>
-            <div class="item" onClick={() => changeImage(2)}>
+            <div className="item" onClick={() => changeImage(2)}>
               <StyledDropdownImage src={images[2].image} />
             </div>
-            <div class="item" onClick={() => changeImage(3)}>
+            <div className="item" onClick={() => changeImage(3)}>
               <StyledDropdownImage src={images[3].image} />
             </div>
-            <div class="item" onClick={() => changeImage(4)}>
+            <div className="item" onClick={() => changeImage(4)}>
               <StyledDropdownImage src={images[4].image} />
             </div>
-            <div class="item" onClick={() => changeImage(5)}>
+            <div className="item" onClick={() => changeImage(5)}>
               <StyledDropdownImage src={images[5].image} />
             </div>
           </div>

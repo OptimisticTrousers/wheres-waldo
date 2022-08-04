@@ -10,7 +10,7 @@ import { StyledDropdown } from "./components/styled/Dropdown.styled";
 function App({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
 
-  const [theme, setTheme] =  useState("light")
+  const [theme, setTheme] =  useState({mode: "light"})
 
   function handleClick(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
@@ -22,11 +22,11 @@ function App({ children }) {
 
   function changeTheme() {
     setTheme(prevTheme => {
-      if(prevTheme === "light") {
-        return "dark"
+      if(prevTheme.mode === "light") {
+        return {mode: "dark"}
       }
-      else if(prevTheme === "dark") {
-        return "light"
+      else if(prevTheme.mode === "dark") {
+        return {mode: "light"}
       }
     })
   }
