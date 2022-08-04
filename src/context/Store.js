@@ -45,6 +45,7 @@ import {
 } from "firebase/storage";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
+import Chance from "chance";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -187,6 +188,12 @@ const images = [
     ],
   },
 ];
+
+const chance = new Chance()
+
+const DEFAULT_OBJECT = {
+  time: Math.floor(Math.random() * 1000) + 100,
+};
 export function ImageProvider({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
@@ -201,27 +208,22 @@ export function ImageProvider({ children }) {
     async function getLeaderboardData(index) {
       const data = collection(db, "leaderboards");
 
-      const array = await getDocs(data)
+      const array = await getDocs(data);
 
-      return array
-
+      return array;
     }
 
+    async function addStuff() {
+      await setDoc(doc(db, "leaderboards", "space"), {
+        leaderboard: Array.from(new Array(7), user => ({name: chance.name(), time: Math.floor(Math.random() * 1000) + 100})),
+      });
+    }
+
+    // addStuff();
+
     getLeaderboardData().then((data) => {
-      setDbLeaderboard(data.docChanges()[0].doc.data().levels)
-    })
-
-
-    // setDbLeaderboard(() => {
-    //   let leaderboard;
-    //   // for (let i = 0; i < imageIndex; i++) {
-    //   getLeaderboardData().then((data) => {
-    //     leaderboard.push(getLeaderboardData());
-    //   });
-    //   // }
-
-    //   return leaderboard;
-    // });
+      setDbLeaderboard(data.docChanges()[0].doc.data().levels);
+    });
   }, []);
 
   const [userWon, setUserWon] = useState(false);

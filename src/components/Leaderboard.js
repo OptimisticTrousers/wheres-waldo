@@ -44,7 +44,7 @@ export default function Leaderboard() {
           <tbody>
             {dbLeaderboard.map((data, index) => (
 
-            <tr>
+            <tr key={uniqid()}>
               <td>#{index + 1}</td>
               <td>{data.name}</td>
               <td>{data.time}</td>
