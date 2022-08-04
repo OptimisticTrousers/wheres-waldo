@@ -46,7 +46,7 @@ import {
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
 
-  // Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const db = getFirestore(app);
@@ -195,14 +195,27 @@ export function ImageProvider({ children }) {
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
 
+  const [dbLeaderboard, setDbLeaderboard] = useState([]);
+
   useEffect(() => {
-    async function getLeaderboardData() {
-      const data = collection(db, images[imageIndex].name, "leaderboard")
-      console.log(data)
+    async function getLeaderboardData(index) {
+      const data = collection(db, images[index].name, "leaderboard");
+
+      const leaderboard = await getDocs(data);
+
+      return leaderboard;
     }
 
-    getLeaderboardData();
-  }, [])
+    setDbLeaderboard(() => {
+      let leaderboard;
+      for (let i = 0; i < imageIndex; i++) {
+        leaderboard.push(getLeaderboardData(i));
+      }
+
+      return leaderboard;
+    });
+
+  }, []);
 
   const [userWon, setUserWon] = useState(false);
 
