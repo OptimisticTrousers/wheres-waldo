@@ -109,7 +109,7 @@ const images = [
   },
 ];
 
-export default function Game({ targetAppearance }) {
+export default function Game({ targetAppearance}) {
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
     verticalOffset: "0%",
@@ -127,10 +127,6 @@ export default function Game({ targetAppearance }) {
     false,
     false,
   ]);
-
-  const [userProgress, setUserProgress] = useState(
-    new Array(images.length).fill({ ...levelProgress })
-  );
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -188,8 +184,6 @@ export default function Game({ targetAppearance }) {
     }
   }, [coordinates, didUserFindCharacter, dbCoordinates, images]);
 
-  const gameContainer = useRef();
-
   function didUserFindCharacter(
     horizontalCoordinates,
     verticalCoordinates,
@@ -245,54 +239,6 @@ export default function Game({ targetAppearance }) {
     }
   }
 
-  function toggleFullScreen() {
-    const game = gameContainer.current;
-    if (!game.fullscreenElement) {
-      game.requestFullscreen();
-    } else if (game.exitFullscreen) {
-      game.exitFullscreen();
-    }
-  }
-
-  function previousImageClick() {
-    if (imageIndex !== 0) {
-      setImageIndex((prevIndex) => prevIndex - 1);
-    }
-  }
-
-  function nextImageClick() {
-    if (imageIndex !== 5) {
-      setImageIndex((prevIndex) => prevIndex + 1);
-    }
-  }
-
-  const sidebarBtn = useRef(null);
-  const sidebarBox = useRef(null);
-
-  function handleSidebarClick(event) {
-    sidebarBtn.classList.toggle("active");
-    sidebarBox.classList.toggle("active");
-  }
-
-  function wrapperClick(event) {
-    if (sidebarBox.classList.contains("active")) {
-      sidebarBtn.classList.remove("active");
-      sidebarBox.classList.remove("active");
-    }
-  }
-
-  useEffect(() => {
-    const windowCallback = (event) => {
-      if (sidebarBox.classList.contains("active") && event.keyCode === 27) {
-        sidebarBtn.classList.remove("active");
-        sidebarBox.classList.remove("active");
-      }
-    };
-    window.addEventListener("keydown", windowCallback);
-
-    return () => window.removeEventListener("keydown", windowCallback);
-  });
-
   const [isMenuActive, setIsMenuActive] = useState();
 
   function handleMenuClick() {
@@ -341,7 +287,6 @@ export default function Game({ targetAppearance }) {
       </StyledDropdown>
       <ImageContainer
         data-testid="image-level"
-        ref={gameContainer}
         onClick={handleClick}
         image={images[imageIndex].image}
       >
