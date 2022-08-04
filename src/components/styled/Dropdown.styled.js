@@ -187,4 +187,9 @@ export const StyledDropdown = styled.div`
   #box {
     will-change: transform, opacity;
   }
+   @media(max-width: 560px) { 
+    #btn {
+      top: 3.5%;
+    }
+  }
 `;

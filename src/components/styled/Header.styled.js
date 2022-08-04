@@ -65,7 +65,7 @@ export const StyledHeader = styled.header`
   }
   p {
     text-align: center;
-    font-size: 0.5rem;
+    font-size: 1.25rem;
     color: var(--header-text-color);
   }
 
@@ -94,29 +94,18 @@ export const StyledHeader = styled.header`
       display: none;
     }
   }
-  @media(max-width: 620px) { 
+  @media(max-width: 640px) { 
     img {
       width: 50px;
       height: 50px;
     }
   }
-  @media(max-width: 511px) { 
-    & {
-      gap: 0;
-    }
-    div:nth-child(2) {
-      margin: 4px 8px;
-    }
-    a {
-      margin-left: 4px;
-    }
+  @media(max-width: 560px) { 
     img {
-      width: 25px;
-      height: 25px;
+      display: none;
     }
-    svg {
-      width: 50%;
-      height: 50%;
+    p {
+      display: none;
     }
   }
 `;
