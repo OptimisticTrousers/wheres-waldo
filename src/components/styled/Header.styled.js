@@ -57,6 +57,7 @@ export const StyledHeader = styled.header`
   img {
     height: 75px;
     width: 75px;
+    margin-left: 1rem;
     border-radius: 100px;
   }
 

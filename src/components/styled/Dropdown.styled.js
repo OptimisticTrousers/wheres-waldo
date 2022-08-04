@@ -88,6 +88,7 @@ import styled from "styled-components";
 
 export const StyledDropdown = styled.div`
   position: absolute;
+  top: 5%;
   left: 0;
   --black-color: black;
   --blue-color: #00dffc;
@@ -99,7 +100,7 @@ export const StyledDropdown = styled.div`
   #btn {
 	position: fixed;
 	z-index: 5;
-	top: 120px;
+	top: 5%;
 	left: 15px;
 	cursor: pointer;
 	transition: left 500ms var(--easing);
@@ -114,7 +115,7 @@ export const StyledDropdown = styled.div`
 
 #btn.active {
 	left: 230px;
-  top: 1%;
+  top: 2%;
 	& > div {
 		background-color: var(--black-color);
 	}
