@@ -8,7 +8,7 @@ import odlaw from "../assets/odlaw.jpg";
 import waldo from "../assets/waldo.jpg";
 import wenda from "../assets/wenda.jpg";
 import wizard from "../assets/wizard.jpg";
-export default function Header({ changeTheme, theme }) {
+export default function Header({ changeTheme, theme, changeGameState}) {
   return (
     <StyledHeader>
       <Container>
@@ -38,7 +38,7 @@ export default function Header({ changeTheme, theme }) {
         </div>
         <div>
           <Link to="leaderboard">Leaderboard</Link>
-          <button type="button" className="instructions">Instructions</button>
+          <button type="button" className="instructions" onClick={changeGameState}>Instructions</button>
           <button type="button" onClick={changeTheme} className="theme-button">
             {theme.mode === "light" ? <BsMoon /> : <BsSun />}
           </button>

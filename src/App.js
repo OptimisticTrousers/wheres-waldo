@@ -41,7 +41,6 @@ function App({ children }) {
     });
   }
 
-  function hasUserStarted() {}
 
   return (
     <ThemeProvider theme={theme}>
@@ -75,7 +74,7 @@ function App({ children }) {
         </Modal>
       )}
       <GlobalStyles />
-      <Header changeTheme={changeTheme} theme={theme} />
+      <Header changeTheme={changeTheme} theme={theme} changeGameState={changeGameState}/>
       <StyledContent>
         <Outlet targetAppearance={targetAppearance} />
       </StyledContent>
