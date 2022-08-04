@@ -11,7 +11,6 @@ export const ImageContainer = styled.div`
   width: 100vw;
   height:100vh;
   overflow: auto;
-  transition: 0.2s;
 
   div {
     position: relative;

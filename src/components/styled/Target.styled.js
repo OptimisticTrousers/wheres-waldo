@@ -20,7 +20,7 @@ position: relative;
   border-radius: 10px;
   box-shadow: rgb(51, 51, 51) 0px 0px 5px 2px, rgb(51, 51, 51) 0px 0px 5px 1px inset;
   background: none !important;
-  transition: 0.2s;
+  transition: 0.1s;
 `;
 
 Target.propTypes = {

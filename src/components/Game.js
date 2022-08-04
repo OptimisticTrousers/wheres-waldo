@@ -225,7 +225,7 @@ export default function Game() {
       </StyledDropdown>
       <ImageContainer
         data-testid="image-level"
-        onClick={changeCoordinates}
+        onMouseMove={changeCoordinates}
         image={images[imageIndex].image}
       >
           <Target coordinates={coordinates} >
