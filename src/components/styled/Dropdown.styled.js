@@ -98,6 +98,15 @@ export const StyledDropdown = styled.div`
     mode === "light" ? "white" : "rgb(56, 56, 56)"};
   --menu-text: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(56, 56, 56)" : "white"};
+    animation: fadeIn ease 1s;
+  @keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1
+  }
+}
   h2 {
     color: var(--menu-text);
     padding-left: 2rem;
