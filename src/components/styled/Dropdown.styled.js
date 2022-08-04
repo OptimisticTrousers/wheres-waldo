@@ -88,8 +88,8 @@ import styled from "styled-components";
 
 export const StyledDropdown = styled.div`
   position: absolute;
-  top: 5%;
-  left: 0;
+  top: 5.10%;
+  left: 2%;
   --black-color: black;
   --blue-color: #00dffc;
   --dull-white-color: #f6f6f6;
@@ -98,78 +98,79 @@ export const StyledDropdown = styled.div`
     padding-left: 2rem;
   }
   #btn {
-	position: fixed;
-	z-index: 5;
-	top: 5%;
-	left: 15px;
-	cursor: pointer;
-	transition: left 500ms var(--easing);
-	& > div {
-		width: 35px;
-		height: 2px;
-		margin-bottom: 8px;
-		background-color: var(--blue-color);
-		transition: transform 500ms var(--easing), opacity 500ms, background-color 250ms;
-	}
-}
+    position: fixed;
+    z-index: 5;
+    top: 5.10%;
+    left: 2%;
+    cursor: pointer;
+    transition: left 500ms var(--easing);
+    & > div {
+      width: 35px;
+      height: 2px;
+      margin-bottom: 8px;
+      background-color: var(--blue-color);
+      transition: transform 500ms var(--easing), opacity 500ms,
+        background-color 250ms;
+    }
+  }
 
-#btn.active {
-	left: 230px;
-  top: 2%;
-	& > div {
-		background-color: var(--black-color);
-	}
-	& > #top {
-		transform: translateY(10px) rotate(-135deg);
-	}
-	& > #middle {
-		opacity: 0;
-		transform: rotate(135deg);
-	}
-	& > #bottom {
-		transform: translateY(-10px) rotate(-45deg);
-	}
-}
+  #btn.active {
+    left: 230px;
+    top: 2%;
+    & > div {
+      background-color: var(--black-color);
+    }
+    & > #top {
+      transform: translateY(10px) rotate(-135deg);
+    }
+    & > #middle {
+      opacity: 0;
+      transform: rotate(135deg);
+    }
+    & > #bottom {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+  }
 
-#box {
-	position: fixed;
-	z-index: 4;
-	overflow: auto;
-	top: 0px;
-	left: -275px;
-	width: 275px;
-	opacity: 0;
-	padding: 20px 0px;
-	height: 100%;
-	background-color: var(--dull-white-color);
-	color: var(--black-color);
-	transition: all 350ms var(--easing);
-}
+  #box {
+    position: fixed;
+    z-index: 4;
+    overflow: auto;
+    top: 0px;
+    left: -275px;
+    width: 275px;
+    opacity: 0;
+    padding: 20px 0px;
+    height: 100%;
+    background-color: var(--dull-white-color);
+    color: var(--black-color);
+    transition: all 350ms var(--easing);
+  }
 
-#box.active {
-	left: 0px;
-	opacity: 1;
-}
+  #box.active {
+    left: 0px;
+    opacity: 1;
+  }
 
-#items {
-	& > .item {
-		cursor: pointer;
-		font-size: 2em;
-		padding: 15px 30px;
-		transition: all 250ms;
-		&:hover {
-			padding: 15px 45px;
-			background-color: white;
-		}
-	}
-}
+  #items {
+    & > .item {
+      cursor: pointer;
+      font-size: 2em;
+      padding: 15px 30px;
+      transition: all 250ms;
+      &:hover {
+        padding: 15px 45px;
+        background-color: white;
+      }
+    }
+  }
 
-#btn, #btn * {
-	will-change: transform;
-}
+  #btn,
+  #btn * {
+    will-change: transform;
+  }
 
-#box {
-	will-change: transform, opacity;
-}
-
+  #box {
+    will-change: transform, opacity;
+  }
 `;
