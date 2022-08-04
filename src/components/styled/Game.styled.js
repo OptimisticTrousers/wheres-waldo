@@ -1,7 +1,8 @@
 import styled from "styled-components";
 export const StyledContent = styled.main`
   position: relative;
-  height: calc(100vh - (32px + 144px));
+  height: 100%;
+  padding-bottom: 2rem;
   display: grid;
   place-items: center;
   background-color: ${({ theme: { mode } }) =>

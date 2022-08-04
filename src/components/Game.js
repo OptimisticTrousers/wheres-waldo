@@ -67,6 +67,7 @@ export default function Game() {
     targetAppearance,
     charactersFound,
     setCharactersFound,
+    changeTargetApperance
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
@@ -220,10 +221,10 @@ export default function Game() {
       </StyledDropdown>
       <ImageContainer
         data-testid="image-level"
-        onClick={changeCoordinates}
+        onClick={changeTargetApperance}
         image={images[imageIndex].image}
       >
-        {targetAppearance && (
+        {(
           <Target coordinates={coordinates}>
             <TargetImage />
             <TargetMenu>
