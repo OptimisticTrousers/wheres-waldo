@@ -56,6 +56,13 @@ export const StyledHeader = styled.header`
     align-items: center;
     border-radius: 50%;
   }
+  h1 {
+    color: var(--header-text-color);
+  }
+  p {
+    text-align: center;
+    color: var(--header-text-color);
+  }
 
   button:hover {
     background-color: #ebedf0;
@@ -67,6 +74,7 @@ export const StyledHeader = styled.header`
     width: 75px;
     margin-left: 1rem;
     border-radius: 100px;
+    margin: 0 auto;
   }
 
   img:hover {

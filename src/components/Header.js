@@ -4,6 +4,10 @@ import { BsMoon } from "react-icons/bs";
 import { Container } from "./styled/Container.styled";
 import { Link } from "react-router-dom";
 import { BsSun } from "react-icons/bs";
+import odlaw from "../assets/odlaw.jpg";
+import waldo from "../assets/waldo.jpg";
+import wenda from "../assets/wenda.jpg";
+import wizard from "../assets/wizard.jpg";
 export default function Header({ changeTheme, theme }) {
   return (
     <StyledHeader>
@@ -12,9 +16,24 @@ export default function Header({ changeTheme, theme }) {
           <Link to="/">
             <img src={headerLogo} alt="a smiling pair of pants" />
           </Link>
+          <h1>Optimistic Games</h1>
+        </div>
+        <div>
           <div>
-            <p>jones</p>
-            <p>Bob</p>
+            <img src={odlaw} alt="odlaw" />
+            <p>Odlaw</p>
+          </div>
+          <div>
+            <img src={waldo} alt="waldo" />
+            <p>Waldo</p>
+          </div>
+          <div>
+            <img src={wenda} alt="wenda" />
+            <p>Wenda</p>
+          </div>
+          <div>
+            <img src={wizard} alt="wizard" />
+            <p>Wizard</p>
           </div>
         </div>
         <div>
