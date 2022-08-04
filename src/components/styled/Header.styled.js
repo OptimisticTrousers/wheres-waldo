@@ -101,12 +101,13 @@ export const StyledHeader = styled.header`
   }
 
   @media (max-width: 1030px) {
-    .logo {
+    img:not(.logo ){
       display: none;
     }
-    h1 {
-      display: none;
+    p{
+      display: none;  
     }
+    
   }
   @media (max-width: 750px) {
     img {
@@ -121,20 +122,17 @@ export const StyledHeader = styled.header`
     p {
       display: none;
     }
-  }
-  @media(max-width: 470px) {
-    & {
-      flex-direction: row-reverse;
-      padding: 0.25rem;
+    .content{
+      justify-content: start;
     }
     .logo {
-      display: block;
-    }
-    & {
-      justify-content: flex-start;
+      display: none;
     }
     .theme-button{
       display: none;
+    }
+    h2 {
+      font-size: 1.25rem;
     }
     & > div > div {
       gap: 0.2rem;
@@ -143,9 +141,12 @@ export const StyledHeader = styled.header`
       margin: 0 9px;
     }
   }
-  @media(max-width: 380px) {
-    .logo {
-      display: none;
+  @media(max-width: 470px) {
+    & {
+      justify-content: end;
+    }
+    .content {
+      display: block;
     }
   }
 `;

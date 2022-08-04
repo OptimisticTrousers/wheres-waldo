@@ -29,7 +29,7 @@ export default function Header({ changeTheme, theme, changeGameState }) {
   });
   return (
     <StyledHeader>
-      <Container>
+      <Container className="content">
         <div>
           <Link to="/">
             <img
@@ -38,7 +38,7 @@ export default function Header({ changeTheme, theme, changeGameState }) {
               alt="a smiling pair of pants"
             />
           </Link>
-          <h1>Optimistic Games</h1>
+          <h2>Optimistic Games</h2>
         </div>
         <div>{renderedImages}</div>
         <div>
