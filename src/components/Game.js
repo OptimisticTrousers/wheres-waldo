@@ -1,5 +1,5 @@
 import { Target } from "./styled/Target.styled";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { TargetMenu } from "./styled/TargetMenu.styled";
 import { firebaseConfig } from "../firebase-config";
 import { initializeApp } from "firebase/app";
@@ -34,6 +34,8 @@ export default function Game() {
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
+  const targetContainer = useRef(null);
+
   useEffect(() => {
     async function queryCoordinates() {
       const photoCollection = collection(db, images[imageIndex].name);
@@ -45,7 +47,7 @@ export default function Game() {
     queryCoordinates().then((databasePhotoData) => {
       setDbCoordinates(databasePhotoData.docChanges());
     });
-  }, [imageIndex]);
+  }, [imageIndex, images]);
 
   function handleTargetClick(name) {
     const character = dbCoordinates.find(({ doc }) => doc.id === name);
@@ -110,11 +112,21 @@ export default function Game() {
   const [showTargetMenu, setShowTargetMenu] = useState(false);
 
   function changeCoordinates(event) {
-    const verticalOffset = event.pageX;
-    const horizontalOffset =
-      event.pageY -
-      (charactersFound.every((element) => element.found === false) ? 160 : 0);
-    setCoordinates({ verticalOffset, horizontalOffset });
+
+    const {x, y, top, left, bottom, right}= targetContainer.current.getClientRects();
+    console.log(targetContainer.current.getClientRects());
+    
+     if (event.target.parentNode.nodeName === "SECTION") {
+      const verticalOffset = event.nativeEvent.offsetX;
+      const horizontalOffset = event.nativeEvent.offsetY;
+      setCoordinates({ verticalOffset, horizontalOffset });
+    }
+    // else {
+
+    //   const verticalOffset = event.target.parentNode.offsetX;
+    //   const horizontalOffset = event.target.parentNode.offsetY;
+    //   setCoordinates({ verticalOffset, horizontalOffset});
+    // }
   }
 
   function handleTargetMenu() {
@@ -174,17 +186,17 @@ export default function Game() {
         <ImageContainer
           onClickCapture={resetTarget}
           data-testid="image-level"
-          onMouseMove={showTargetMenu === false && changeCoordinates}
+          onMouseMoveCapture={showTargetMenu === false ? changeCoordinates: undefined}
           image={images[imageIndex].image}
         >
-          <Target coordinates={coordinates} onClick={handleTargetMenu}>
+          <Target coordinates={coordinates} onClickCapture={handleTargetMenu}ref={targetContainer} >
             {showTargetMenu && (
               <TargetMenu>
                 {images[imageIndex].characters.map(({ character, name }) => {
                   return (
                     <li
                       key={uniqid()}
-                      onClickCapture={() => handleTargetClick(name)}
+                      onClick={() => handleTargetClick(name)}
                     >
                       <img src={character} alt={name} />
                       <p>{name}</p>
