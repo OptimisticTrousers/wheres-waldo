@@ -5,20 +5,19 @@ import { Container } from "./styled/Container.styled";
 import { Link } from "react-router-dom";
 import { BsSun } from "react-icons/bs";
 import { ImageContext } from "../context/Store";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import uniqid from "uniqid";
-import { Modal } from "./styled/Modal.styled";
 import { Timer } from "./Timer";
 
 export default function Header({ changeTheme, theme, changeGameState }) {
-  const { images, imageIndex, charactersFound, stoppedTimer, resetTimer, setTimer, setStoppedTimer, userWon, storedTime} = useContext(ImageContext);
+  const { images, imageIndex, charactersFound, setStoppedTimer, userWon } =
+    useContext(ImageContext);
 
-  const timerComponent = useRef(null)
+  const timerComponent = useRef(null);
 
   useEffect(() => {
-
-    setStoppedTimer(timerComponent)
-  }, [userWon])
+    setStoppedTimer(timerComponent);
+  }, [userWon, setStoppedTimer]);
 
   const renderedImages = images[imageIndex].characters.map(
     (character, index) => {
@@ -49,9 +48,7 @@ export default function Header({ changeTheme, theme, changeGameState }) {
               alt="a smiling pair of pants"
             />
           </Link>
-          <h2 ref={timerComponent}>
-            {<Timer />}
-          </h2>
+          <h2 ref={timerComponent}>{<Timer />}</h2>
         </div>
         <div>{renderedImages}</div>
         <div>
