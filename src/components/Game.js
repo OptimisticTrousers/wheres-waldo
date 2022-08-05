@@ -154,17 +154,24 @@ export default function Game() {
   ) {
     const { horizontalOffset, verticalOffset } = coordinates;
 
-    console.log(horizontalCoordinates, verticalCoordinates, horizontalRange, verticalRange, name)
+    console.log(
+      horizontalCoordinates,
+      verticalCoordinates,
+      horizontalRange,
+      verticalRange,
+      name
+    );
 
     // console.log("Database Horizontal: ", horizontalCoordinates);
     // console.log("Database Vertical: ", verticalCoordinates);
     console.log("User: ", coordinates);
-        console.log("bob")
-        console.log(charactersFound)
+    console.log("bob");
+    console.log(charactersFound);
     // console.log("Characters Found:", numberOfCharactersFound);
     if (numberOfCharactersFound === 3) {
       setUserWon(true);
-    } if (
+    }
+    if (
       verticalCoordinates - verticalRange <= verticalOffset &&
       verticalCoordinates + verticalRange >= verticalOffset &&
       horizontalCoordinates - horizontalRange <= horizontalOffset &&
@@ -194,11 +201,16 @@ export default function Game() {
   const [showTargetMenu, setShowTargetMenu] = useState(false);
 
   function changeCoordinates(event) {
-    if (event.target.parentNode.nodeName === "SECTION") {
-      const verticalOffset = event.nativeEvent.offsetX;
-      const horizontalOffset = event.nativeEvent.offsetY;
-      setCoordinates({ verticalOffset, horizontalOffset });
-    }
+    // if (event.target.parentNode.nodeName === "SECTION") {
+    const verticalOffset = event.pageX;
+    const horizontalOffset = event.pageY - (charactersFound.every(element => element.found === false) ? 160 : 0);
+    setCoordinates({ verticalOffset, horizontalOffset });
+    // }
+    // else {
+    //   const verticalOffset = event.target.pageY;
+    //   const horizontalOffset = event.target.pageX;
+    //   setCoordinates({ verticalOffset, horizontalOffset });
+    // }
   }
 
   function handleTargetMenu() {
@@ -211,6 +223,11 @@ export default function Game() {
 
   function changeImage(index) {
     setImageIndex(index);
+  }
+
+  function resetTarget(event) {
+    changeCoordinates(event);
+    setShowTargetMenu(false);
   }
 
   return (
@@ -251,8 +268,9 @@ export default function Game() {
       </StyledDropdown>
       <GameContainer>
         <ImageContainer
+          onClickCapture={resetTarget}
           data-testid="image-level"
-          onMouseMove={changeCoordinates}
+          onMouseMove={showTargetMenu === false && changeCoordinates}
           image={images[imageIndex].image}
         >
           <Target coordinates={coordinates} onClick={handleTargetMenu}>
@@ -260,7 +278,10 @@ export default function Game() {
               <TargetMenu>
                 {images[imageIndex].characters.map(({ character, name }) => {
                   return (
-                    <li key={uniqid()} onClickCapture={() => handleTargetClick(name)}>
+                    <li
+                      key={uniqid()}
+                      onClickCapture={() => handleTargetClick(name)}
+                    >
                       <img src={character} alt={name} />
                       <p>{name}</p>
                     </li>
