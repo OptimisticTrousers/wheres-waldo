@@ -78,7 +78,6 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {console.log(userWon)}
       {userWon && (
         <Modal userWon>
           <div>
