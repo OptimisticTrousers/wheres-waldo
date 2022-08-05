@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import beach from "../assets/beach.jpg";
 import fruitland from "../assets/fruitland.jpg";
 import hollywood from "../assets/hollywood.jpg";
@@ -201,7 +201,6 @@ export function ImageProvider({ children }) {
 
   const [dbLeaderboard, setDbLeaderboard] = useState([]);
 
-  const [resetTimer, setResetTimer] = useState(false);
   const [timer, setTimer] = useState("");
   const [userWon, setUserWon] = useState(false);
   const [charactersFound, setCharactersFound] = useState([
@@ -226,7 +225,6 @@ export function ImageProvider({ children }) {
       found: false,
     },
   ]);
-
 
   useEffect(() => {
     async function getLeaderboardData(index) {
@@ -267,7 +265,7 @@ export function ImageProvider({ children }) {
         // setDbLeaderboard(data.docChanges()[0].doc.data().levels);
       })
       .catch((err) => alert("ERROR: ", err));
-  }, [charactersFound]);
+  }, []);
 
   useEffect(() => {
     console.log(charactersFound);
@@ -293,9 +291,13 @@ export function ImageProvider({ children }) {
       seconds={0}
       minutes={0}
       hours={0}
-      limit="00:00:10"
-      autoStart={resetTimer === false && userWon === false}
-      onChange={({ hours, minutes, seconds }) => {}}
+      limit="01:00:00"
+      autoStart={userWon === false}
+      onChange={({ hours, minutes, seconds }) => {
+        if (userWon) {
+          storedTime.current = timerComponent;
+        }
+      }}
       onCallback={() => {}}
       render={({ formatted, hours, minutes, seconds }) => {
         return (
@@ -320,11 +322,8 @@ export function ImageProvider({ children }) {
         setUserWon,
         userWon,
         dbLeaderboard,
-        resetTimer,
         setTimer,
         timer,
-        setResetTimer,
-        timerComponent,
       }}
     >
       {children}

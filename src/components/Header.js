@@ -5,13 +5,12 @@ import { Container } from "./styled/Container.styled";
 import { Link } from "react-router-dom";
 import { BsSun } from "react-icons/bs";
 import { ImageContext } from "../context/Store";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import uniqid from "uniqid";
 import { Modal } from "./styled/Modal.styled";
 
 export default function Header({ changeTheme, theme, changeGameState }) {
-  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon, formattedTime, timerComponent} = useContext(ImageContext);
-
+  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon, timerComponent, storedTime} = useContext(ImageContext);
 
 
   const renderedImages = images[imageIndex].characters.map(
@@ -44,7 +43,7 @@ export default function Header({ changeTheme, theme, changeGameState }) {
             />
           </Link>
           <h2>
-            {timerComponent}
+            {storedTime.current}
           </h2>
         </div>
         <div>{renderedImages}</div>

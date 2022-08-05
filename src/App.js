@@ -66,12 +66,17 @@ function App() {
 
   const [userInput, setUserInput] = useState("");
 
-  const { images, imageIndex, userWon, timer, timerComponent, setUserWon, setResetTimer } =
-    useContext(ImageContext);
+  const {
+    images,
+    imageIndex,
+    userWon,
+    timer,
+    storedTime,
+    setUserWon,
+    setResetTimer,
+  } = useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
-
-  const formattedTime = useRef(null);
 
   function changeGameState() {
     setGameStarted((prevValue) => !prevValue);
@@ -88,10 +93,10 @@ function App() {
   }
 
   function timeToSeconds() {
-    if (formattedTime.current === null) return;
+    if (storedTime.current=== null) return;
 
     const [hours, minutes, seconds] =
-      formattedTime.current.textContent.split(":");
+      storedTime.current.textContent.split(":");
 
     console.log(hours, minutes, seconds);
 
@@ -121,7 +126,6 @@ function App() {
   }
 
   function resetGame() {
-
     location.reload();
   }
 
@@ -132,14 +136,16 @@ function App() {
         <Modal userWon>
           <div>
             <h2>
-              You finished in <span ref={formattedTime}>{timerComponent}</span>
+              You finished in <span>{storedTime.current}</span>
             </h2>
             <p>Enter your name to save your score on the leaderboard!</p>
             <form onSubmit={formSubmit}>
               <label>Username</label>
               <input value={userInput} onChange={handleInputChange} />
               <div className="buttons">
-                <button type="button" onClick={resetGame}>Cancel</button>
+                <button type="button" onClick={resetGame}>
+                  Cancel
+                </button>
                 <button type="submit">Submit Score</button>
               </div>
             </form>
