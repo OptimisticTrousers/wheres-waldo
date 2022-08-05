@@ -120,6 +120,7 @@ function App() {
 
   async function formSubmit(event) {
 
+    event.preventDefault();
     console.log(imageIndex)
     const leaderboardRef = doc(db, "leaderboards", images[imageIndex].name);
 
