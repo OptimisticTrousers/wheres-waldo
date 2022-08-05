@@ -124,7 +124,7 @@ export const StyledHeader = styled.header`
       display: inline-block;
     }
     .content > * {
-      padding: 0.25rem 0rem;
+      gap: 8px;
     }
   }
 `;
