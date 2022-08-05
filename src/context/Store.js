@@ -217,7 +217,6 @@ export function ImageProvider({ children }) {
 
       const leaderboardData = await getDocs(leaderboardsRef);
 
-      console.log(leaderboardData.docs);
       return leaderboardData;
       // const data = await getDocs(collection(db, "leaderboards"), orderBy("time", "desc"), limit(7));
 

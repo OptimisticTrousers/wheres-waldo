@@ -122,7 +122,8 @@ export default function Game() {
       });
     }
   }, [
-    imageIndex
+    imageIndex,
+    coordinates, didUserFindCharacter, dbCoordinates, images
   ]);
 
   function didUserFindCharacter(
