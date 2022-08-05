@@ -29,6 +29,9 @@ export const StyledDropdown = styled.div`
     position: fixed;
     z-index: 5;
     top: 5.1%;
+    background-color: black;
+    border-radius: 10px;
+    padding: 0.4rem;
     left: 2%;
     cursor: pointer;
     transition: left 500ms var(--easing);
