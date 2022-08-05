@@ -109,13 +109,13 @@ export const StyledHeader = styled.header`
       display: none;
     }
   }
-  @media (max-width: 870px) {
+  @media (max-width: 895px) {
     img {
       width: 50px;
       height: 50px;
     }
   }
-  @media (max-width: 790px) {
+  @media (max-width: 800px) {
     img {
       width: 25px;
       height: 25px;
