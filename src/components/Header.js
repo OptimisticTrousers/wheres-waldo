@@ -8,10 +8,18 @@ import { ImageContext } from "../context/Store";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import uniqid from "uniqid";
 import { Modal } from "./styled/Modal.styled";
+import { Timer } from "./Timer";
 
 export default function Header({ changeTheme, theme, changeGameState }) {
-  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon, timerComponent, storedTime} = useContext(ImageContext);
+  const { images, imageIndex, charactersFound, stoppedTimer, resetTimer, setTimer, setStoppedTimer, userWon, storedTime} = useContext(ImageContext);
 
+  const timerComponent = useRef(null)
+
+  useEffect(() => {
+    console.log("bob")
+
+    setStoppedTimer(timerComponent)
+  }, [userWon])
 
   const renderedImages = images[imageIndex].characters.map(
     (character, index) => {
@@ -42,8 +50,8 @@ export default function Header({ changeTheme, theme, changeGameState }) {
               alt="a smiling pair of pants"
             />
           </Link>
-          <h2>
-            {storedTime.current}
+          <h2 ref={timerComponent}>
+            {<Timer />}
           </h2>
         </div>
         <div>{renderedImages}</div>

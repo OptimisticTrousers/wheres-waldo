@@ -48,6 +48,7 @@ import { getPerformance } from "firebase/performance";
 import Chance from "chance";
 
 import ReactStopwatch from "react-stopwatch";
+import { Timer } from "../components/Timer";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -201,6 +202,8 @@ export function ImageProvider({ children }) {
 
   const [dbLeaderboard, setDbLeaderboard] = useState([]);
 
+  const [stoppedTimer, setStoppedTimer] = useState()
+
   const [timer, setTimer] = useState("");
   const [userWon, setUserWon] = useState(false);
   const [charactersFound, setCharactersFound] = useState([
@@ -286,29 +289,6 @@ export function ImageProvider({ children }) {
     }
   }
 
-  const timerComponent = (
-    <ReactStopwatch
-      seconds={0}
-      minutes={0}
-      hours={0}
-      limit="01:00:00"
-      autoStart={userWon === false}
-      onChange={({ hours, minutes, seconds }) => {
-        if (userWon) {
-          storedTime.current = timerComponent;
-        }
-      }}
-      onCallback={() => {}}
-      render={({ formatted, hours, minutes, seconds }) => {
-        return (
-          <div>
-            <p>{formatted}</p>
-          </div>
-        );
-      }}
-    />
-  );
-
   return (
     <ImageContext.Provider
       value={{
@@ -324,6 +304,8 @@ export function ImageProvider({ children }) {
         dbLeaderboard,
         setTimer,
         timer,
+        stoppedTimer,
+        setStoppedTimer
       }}
     >
       {children}

@@ -57,6 +57,7 @@ import { getPerformance } from "firebase/performance";
 import Chance from "chance";
 
 import ReactStopwatch from "react-stopwatch";
+import { Timer } from "./components/Timer";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -74,6 +75,8 @@ function App() {
     storedTime,
     setUserWon,
     setResetTimer,
+    timerComponent,
+    stoppedTimer
   } = useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
@@ -136,7 +139,7 @@ function App() {
         <Modal userWon>
           <div>
             <h2>
-              You finished in <span>{storedTime.current}</span>
+              You finished in <span>{stoppedTimer?.current?.textContent}</span>
             </h2>
             <p>Enter your name to save your score on the leaderboard!</p>
             <form onSubmit={formSubmit}>

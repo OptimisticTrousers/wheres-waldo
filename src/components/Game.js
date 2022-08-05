@@ -70,6 +70,8 @@ export default function Game() {
     charactersFound,
     setCharactersFound,
     changeTargetApperance,
+    timerComponent,
+    setStoppedTimer,
     userWon,
     setUserWon,
   } = useContext(ImageContext);
