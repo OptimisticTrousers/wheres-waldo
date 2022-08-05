@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import Game from "./components/Game";
 import GlobalStyles from "./components/styled/Global.styled";
 import { ThemeProvider } from "styled-components";
@@ -126,7 +127,7 @@ function App() {
 
   function resetGame() {
 
-    setUserWon(false)
+    location.reload();
   }
 
   return (
