@@ -1,63 +1,20 @@
 /* eslint-disable no-restricted-globals */
-import Game from "./components/Game";
 import GlobalStyles from "./components/styled/Global.styled";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { StyledContent } from "./components/styled/Game.styled";
-import { StyledDropdown } from "./components/styled/Dropdown.styled";
 import { Modal } from "./components/styled/Modal.styled";
-import fruitland from "./assets/fruitland.jpg";
-import hollywood from "./assets/hollywood.jpg";
-import space from "./assets/space.jpg";
-import track from "./assets/track.jpg";
-import winter from "./assets/winter.jpg";
-import { ImageProvider } from "./context/Store";
 import { ImageContext } from "./context/Store";
 import uniqid from "uniqid";
-import { addDoc, arrayUnion } from "firebase/firestore";
+import { arrayUnion } from "firebase/firestore";
 
 import { firebaseConfig } from "./firebase-config";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {
-  getAuth,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import {
-  getFirestore,
-  collection,
-  query,
-  orderBy,
-  limit,
-  getDocs,
-  where,
-  onSnapshot,
-  setDoc,
-  updateDoc,
-  doc,
-  serverTimestamp,
-  getDocFromCache,
-  getDoc,
-  DocumentSnapshot,
-} from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { getPerformance } from "firebase/performance";
-import Chance from "chance";
-
-import { Timer } from "./components/Timer";
-import Filter from 'bad-words';
+import { getFirestore, updateDoc, doc } from "firebase/firestore";
+import Filter from "bad-words";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -67,17 +24,8 @@ function App() {
 
   const [userInput, setUserInput] = useState("");
 
-  const {
-    images,
-    imageIndex,
-    userWon,
-    timer,
-    storedTime,
-    setUserWon,
-    setResetTimer,
-    timerComponent,
-    stoppedTimer
-  } = useContext(ImageContext);
+  const { images, imageIndex, userWon, stoppedTimer } =
+    useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
 
@@ -96,7 +44,7 @@ function App() {
   }
 
   function timeToSeconds() {
-    if (stoppedTimer.current=== null) return;
+    if (stoppedTimer.current === null) return;
 
     const [hours, minutes, seconds] =
       stoppedTimer.current.textContent.split(":");
@@ -105,7 +53,6 @@ function App() {
       Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
 
     return totalSeconds;
-
   }
 
   function handleInputChange(event) {
@@ -113,13 +60,15 @@ function App() {
   }
 
   async function formSubmit(event) {
-
     event.preventDefault();
-    const customFilter = new Filter({placeHolder: "🤪"})
+    const customFilter = new Filter({ placeHolder: "🤪" });
     const leaderboardRef = doc(db, "leaderboards", images[imageIndex].name);
 
     updateDoc(leaderboardRef, {
-      leaderboard: arrayUnion({ name: customFilter.clean(userInput), time: timeToSeconds() }),
+      leaderboard: arrayUnion({
+        name: customFilter.clean(userInput),
+        time: timeToSeconds(),
+      }),
     }).then(() => location.reload());
   }
 
