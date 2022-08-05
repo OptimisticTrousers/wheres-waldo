@@ -112,21 +112,11 @@ export default function Game() {
   const [showTargetMenu, setShowTargetMenu] = useState(false);
 
   function changeCoordinates(event) {
-
-    const {x, y, top, left, bottom, right}= targetContainer.current.getClientRects();
-    console.log(targetContainer.current.getClientRects());
-    
-     if (event.target.parentNode.nodeName === "SECTION") {
+    if (event.target.parentNode.nodeName === "SECTION") {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
     }
-    // else {
-
-    //   const verticalOffset = event.target.parentNode.offsetX;
-    //   const horizontalOffset = event.target.parentNode.offsetY;
-    //   setCoordinates({ verticalOffset, horizontalOffset});
-    // }
   }
 
   function handleTargetMenu() {
@@ -186,18 +176,21 @@ export default function Game() {
         <ImageContainer
           onClickCapture={resetTarget}
           data-testid="image-level"
-          onMouseMoveCapture={showTargetMenu === false ? changeCoordinates: undefined}
+          onMouseMoveCapture={
+            showTargetMenu === false ? changeCoordinates : undefined
+          }
           image={images[imageIndex].image}
         >
-          <Target coordinates={coordinates} onClickCapture={handleTargetMenu}ref={targetContainer} >
+          <Target
+            coordinates={coordinates}
+            onClickCapture={handleTargetMenu}
+            ref={targetContainer}
+          >
             {showTargetMenu && (
               <TargetMenu>
                 {images[imageIndex].characters.map(({ character, name }) => {
                   return (
-                    <li
-                      key={uniqid()}
-                      onClick={() => handleTargetClick(name)}
-                    >
+                    <li key={uniqid()} onClick={() => handleTargetClick(name)}>
                       <img src={character} alt={name} />
                       <p>{name}</p>
                     </li>
