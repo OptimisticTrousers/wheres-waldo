@@ -203,7 +203,7 @@ export function ImageProvider({ children }) {
 
   const [resetTimer, setResetTimer] = useState(false);
   const [timer, setTimer] = useState("");
-  const [userWon, setUserWon] = useState(false);
+  const [userWon, setUserWon] = useState(true);
 
   useEffect(() => {
     setResetTimer(true);
@@ -299,10 +299,10 @@ export function ImageProvider({ children }) {
       hours={0}
       limit="00:00:10"
       autoStart={resetTimer === false && userWon === false}
-      onChange={(props) => {
-        console.log(props);
+      onChange={({hours, minutes, seconds}) => {
       }}
-      onCallback={() => {}}
+      onCallback={() => {
+      }}
       render={({ formatted, hours, minutes, seconds }) => {
         return (
           <div>

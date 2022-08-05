@@ -14,7 +14,7 @@ import uniqid from "uniqid";
 import { Modal } from "./styled/Modal.styled";
 
 export default function Header({ changeTheme, theme, changeGameState }) {
-  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon, timerComponent} = useContext(ImageContext);
+  const { images, imageIndex, charactersFound, resetTimer, setTimer, setResetTimer, userWon, formattedTime, timerComponent} = useContext(ImageContext);
 
 
 

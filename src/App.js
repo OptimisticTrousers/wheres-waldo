@@ -3,7 +3,7 @@ import GlobalStyles from "./components/styled/Global.styled";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { StyledContent } from "./components/styled/Game.styled";
 import { StyledDropdown } from "./components/styled/Dropdown.styled";
@@ -21,12 +21,61 @@ import winter from "./assets/winter.jpg";
 import { ImageProvider } from "./context/Store";
 import { ImageContext } from "./context/Store";
 import uniqid from "uniqid";
+import { addDoc, arrayUnion } from "firebase/firestore";
+
+import { firebaseConfig } from "./firebase-config";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import {
+  getAuth,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  limit,
+  getDocs,
+  where,
+  onSnapshot,
+  setDoc,
+  updateDoc,
+  doc,
+  serverTimestamp,
+  getDocFromCache,
+  getDoc,
+  DocumentSnapshot,
+} from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
+import { getPerformance } from "firebase/performance";
+import Chance from "chance";
+
+import ReactStopwatch from "react-stopwatch";
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+//const analytics = getAnalytics(app);
+const db = getFirestore(app);
 function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
-  const { images, imageIndex, userWon, timer, timerComponent } = useContext(ImageContext);
+  const [userInput, setUserInput] = useState("");
+
+  const { images, imageIndex, userWon, timer, timerComponent } =
+    useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
+
+  const formattedTime = useRef(null);
 
   function changeGameState() {
     setGameStarted((prevValue) => !prevValue);
@@ -42,22 +91,52 @@ function App() {
     });
   }
 
+  function timeToSeconds() {
+    if (formattedTime.current === null) return;
+
+    const [hours, minutes, seconds] = formattedTime.current.textContent.split(":");
+
+    const totalSeconds =
+      Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
+
+    console.log(totalSeconds);
+
+    return totalSeconds;
+
+    //const [hours, minutes, seconds] = timerComponent?.textContent?.split(":")
+    //console.log(hours, minutes, seconds)
+  }
+
+  function handleInputChange(event) {
+    setUserInput(event.target.value);
+  }
+
+  async function formSubmit(event) {
+    event.preventDefault();
+
+    const leaderboardRef = doc(db, "leaderboards", images[imageIndex].name);
+
+    await updateDoc(leaderboardRef, {
+      leaderboard: arrayUnion({ name: userInput, time: timeToSeconds() }),
+    });
+    // await updateDoc(doc(db, "leaderboards", images[imageIndex].name), {
+    // });
+  }
+
   return (
     <ThemeProvider theme={theme}>
       {userWon && (
         <Modal userWon>
           <div>
-            <h2>
-              You finished in {timerComponent}
-            </h2>
+            <h2 ref={formattedTime}>You finished in {timerComponent}</h2>
             <p>Enter your name to save your score on the leaderboard!</p>
-            <form>
+            <form onSubmit={formSubmit}>
               <label>Username</label>
-              <input value="bob" />
-            <div className="buttons">
-              <button type="button" >Cancel</button>
-              <button type="button">Submit Score</button>
-            </div>
+              <input value={userInput} onChange={handleInputChange} />
+              <div className="buttons">
+                <button type="button">Cancel</button>
+                <button type="submit">Submit Score</button>
+              </div>
             </form>
           </div>
         </Modal>
