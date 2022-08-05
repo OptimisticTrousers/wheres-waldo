@@ -71,7 +71,7 @@ export default function Game() {
     setCharactersFound,
     changeTargetApperance,
     userWon,
-    setUserWon,
+    setUserWon
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
@@ -87,6 +87,7 @@ export default function Game() {
   function changeGameState() {
     setGameStarted((prevValue) => !prevValue);
   }
+
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -104,7 +105,8 @@ export default function Game() {
       });
     } else {
       dbCoordinates.forEach(({ doc }) => {
-        if (doc.data().coordinates === undefined) return;
+
+        if(doc.data().coordinates === undefined) return 
         const {
           horizontalCoordinates,
           verticalCoordinates,
@@ -120,7 +122,10 @@ export default function Game() {
         );
       });
     }
-  }, [imageIndex, coordinates, didUserFindCharacter, dbCoordinates, images]);
+  }, [
+    imageIndex,
+    coordinates, didUserFindCharacter, dbCoordinates, images
+  ]);
 
   function didUserFindCharacter(
     horizontalCoordinates,
@@ -167,7 +172,7 @@ export default function Game() {
   const [showTargetMenu, setShowTargetMenu] = useState(false);
 
   function changeCoordinates(event) {
-    if (event.target.parentNode.nodeName === "MAIN") {
+    if (event.target.parentNode.nodeName === "SECTION") {
       const verticalOffset = event.nativeEvent.offsetX;
       const horizontalOffset = event.nativeEvent.offsetY;
       setCoordinates({ verticalOffset, horizontalOffset });
@@ -223,26 +228,27 @@ export default function Game() {
         </div>
       </StyledDropdown>
       <GameContainer>
-        <ImageContainer
-          data-testid="image-level"
-          onMouseMove={changeCoordinates}
-          image={images[imageIndex].image}
-        >
-          <Target coordinates={coordinates} onClick={handleTargetMenu}>
-            {showTargetMenu && (
-              <TargetMenu>
-                {images[imageIndex].characters.map(({ character, name }) => {
-                  return (
-                    <li key={uniqid()} onClick={didUserFindCharacter}>
-                      <img src={character} alt={name} />
-                      <p>{name}</p>
-                    </li>
-                  );
-                })}
-              </TargetMenu>
-            )}
-          </Target>
-        </ImageContainer>
+
+      <ImageContainer
+        data-testid="image-level"
+        onMouseMove={changeCoordinates}
+        image={images[imageIndex].image}
+      >
+        <Target coordinates={coordinates} onClick={handleTargetMenu}>
+          {showTargetMenu && (
+            <TargetMenu>
+              {images[imageIndex].characters.map(({ character, name }) => {
+                return (
+                  <li key={uniqid()} onClick={didUserFindCharacter}>
+                    <img src={character} alt={name} />
+                    <p>{name}</p>
+                  </li>
+                );
+              })}
+            </TargetMenu>
+          )}
+        </Target>
+      </ImageContainer>
       </GameContainer>
     </>
   );

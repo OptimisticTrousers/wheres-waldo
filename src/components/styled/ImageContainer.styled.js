@@ -8,8 +8,8 @@ export const ImageContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 1.75%/2.3275%;
-  min-height: 1100px;
-  min-width: 1920px;
+  height: 1100px;
+  width: 1920px;
   overflow:auto;
 
   div {
