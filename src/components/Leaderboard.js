@@ -49,7 +49,6 @@ export default function Leaderboard() {
             </tr>
           </thead>
           <tbody>
-            {console.log(dbLeaderboard[leaderboardIndex]?.leaderboard)}
             {/* {.slice(0, 7)} */}
             {dbLeaderboard[leaderboardIndex]?.leaderboard?.sort((a, b) => a.time - b.time).map((data, index) => {
               return (

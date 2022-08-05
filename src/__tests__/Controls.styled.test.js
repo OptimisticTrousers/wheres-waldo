@@ -8,8 +8,6 @@ import userEvent from "@testing-library/user-event";
 import beach from '../assets/beach.jpg'
 import fruitland from '../assets/fruitland.jpg'
 
-console.log(beach)
-
 describe("Controls", () => {
   it("user clicks previous level to click on previous image", async () => {
     render(<Game />);

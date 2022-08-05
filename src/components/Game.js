@@ -162,12 +162,6 @@ export default function Game() {
       name
     );
 
-    // console.log("Database Horizontal: ", horizontalCoordinates);
-    // console.log("Database Vertical: ", verticalCoordinates);
-    console.log("User: ", coordinates);
-    console.log("bob");
-    console.log(charactersFound);
-    // console.log("Characters Found:", numberOfCharactersFound);
     if (numberOfCharactersFound === 3) {
       setUserWon(true);
     }

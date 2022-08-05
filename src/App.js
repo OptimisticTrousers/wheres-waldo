@@ -101,17 +101,11 @@ function App() {
     const [hours, minutes, seconds] =
       stoppedTimer.current.textContent.split(":");
 
-    console.log(hours, minutes, seconds);
-
     const totalSeconds =
       Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
 
-    console.log(totalSeconds);
-
     return totalSeconds;
 
-    //const [hours, minutes, seconds] = timerComponent?.textContent?.split(":")
-    //console.log(hours, minutes, seconds)
   }
 
   function handleInputChange(event) {

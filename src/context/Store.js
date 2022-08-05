@@ -312,7 +312,6 @@ export function ImageProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    console.log(charactersFound);
     charactersFound.map((character) => {
       return { ...character, found: false };
     });

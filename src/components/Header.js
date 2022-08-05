@@ -16,7 +16,6 @@ export default function Header({ changeTheme, theme, changeGameState }) {
   const timerComponent = useRef(null)
 
   useEffect(() => {
-    console.log("bob")
 
     setStoppedTimer(timerComponent)
   }, [userWon])

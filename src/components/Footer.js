@@ -1,6 +1,6 @@
 import { StyledFooter } from "./styled/Footer.styled";
 import { Container } from "./styled/Container.styled";
-import {FaGithub} from 'react-icons/fa'
+import { FaGithub } from "react-icons/fa";
 export default function Footer() {
   return (
     <StyledFooter>
