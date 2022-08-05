@@ -120,6 +120,7 @@ function App() {
 
   async function formSubmit(event) {
 
+    console.log(imageIndex)
     const leaderboardRef = doc(db, "leaderboards", images[imageIndex].name);
 
     await updateDoc(leaderboardRef, {

@@ -202,7 +202,7 @@ export function ImageProvider({ children }) {
 
   const [dbLeaderboard, setDbLeaderboard] = useState([]);
 
-  const [stoppedTimer, setStoppedTimer] = useState()
+  const [stoppedTimer, setStoppedTimer] = useState();
 
   const [timer, setTimer] = useState("");
   const [userWon, setUserWon] = useState(false);
@@ -244,11 +244,53 @@ export function ImageProvider({ children }) {
     }
 
     async function addStuff() {
-      await setDoc(doc(db, "leaderboards", "space"), {
-        leaderboard: Array.from(new Array(7), (user) => ({
-          name: chance.name(),
-          time: Math.floor(Math.random() * 1000) + 100,
-        })),
+      // await addDoc(collection(db, "hollywood"), {
+      //   waldo: {
+      //     coordinates: {
+      //     horizontalCoordinates: 100,
+      //     verticalCoordinates: 100,
+      //     horizontalRange: 100,
+      //     verticalRange: 100,
+      //     }
+      //   },
+      //   odlaw: {
+      //     coordinates: {
+      //     horizontalCoordinates: 100,
+      //     verticalCoordinates: 100,
+      //     horizontalRange: 100,
+      //     verticalRange: 100,
+      //     }
+      //   },
+      //   wilma: {
+      //     coordinates: {
+      //     horizontalCoordinates: 100,
+      //     verticalCoordinates: 100,
+      //     horizontalRange: 100,
+      //     verticalRange: 100,
+      //     }
+      //   },
+      //   wizard: {
+      //     coordinates: {
+      //     horizontalCoordinates: 100,
+      //     verticalCoordinates: 100,
+      //     horizontalRange: 100,
+      //     verticalRange: 100,
+      //     }
+      //   },
+      // })
+      // await setDoc(doc(db, "leaderboards", "space"), {
+      //   leaderboard: Array.from(new Array(7), (user) => ({
+      //     name: chance.name(),
+      //     time: Math.floor(Math.random() * 1000) + 100,
+      //   })),
+      // });
+      await setDoc(doc(db, "winter", "wilma"), {
+        coordinates: {
+          horizontalCoordinates: 100,
+          verticalCoordinates: 100,
+          horizontalRange: 100,
+          verticalRange: 100,
+        },
       });
     }
 
@@ -305,7 +347,7 @@ export function ImageProvider({ children }) {
         setTimer,
         timer,
         stoppedTimer,
-        setStoppedTimer
+        setStoppedTimer,
       }}
     >
       {children}
