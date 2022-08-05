@@ -131,15 +131,14 @@ export default function Game() {
         verticalCoordinates,
         horizontalRange,
         verticalRange,
-      } = character;
-
-      console.log(horizontalCoordinates, verticalCoordinates)
+      } = character.doc.data().coordinates;
 
       didUserFindCharacter(
         horizontalCoordinates,
         verticalCoordinates,
         horizontalRange,
-        verticalRange
+        verticalRange,
+        character.doc.id
       );
     }
   }
@@ -152,6 +151,8 @@ export default function Game() {
     name
   ) {
     const { horizontalOffset, verticalOffset } = coordinates;
+
+    console.log(horizontalCoordinates, verticalCoordinates, horizontalRange, verticalRange, name)
 
     // console.log("Database Horizontal: ", horizontalCoordinates);
     // console.log("Database Vertical: ", verticalCoordinates);
