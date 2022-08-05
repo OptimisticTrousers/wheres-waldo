@@ -157,20 +157,21 @@ export default function Game() {
     // console.log("Database Horizontal: ", horizontalCoordinates);
     // console.log("Database Vertical: ", verticalCoordinates);
     console.log("User: ", coordinates);
+        console.log("bob")
+        console.log(charactersFound)
     // console.log("Characters Found:", numberOfCharactersFound);
     if (numberOfCharactersFound === 5) {
       setUserWon(true);
     } else if (
       verticalCoordinates - verticalRange <= verticalOffset &&
-      verticalCoordinates >= verticalOffset &&
+      verticalCoordinates + verticalRange >= verticalOffset &&
       horizontalCoordinates - horizontalRange <= horizontalOffset &&
-      horizontalCoordinates >= horizontalOffset
+      horizontalCoordinates + horizontalRange >= horizontalOffset
     ) {
       if (
         charactersFound.find((character) => character.name === name).found ===
         false
       ) {
-        console.log("bob")
         setCharactersFound((prevCharactersFound) => {
           const characterIndex = prevCharactersFound.findIndex(
             (character) => character.name === name
