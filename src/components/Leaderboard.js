@@ -50,7 +50,8 @@ export default function Leaderboard() {
           </thead>
           <tbody>
             {console.log(dbLeaderboard[leaderboardIndex]?.leaderboard)}
-            {dbLeaderboard[leaderboardIndex]?.leaderboard?.slice(0, 7).sort((a, b) => a.time - b.time).map((data, index) => {
+            {/* {.slice(0, 7)} */}
+            {dbLeaderboard[leaderboardIndex]?.leaderboard?.sort((a, b) => a.time - b.time).map((data, index) => {
               return (
                 <tr key={uniqid()} >
                   <td>#{index + 1}</td>
