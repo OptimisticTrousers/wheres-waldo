@@ -16,10 +16,7 @@ import {
   getFirestore,
   collection,
   getDocs,
-  setDoc,
-  doc,
 } from "firebase/firestore";
-import Chance from "chance";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
