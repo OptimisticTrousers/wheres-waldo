@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 export const StyledControls = styled.div`
   display: flex;
   position: relative;
@@ -34,4 +34,4 @@ export const StyledControls = styled.div`
     transform: scale(1.03);
     background-color: #45c1bc;
   }
-`
+`;

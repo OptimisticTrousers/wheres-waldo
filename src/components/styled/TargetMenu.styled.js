@@ -13,7 +13,7 @@ export const TargetMenu = styled.ul`
     gap: 0.5rem;
     padding: 0.5rem 0rem;
     width: fit-content;
-  padding: 1rem;
+    padding: 1rem;
   }
   li:hover {
     background-color: rgb(92, 95, 102, 0.35);

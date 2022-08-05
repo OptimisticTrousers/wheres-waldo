@@ -9,11 +9,11 @@ export const StyledHeader = styled.header`
     mode === "light" ? "#ebedf0" : "black"};
   --header-accent: "#ebedf0";
   --button-background-color: ${({ theme: { mode } }) =>
-      mode === "light" ? "rgb(56, 56, 56)" : "white"};
+    mode === "light" ? "rgb(56, 56, 56)" : "white"};
   --button-text-color: ${({ theme: { mode } }) =>
-      mode === "light" ? "white" : "rgb(56, 56, 56)"};
-       --button-hover-background-color: ${({ theme: { mode } }) =>
-    mode === "light" ?  "rgb(100, 100, 100)": "#ebedf0" };
+    mode === "light" ? "white" : "rgb(56, 56, 56)"};
+  --button-hover-background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"};
   height: 8%;
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@ export const StyledHeader = styled.header`
   div:nth-child(2) {
     margin: 0 1rem;
   }
-  .logo:hover{
+  .logo:hover {
     opacity: 0.7;
     cursor: pointer;
   }
@@ -105,9 +105,9 @@ export const StyledHeader = styled.header`
   }
 
   @media (max-width: 1030px) {
-   .logo {
-    display: none;
-   } 
+    .logo {
+      display: none;
+    }
   }
   @media (max-width: 870px) {
     img {
@@ -115,7 +115,7 @@ export const StyledHeader = styled.header`
       height: 50px;
     }
   }
-  @media(max-width: 790px) {
+  @media (max-width: 790px) {
     img {
       width: 25px;
       height: 25px;

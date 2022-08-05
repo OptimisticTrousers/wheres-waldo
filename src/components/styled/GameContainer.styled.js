@@ -5,4 +5,4 @@ export const GameContainer = styled.section`
   height: 78vh;
   padding-top: 2rem;
   overflow: auto;
-`
+`;

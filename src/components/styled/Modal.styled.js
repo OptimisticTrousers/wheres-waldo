@@ -41,12 +41,12 @@ export const Modal = styled.div`
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: ${({userWon}) => userWon ? "50%" : "80%"};
+    width: ${({ userWon }) => (userWon ? "50%" : "80%")};
     border-radius: 8%;
   }
   & > div > div {
     display: flex;
-    justify-content:   center;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
   }
@@ -55,7 +55,7 @@ export const Modal = styled.div`
     padding: 1rem;
     outline: 2px solid transparent;
     line-height: inherit;
-    color:inherit; 
+    color: inherit;
     border-radius: 0.375rem;
     border-width: 1px;
     font-size: 100%;
@@ -71,7 +71,7 @@ export const Modal = styled.div`
     text-align: start;
   }
   button:nth-child(1) {
-    background-color: ${({userWon}) => userWon && "inherit"};
+    background-color: ${({ userWon }) => userWon && "inherit"};
     color: #0085fe;
   }
   label {
@@ -88,12 +88,12 @@ export const Modal = styled.div`
     border: 1px solid var(--border-color);
     border-radius: 5%;
   }
-  @media(max-width: 500px) {
-    & > div{
+  @media (max-width: 500px) {
+    & > div {
       width: 98%;
     }
   }
-  @media(max-width: 400px) {
+  @media (max-width: 400px) {
     img {
       width: 40px;
       height: 40px;
