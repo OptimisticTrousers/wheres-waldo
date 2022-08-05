@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { createContext, useEffect, useState } from "react";
 import beach from "../assets/beach.jpg";
 import fruitland from "../assets/fruitland.jpg";
 import hollywood from "../assets/hollywood.jpg";
@@ -11,43 +12,15 @@ import wilma from "../assets/wilma.jpg";
 import wizard from "../assets/wizard.jpg";
 import { firebaseConfig } from "../firebase-config";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {
-  getAuth,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
 import {
   getFirestore,
   collection,
-  addDoc,
-  query,
-  orderBy,
-  limit,
   getDocs,
-  where,
-  onSnapshot,
   setDoc,
-  updateDoc,
   doc,
-  serverTimestamp,
-  getDocFromCache,
-  getDoc,
-  DocumentSnapshot,
 } from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { getPerformance } from "firebase/performance";
 import Chance from "chance";
 
-import { Timer } from "../components/Timer";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -190,11 +163,6 @@ const images = [
   },
 ];
 
-const chance = new Chance();
-
-const DEFAULT_OBJECT = {
-  time: Math.floor(Math.random() * 1000) + 100,
-};
 export function ImageProvider({ children }) {
   const [targetAppearance, setTargetAppearance] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
@@ -232,68 +200,10 @@ export function ImageProvider({ children }) {
     async function getLeaderboardData(index) {
       const leaderboardsRef = collection(db, "leaderboards");
 
-      // const q = query(leaderboardsRef, orderBy("time", "desc"), limit(7));
-
       const leaderboardData = await getDocs(leaderboardsRef);
 
       return leaderboardData;
-      // const data = await getDocs(collection(db, "leaderboards"), orderBy("time", "desc"), limit(7));
-
-      // return data;
     }
-
-    async function addStuff() {
-      // await addDoc(collection(db, "hollywood"), {
-      //   waldo: {
-      //     coordinates: {
-      //     horizontalCoordinates: 100,
-      //     verticalCoordinates: 100,
-      //     horizontalRange: 100,
-      //     verticalRange: 100,
-      //     }
-      //   },
-      //   odlaw: {
-      //     coordinates: {
-      //     horizontalCoordinates: 100,
-      //     verticalCoordinates: 100,
-      //     horizontalRange: 100,
-      //     verticalRange: 100,
-      //     }
-      //   },
-      //   wilma: {
-      //     coordinates: {
-      //     horizontalCoordinates: 100,
-      //     verticalCoordinates: 100,
-      //     horizontalRange: 100,
-      //     verticalRange: 100,
-      //     }
-      //   },
-      //   wizard: {
-      //     coordinates: {
-      //     horizontalCoordinates: 100,
-      //     verticalCoordinates: 100,
-      //     horizontalRange: 100,
-      //     verticalRange: 100,
-      //     }
-      //   },
-      // })
-      // await setDoc(doc(db, "leaderboards", "space"), {
-      //   leaderboard: Array.from(new Array(7), (user) => ({
-      //     name: chance.name(),
-      //     time: Math.floor(Math.random() * 1000) + 100,
-      //   })),
-      // });
-      await setDoc(doc(db, "winter", "wilma"), {
-        coordinates: {
-          horizontalCoordinates: 100,
-          verticalCoordinates: 100,
-          horizontalRange: 100,
-          verticalRange: 100,
-        },
-      });
-    }
-
-    // addStuff();
 
     getLeaderboardData()
       .then((data) => {
@@ -304,9 +214,6 @@ export function ImageProvider({ children }) {
         });
 
         setDbLeaderboard(leaderboard);
-
-        // setDbLeaderboard(data.docs);
-        // setDbLeaderboard(data.docChanges()[0].doc.data().levels);
       })
       .catch((err) => alert("ERROR: ", err));
   }, []);
@@ -316,10 +223,6 @@ export function ImageProvider({ children }) {
       return { ...character, found: false };
     });
   }, [imageIndex]);
-
-  function changeImage(index) {
-    setImageIndex(index);
-  }
 
   function changeTargetAppearance(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
