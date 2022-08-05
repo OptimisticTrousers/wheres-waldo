@@ -105,26 +105,26 @@ export const StyledHeader = styled.header`
   }
 
   @media (max-width: 1030px) {
-    img:not(.logo ){
-      display: none;
-    }
-    p:not(.timer  p){
-      display: none;  
-    }
-    
+   .logo {
+    display: none;
+   } 
   }
-  @media (max-width: 750px) {
+  @media (max-width: 870px) {
     img {
       width: 50px;
       height: 50px;
     }
   }
-  @media(max-width: 500px) {
+  @media(max-width: 790px) {
     img {
-      display: none;
+      width: 25px;
+      height: 25px;
     }
     .content {
       display: inline-block;
+    }
+    .content > * {
+      padding: 0.25rem 0rem;
     }
   }
 `;

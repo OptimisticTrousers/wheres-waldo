@@ -236,7 +236,7 @@ export default function Game() {
             <TargetMenu>
               {images[imageIndex].characters.map(({ character, name }) => {
                 return (
-                  <li key={uniqid()}>
+                  <li key={uniqid()} onClick={didUserFindCharacter}>
                     <img src={character} alt={name} />
                     <p>{name}</p>
                   </li>
