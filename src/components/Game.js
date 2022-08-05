@@ -1,55 +1,10 @@
-import { StyledContent } from "./styled/Game.styled";
-import { Container } from "./styled/Container.styled";
 import { Target } from "./styled/Target.styled";
-import { useEffect, useRef, useState, useMemo, useContext } from "react";
-import { TargetImage } from "./styled/TargetImage.styled";
+import { useEffect, useState, useContext } from "react";
 import { TargetMenu } from "./styled/TargetMenu.styled";
-import { GoLocation } from "react-icons/go";
-import { HiLocationMarker } from "react-icons/hi";
 import { firebaseConfig } from "../firebase-config";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {
-  getAuth,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  query,
-  orderBy,
-  limit,
-  getDocs,
-  where,
-  onSnapshot,
-  setDoc,
-  updateDoc,
-  doc,
-  serverTimestamp,
-  getDocFromCache,
-  getDoc,
-  DocumentSnapshot,
-} from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { getPerformance } from "firebase/performance";
-import { StyledControls } from "./styled/Controls.styled";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { ImageContainer } from "./styled/ImageContainer.styled";
-import beach from "../assets/beach.jpg";
-import fruitland from "../assets/fruitland.jpg";
-import hollywood from "../assets/hollywood.jpg";
-import space from "../assets/space.jpg";
-import track from "../assets/track.jpg";
-import winter from "../assets/winter.jpg";
 import { StyledDropdown } from "./styled/Dropdown.styled";
 import { StyledDropdownImage } from "./styled/DropdownImage.styled";
 import { ImageContext } from "../context/Store";
@@ -66,13 +21,8 @@ export default function Game() {
     images,
     imageIndex,
     setImageIndex,
-    targetAppearance,
     charactersFound,
     setCharactersFound,
-    changeTargetApperance,
-    timerComponent,
-    setStoppedTimer,
-    userWon,
     setUserWon,
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
@@ -81,14 +31,6 @@ export default function Game() {
   }));
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
-
-  const [isCharacterMenuVisible, setIsCharacterMenuVisible] = useState(false);
-
-  const [gameStarted, setGameStarted] = useState(false);
-
-  function changeGameState() {
-    setGameStarted((prevValue) => !prevValue);
-  }
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -104,25 +46,6 @@ export default function Game() {
       setDbCoordinates(databasePhotoData.docChanges());
     });
   }, [imageIndex]);
-
-  function checkCoordinates() {
-    dbCoordinates.forEach(({ doc }) => {
-      if (doc.data().coordinates === undefined) return;
-      const {
-        horizontalCoordinates,
-        verticalCoordinates,
-        horizontalRange,
-        verticalRange,
-      } = doc.data().coordinates;
-      didUserFindCharacter(
-        horizontalCoordinates,
-        verticalCoordinates,
-        horizontalRange,
-        verticalRange,
-        doc.id
-      );
-    });
-  }
 
   function handleTargetClick(name) {
     const character = dbCoordinates.find(({ doc }) => doc.id === name);
@@ -153,14 +76,6 @@ export default function Game() {
     name
   ) {
     const { horizontalOffset, verticalOffset } = coordinates;
-
-    console.log(
-      horizontalCoordinates,
-      verticalCoordinates,
-      horizontalRange,
-      verticalRange,
-      name
-    );
 
     if (numberOfCharactersFound === 3) {
       setUserWon(true);
@@ -195,16 +110,11 @@ export default function Game() {
   const [showTargetMenu, setShowTargetMenu] = useState(false);
 
   function changeCoordinates(event) {
-    // if (event.target.parentNode.nodeName === "SECTION") {
     const verticalOffset = event.pageX;
-    const horizontalOffset = event.pageY - (charactersFound.every(element => element.found === false) ? 160 : 0);
+    const horizontalOffset =
+      event.pageY -
+      (charactersFound.every((element) => element.found === false) ? 160 : 0);
     setCoordinates({ verticalOffset, horizontalOffset });
-    // }
-    // else {
-    //   const verticalOffset = event.target.pageY;
-    //   const horizontalOffset = event.target.pageX;
-    //   setCoordinates({ verticalOffset, horizontalOffset });
-    // }
   }
 
   function handleTargetMenu() {
