@@ -203,7 +203,7 @@ export function ImageProvider({ children }) {
 
   const [resetTimer, setResetTimer] = useState(false);
   const [timer, setTimer] = useState("");
-  const [userWon, setUserWon] = useState(true);
+  const [userWon, setUserWon] = useState(false);
 
   useEffect(() => {
     setResetTimer(true);

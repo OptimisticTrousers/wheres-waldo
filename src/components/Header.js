@@ -47,7 +47,7 @@ export default function Header({ changeTheme, theme, changeGameState }) {
               alt="a smiling pair of pants"
             />
           </Link>
-          <h2 className="timer">
+          <h2>
             {timerComponent}
           </h2>
         </div>
