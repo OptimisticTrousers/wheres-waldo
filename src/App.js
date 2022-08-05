@@ -94,7 +94,10 @@ function App() {
   function timeToSeconds() {
     if (formattedTime.current === null) return;
 
-    const [hours, minutes, seconds] = formattedTime.current.textContent.split(":");
+    const [hours, minutes, seconds] =
+      formattedTime.current.textContent.split(":");
+
+    console.log(hours, minutes, seconds);
 
     const totalSeconds =
       Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
@@ -128,7 +131,9 @@ function App() {
       {userWon && (
         <Modal userWon>
           <div>
-            <h2 ref={formattedTime}>You finished in {timerComponent}</h2>
+            <h2>
+              You finished in <span ref={formattedTime}>{timerComponent}</span>
+            </h2>
             <p>Enter your name to save your score on the leaderboard!</p>
             <form onSubmit={formSubmit}>
               <label>Username</label>
