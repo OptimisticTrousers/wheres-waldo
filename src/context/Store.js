@@ -7,7 +7,7 @@ import track from "../assets/track.jpg";
 import winter from "../assets/winter.jpg";
 import odlaw from "../assets/odlaw.jpg";
 import waldo from "../assets/waldo.jpg";
-import wenda from "../assets/wenda.jpg";
+import wilma from "../assets/wilma.jpg";
 import wizard from "../assets/wizard.jpg";
 import { firebaseConfig } from "../firebase-config";
 import { initializeApp } from "firebase/app";
@@ -69,8 +69,8 @@ const images = [
         character: waldo,
       },
       {
-        name: "wenda",
-        character: wenda,
+        name: "wilma",
+        character: wilma,
       },
       {
         name: "wizard",
@@ -91,8 +91,8 @@ const images = [
         character: waldo,
       },
       {
-        name: "wenda",
-        character: wenda,
+        name: "wilma",
+        character: wilma,
       },
       {
         name: "wizard",
@@ -113,8 +113,8 @@ const images = [
         character: waldo,
       },
       {
-        name: "wenda",
-        character: wenda,
+        name: "wilma",
+        character: wilma,
       },
       {
         name: "wizard",
@@ -135,8 +135,8 @@ const images = [
         character: waldo,
       },
       {
-        name: "wenda",
-        character: wenda,
+        name: "wilma",
+        character: wilma,
       },
       {
         name: "wizard",
@@ -157,8 +157,8 @@ const images = [
         character: waldo,
       },
       {
-        name: "wenda",
-        character: wenda,
+        name: "wilma",
+        character: wilma,
       },
       {
         name: "wizard",
@@ -179,8 +179,8 @@ const images = [
         character: waldo,
       },
       {
-        name: "wenda",
-        character: wenda,
+        name: "wilma",
+        character: wilma,
       },
       {
         name: "wizard",
@@ -226,7 +226,6 @@ export function ImageProvider({ children }) {
       found: false,
     },
   ]);
-
 
   useEffect(() => {
     setResetTimer(true);
@@ -274,7 +273,7 @@ export function ImageProvider({ children }) {
   }, [charactersFound]);
 
   useEffect(() => {
-    console.log(charactersFound)
+    console.log(charactersFound);
     charactersFound.map((character) => {
       return { ...character, found: false };
     });
@@ -299,10 +298,8 @@ export function ImageProvider({ children }) {
       hours={0}
       limit="00:00:10"
       autoStart={resetTimer === false && userWon === false}
-      onChange={({hours, minutes, seconds}) => {
-      }}
-      onCallback={() => {
-      }}
+      onChange={({ hours, minutes, seconds }) => {}}
+      onCallback={() => {}}
       render={({ formatted, hours, minutes, seconds }) => {
         return (
           <div>
@@ -330,7 +327,7 @@ export function ImageProvider({ children }) {
         setTimer,
         timer,
         setResetTimer,
-        timerComponent
+        timerComponent,
       }}
     >
       {children}
