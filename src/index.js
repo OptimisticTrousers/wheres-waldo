@@ -11,14 +11,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ImageProvider>
     <React.StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Game />} />
             <Route path="leaderboard" element={<Leaderboard />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   </ImageProvider>
 );
