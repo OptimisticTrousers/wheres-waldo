@@ -204,6 +204,29 @@ export function ImageProvider({ children }) {
   const [resetTimer, setResetTimer] = useState(false);
   const [timer, setTimer] = useState("");
   const [userWon, setUserWon] = useState(false);
+  const [charactersFound, setCharactersFound] = useState([
+    {
+      name: "odlaw",
+      found: false,
+    },
+    {
+      name: "waldo",
+      found: false,
+    },
+    {
+      name: "wilma",
+      found: false,
+    },
+    {
+      name: "wizard",
+      found: false,
+    },
+    {
+      name: "woof",
+      found: false,
+    },
+  ]);
+
 
   useEffect(() => {
     setResetTimer(true);
@@ -248,36 +271,14 @@ export function ImageProvider({ children }) {
         // setDbLeaderboard(data.docChanges()[0].doc.data().levels);
       })
       .catch((err) => alert("ERROR: ", err));
-  }, []);
-
-  const [charactersFound, setCharactersFound] = useState([
-    {
-      name: "odlaw",
-      found: false,
-    },
-    {
-      name: "waldo",
-      found: false,
-    },
-    {
-      name: "wilma",
-      found: false,
-    },
-    {
-      name: "wizard",
-      found: false,
-    },
-    {
-      name: "woof",
-      found: false,
-    },
-  ]);
+  }, [charactersFound]);
 
   useEffect(() => {
+    console.log(charactersFound)
     charactersFound.map((character) => {
       return { ...character, found: false };
     });
-  }, [imageIndex, charactersFound]);
+  }, [imageIndex]);
 
   function changeImage(index) {
     setImageIndex(index);

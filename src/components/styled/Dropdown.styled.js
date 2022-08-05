@@ -69,9 +69,9 @@ export const StyledDropdown = styled.div`
     overflow: auto;
     top: 0px;
     left: -275px;
-    width: 275px;
+    width: 300px;
     opacity: 0;
-    padding: 20px 0px;
+    padding: 30px 0px;
     height: 100%;
     background-color: var(--menu-background);
     color: var(--black-color);

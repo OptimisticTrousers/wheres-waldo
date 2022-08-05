@@ -21,7 +21,7 @@ export default function Header({ changeTheme, theme, changeGameState }) {
   const renderedImages = images[imageIndex].characters.map(
     (character, index) => {
       const characterStyle = {
-        opacity: charactersFound[index].found && "0.4",
+        opacity: charactersFound[index].found && 0.4,
       };
       return (
         <div key={uniqid()}>
