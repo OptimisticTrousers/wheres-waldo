@@ -54,6 +54,7 @@ import { StyledDropdown } from "./styled/Dropdown.styled";
 import { StyledDropdownImage } from "./styled/DropdownImage.styled";
 import { ImageContext } from "../context/Store";
 import uniqid from "uniqid";
+import { GameContainer } from "./styled/GameContainer.styled";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -70,7 +71,7 @@ export default function Game() {
     setCharactersFound,
     changeTargetApperance,
     userWon,
-    setUserWon
+    setUserWon,
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
@@ -86,7 +87,6 @@ export default function Game() {
   function changeGameState() {
     setGameStarted((prevValue) => !prevValue);
   }
-
 
   const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
@@ -104,8 +104,7 @@ export default function Game() {
       });
     } else {
       dbCoordinates.forEach(({ doc }) => {
-
-        if(doc.data().coordinates === undefined) return 
+        if (doc.data().coordinates === undefined) return;
         const {
           horizontalCoordinates,
           verticalCoordinates,
@@ -121,10 +120,7 @@ export default function Game() {
         );
       });
     }
-  }, [
-    imageIndex,
-    coordinates, didUserFindCharacter, dbCoordinates, images
-  ]);
+  }, [imageIndex, coordinates, didUserFindCharacter, dbCoordinates, images]);
 
   function didUserFindCharacter(
     horizontalCoordinates,
@@ -226,26 +222,28 @@ export default function Game() {
           </div>
         </div>
       </StyledDropdown>
-      <ImageContainer
-        data-testid="image-level"
-        onMouseMove={changeCoordinates}
-        image={images[imageIndex].image}
-      >
-        <Target coordinates={coordinates} onClick={handleTargetMenu}>
-          {showTargetMenu && (
-            <TargetMenu>
-              {images[imageIndex].characters.map(({ character, name }) => {
-                return (
-                  <li key={uniqid()} onClick={didUserFindCharacter}>
-                    <img src={character} alt={name} />
-                    <p>{name}</p>
-                  </li>
-                );
-              })}
-            </TargetMenu>
-          )}
-        </Target>
-      </ImageContainer>
+      <GameContainer>
+        <ImageContainer
+          data-testid="image-level"
+          onMouseMove={changeCoordinates}
+          image={images[imageIndex].image}
+        >
+          <Target coordinates={coordinates} onClick={handleTargetMenu}>
+            {showTargetMenu && (
+              <TargetMenu>
+                {images[imageIndex].characters.map(({ character, name }) => {
+                  return (
+                    <li key={uniqid()} onClick={didUserFindCharacter}>
+                      <img src={character} alt={name} />
+                      <p>{name}</p>
+                    </li>
+                  );
+                })}
+              </TargetMenu>
+            )}
+          </Target>
+        </ImageContainer>
+      </GameContainer>
     </>
   );
 }
