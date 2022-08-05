@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
       mode === "light" ? "white" : "rgb(56, 56, 56)"};
        --button-hover-background-color: ${({ theme: { mode } }) =>
     mode === "light" ?  "rgb(100, 100, 100)": "#ebedf0" };
-  height: min-content;
+  height: 8%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,7 +108,7 @@ export const StyledHeader = styled.header`
     img:not(.logo ){
       display: none;
     }
-    p{
+    p:not(.timer  p){
       display: none;  
     }
     
@@ -121,9 +121,6 @@ export const StyledHeader = styled.header`
   }
   @media (max-width: 680px) {
     img {
-      display: none;
-    }
-    p {
       display: none;
     }
     .content{

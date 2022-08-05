@@ -70,7 +70,7 @@ function App() {
 
   const [userInput, setUserInput] = useState("");
 
-  const { images, imageIndex, userWon, timer, timerComponent } =
+  const { images, imageIndex, userWon, timer, timerComponent, setUserWon, setResetTimer } =
     useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
@@ -122,8 +122,11 @@ function App() {
     await updateDoc(leaderboardRef, {
       leaderboard: arrayUnion({ name: userInput, time: timeToSeconds() }),
     });
-    // await updateDoc(doc(db, "leaderboards", images[imageIndex].name), {
-    // });
+  }
+
+  function resetGame() {
+
+    setUserWon(false)
   }
 
   return (
@@ -139,7 +142,7 @@ function App() {
               <label>Username</label>
               <input value={userInput} onChange={handleInputChange} />
               <div className="buttons">
-                <button type="button">Cancel</button>
+                <button type="button" onClick={resetGame}>Cancel</button>
                 <button type="submit">Submit Score</button>
               </div>
             </form>
