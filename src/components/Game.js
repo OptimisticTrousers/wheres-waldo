@@ -160,9 +160,9 @@ export default function Game() {
         console.log("bob")
         console.log(charactersFound)
     // console.log("Characters Found:", numberOfCharactersFound);
-    if (numberOfCharactersFound === 5) {
+    if (numberOfCharactersFound === 3) {
       setUserWon(true);
-    } else if (
+    } if (
       verticalCoordinates - verticalRange <= verticalOffset &&
       verticalCoordinates + verticalRange >= verticalOffset &&
       horizontalCoordinates - horizontalRange <= horizontalOffset &&

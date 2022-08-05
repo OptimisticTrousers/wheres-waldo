@@ -227,9 +227,6 @@ export function ImageProvider({ children }) {
     },
   ]);
 
-  useEffect(() => {
-    setResetTimer(true);
-  }, [imageIndex]);
 
   useEffect(() => {
     async function getLeaderboardData(index) {
