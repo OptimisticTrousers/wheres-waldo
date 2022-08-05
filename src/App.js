@@ -96,10 +96,10 @@ function App() {
   }
 
   function timeToSeconds() {
-    if (storedTime.current=== null) return;
+    if (stoppedTimer.current=== null) return;
 
     const [hours, minutes, seconds] =
-      storedTime.current.textContent.split(":");
+      stoppedTimer.current.textContent.split(":");
 
     console.log(hours, minutes, seconds);
 
@@ -119,7 +119,6 @@ function App() {
   }
 
   async function formSubmit(event) {
-    event.preventDefault();
 
     const leaderboardRef = doc(db, "leaderboards", images[imageIndex].name);
 
