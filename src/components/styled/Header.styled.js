@@ -119,7 +119,10 @@ export const StyledHeader = styled.header`
       height: 50px;
     }
   }
-  @media(max-width: 440px) {
+  @media(max-width: 500px) {
+    img {
+      display: none;
+    }
     .content {
       display: inline-block;
     }

@@ -106,9 +106,9 @@ export const StyledDropdown = styled.div`
       top: 4%;
     }
   }
-  @media(max-width: 470px) {
+  @media(max-width: 500px) {
     #btn {
-      top: 4%;
+      top: 3%;
     }
   }
 `;
