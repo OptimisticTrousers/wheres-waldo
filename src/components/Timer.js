@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import { formatTime } from "../utils";
 
 import { ImageContext } from "../context/Store";
 export function Timer() {
-  const [timer, setTimer] = useState(0);
 
-  const { userWon, imageIndex } = useContext(ImageContext);
-
-  const oldImageIndex = useRef(imageIndex)
+  const { userWon, timer, setTimer } = useContext(ImageContext);
 
   useEffect(() => {
     let interval;
@@ -17,14 +14,10 @@ export function Timer() {
       }, 1000);
     }
 
-    if(oldImageIndex !== imageIndex) {
-      setTimer(0)
-    }
-
     return () => {
       clearInterval(interval);
     };
-  }, [userWon, imageIndex]);
+  }, [userWon, setTimer]);
 
   return <>{formatTime(timer)}</>;
 }

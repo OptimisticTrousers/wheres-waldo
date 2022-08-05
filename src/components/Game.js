@@ -24,6 +24,7 @@ export default function Game() {
     charactersFound,
     setCharactersFound,
     setUserWon,
+    setTimer,
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
@@ -151,22 +152,58 @@ export default function Game() {
         <div id="box" className={`${isMenuActive && "active"}`}>
           <h2>Pick Your Level!</h2>
           <div id="items">
-            <div className="item" onClick={() => changeImage(0)}>
+            <div
+              className="item"
+              onClick={() => {
+                changeImage(0);
+                setTimer(0);
+              }}
+            >
               <StyledDropdownImage src={images[0].image} />
             </div>
-            <div className="item" onClick={() => changeImage(1)}>
+            <div
+              className="item"
+              onClick={() => {
+                changeImage(1);
+                setTimer(0);
+              }}
+            >
               <StyledDropdownImage src={images[1].image} />
             </div>
-            <div className="item" onClick={() => changeImage(2)}>
+            <div
+              className="item"
+              onClick={() => {
+                changeImage(2);
+                setTimer(0);
+              }}
+            >
               <StyledDropdownImage src={images[2].image} />
             </div>
-            <div className="item" onClick={() => changeImage(3)}>
+            <div
+              className="item"
+              onClick={() => {
+                changeImage(3);
+                setTimer(0);
+              }}
+            >
               <StyledDropdownImage src={images[3].image} />
             </div>
-            <div className="item" onClick={() => changeImage(4)}>
+            <div
+              className="item"
+              onClick={() => {
+                changeImage(4);
+                setTimer(0);
+              }}
+            >
               <StyledDropdownImage src={images[4].image} />
             </div>
-            <div className="item" onClick={() => changeImage(5)}>
+            <div
+              className="item"
+              onClick={() => {
+                changeImage(5);
+                setTimer(0);
+              }}
+            >
               <StyledDropdownImage src={images[5].image} />
             </div>
           </div>

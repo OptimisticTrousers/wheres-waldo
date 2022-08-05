@@ -168,7 +168,7 @@ export function ImageProvider({ children }) {
 
   const [stoppedTimer, setStoppedTimer] = useState();
 
-  const [timer, setTimer] = useState("");
+  const [timer, setTimer] = useState(0);
   const [userWon, setUserWon] = useState(false);
   const [charactersFound, setCharactersFound] = useState([
     {
