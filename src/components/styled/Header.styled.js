@@ -119,35 +119,9 @@ export const StyledHeader = styled.header`
       height: 50px;
     }
   }
-  @media (max-width: 680px) {
-    img {
-      display: none;
-    }
-    .content{
-      justify-content: start;
-    }
-    .logo {
-      display: none;
-    }
-    .theme-button{
-      display: none;
-    }
-    h2 {
-      font-size: 1.25rem;
-    }
-    & > div > div {
-      gap: 0.2rem;
-    }
-    div:nth-child(2) {
-      margin: 0 9px;
-    }
-  }
-  @media(max-width: 470px) {
-    & {
-      justify-content: end;
-    }
+  @media(max-width: 440px) {
     .content {
-      display: block;
+      display: inline-block;
     }
   }
 `;

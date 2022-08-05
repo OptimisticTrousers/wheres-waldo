@@ -103,7 +103,7 @@ export const StyledDropdown = styled.div`
   }
    @media(max-width: 750px) { 
     #btn {
-      top: 2%;
+      top: 4%;
     }
   }
   @media(max-width: 470px) {
