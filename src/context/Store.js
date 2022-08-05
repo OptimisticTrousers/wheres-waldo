@@ -47,7 +47,6 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
 import Chance from "chance";
 
-import ReactStopwatch from "react-stopwatch";
 import { Timer } from "../components/Timer";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

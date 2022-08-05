@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.3.0",
+    "bad-words": "^3.0.4",
     "chance": "^1.1.8",
     "firebase": "^9.9.1",
     "prop-types": "^15.8.1",
@@ -15,7 +16,6 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-stopwatch": "^2.0.4",
     "styled-components": "^5.3.5",
     "uniqid": "^5.4.0",
     "web-vitals": "^2.1.4"
