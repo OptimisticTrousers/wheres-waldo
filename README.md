@@ -69,6 +69,7 @@ Beyond that, other learning outcomes were:
 1. Making the mouse hover on the image to be more smooth. Currently, the target box will only move if you hover outside of the target box.
 2. Adding more comprehensive testing
 3. Adding more levels
+4. Give the user back their time in seconds with demicals instead of seconds
 
 ## Known Bugs
 
