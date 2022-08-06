@@ -72,4 +72,4 @@ Beyond that, other learning outcomes were:
 
 ## Known Bugs
 
-1. None as of yet
+1. Target box does not move when the cursor is inside the target box
