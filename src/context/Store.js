@@ -12,11 +12,7 @@ import wilma from "../assets/wilma.jpg";
 import wizard from "../assets/wizard.jpg";
 import { firebaseConfig } from "../firebase-config";
 import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -168,6 +164,8 @@ export function ImageProvider({ children }) {
 
   const [stoppedTimer, setStoppedTimer] = useState();
 
+  const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
+
   const [timer, setTimer] = useState(0);
   const [userWon, setUserWon] = useState(false);
   const [charactersFound, setCharactersFound] = useState([
@@ -216,10 +214,13 @@ export function ImageProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    charactersFound.map((character) => {
-      return { ...character, found: false };
+    setCharactersFound((prevCharacters) => {
+      return prevCharacters.map((prevCharacter) => {
+        return { ...prevCharacter, found: false };
+      });
     });
-  }, [imageIndex]);
+    setNumberOfCharactersFound(0);
+  }, [imageIndex, userWon]);
 
   function changeTargetAppearance(event) {
     if (event.target.parentNode.nodeName === "MAIN") {
@@ -246,6 +247,8 @@ export function ImageProvider({ children }) {
         timer,
         stoppedTimer,
         setStoppedTimer,
+        setNumberOfCharactersFound,
+        numberOfCharactersFound,
       }}
     >
       {children}

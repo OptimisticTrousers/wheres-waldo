@@ -25,6 +25,8 @@ export default function Game() {
     setCharactersFound,
     setUserWon,
     setTimer,
+    numberOfCharactersFound,
+    setNumberOfCharactersFound,
   } = useContext(ImageContext);
   const [coordinates, setCoordinates] = useState(() => ({
     horizontalOffset: "50%",
@@ -32,8 +34,6 @@ export default function Game() {
   }));
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
-
-  const [numberOfCharactersFound, setNumberOfCharactersFound] = useState(0);
 
   const targetContainer = useRef(null);
 

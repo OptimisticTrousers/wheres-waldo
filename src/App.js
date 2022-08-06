@@ -24,7 +24,7 @@ function App() {
 
   const [userInput, setUserInput] = useState("");
 
-  const { images, imageIndex, userWon, stoppedTimer } =
+  const { images, imageIndex, userWon, stoppedTimer, setTimer, setUserWon } =
     useContext(ImageContext);
 
   const [gameStarted, setGameStarted] = useState(true);
@@ -69,11 +69,17 @@ function App() {
         name: customFilter.clean(userInput),
         time: timeToSeconds(),
       }),
-    }).then(() => location.reload());
+    }).then(() => {
+      setTimer(0);
+      setUserWon((prevValue) => !prevValue);
+      setUserInput("");
+    });
   }
 
   function resetGame() {
-    location.reload();
+    setTimer(0);
+    setUserWon((prevValue) => !prevValue);
+    setUserInput("");
   }
 
   return (
