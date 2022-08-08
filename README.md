@@ -2,7 +2,7 @@
 
 ## Description
 
-[App] Creating a game based on the famous serious, "Where's Waldo?" 
+[App] Creating a game based on the famous series, "Where's Waldo?" 
 
 > See it live on [optimistictrousers.github.io/TOP-wheres-waldo](https://optimistictrousers.github.io/TOP-wheres-waldo/)
 > Or clone repo, cd into repo, then run "npm run start"
