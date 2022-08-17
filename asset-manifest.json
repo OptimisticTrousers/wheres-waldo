@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/TOP-wheres-waldo/static/js/main.624a054c.js",
+    "static/js/787.4ce2c4d5.chunk.js": "/TOP-wheres-waldo/static/js/787.4ce2c4d5.chunk.js",
+    "static/media/space.jpg": "/TOP-wheres-waldo/static/media/space.ecd7e7bdff1473a90c59.jpg",
+    "static/media/fruitland.jpg": "/TOP-wheres-waldo/static/media/fruitland.e0f46b1a2d2cb9ba24d8.jpg",
+    "static/media/track.jpg": "/TOP-wheres-waldo/static/media/track.dcd79bf1ce0619360780.jpg",
+    "static/media/hollywood.jpg": "/TOP-wheres-waldo/static/media/hollywood.beff004ec6a0dc5757eb.jpg",
+    "static/media/winter.jpg": "/TOP-wheres-waldo/static/media/winter.9736162ac89c68ce67a0.jpg",
+    "static/media/beach.jpg": "/TOP-wheres-waldo/static/media/beach.a0e0289ef358bd1a3745.jpg",
+    "static/media/waldo.jpg": "/TOP-wheres-waldo/static/media/waldo.1e2ee91f0cfa0ceeb550.jpg",
+    "static/media/odlaw.jpg": "/TOP-wheres-waldo/static/media/odlaw.f34b5260e086e9e07982.jpg",
+    "static/media/optimistictrousers.jpg": "/TOP-wheres-waldo/static/media/optimistictrousers.4a58476dd91f3053fd80.jpg",
+    "index.html": "/TOP-wheres-waldo/index.html",
+    "main.624a054c.js.map": "/TOP-wheres-waldo/static/js/main.624a054c.js.map",
+    "787.4ce2c4d5.chunk.js.map": "/TOP-wheres-waldo/static/js/787.4ce2c4d5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.624a054c.js"
+  ]
+}
