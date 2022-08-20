@@ -134,7 +134,7 @@ function App() {
         changeGameState={changeGameState}
       />
       <StyledContent>
-        <Outlet />
+        <Outlet context={[theme, changeTheme, changeGameState]}/>
       </StyledContent>
       <Footer />
     </ThemeProvider>

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
+export const StyledHeaderRight = styled.div`
+
+  background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "white" : "rgb(56,56,56)"};
+  transition: 1s;
   --header-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "white" : "rgb(56, 56, 56)"};
   --header-text-color: ${({ theme: { mode } }) =>
@@ -14,14 +18,14 @@ export const StyledHeader = styled.header`
     mode === "light" ? "white" : "rgb(56, 56, 56)"};
   --button-hover-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"};
-  height: 8%;
+    overflow:hidden;
+
+& > div {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 3px 7.5px rgb(0 0 0 / 10%);
-  background-color: var(--header-background-color);
-  width: 100%;
-  transition: 1s;
+  column-gap: 8px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
   a {
     all: unset;
@@ -31,36 +35,6 @@ export const StyledHeader = styled.header`
   a:hover {
     cursor: pointer;
     color: red;
-  }
-
-  div:nth-child(2) {
-    margin: 0 1rem;
-  }
-  .logo:hover {
-    opacity: 0.7;
-    cursor: pointer;
-  }
-
-  & > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0rem;
-  }
-
-  & > div > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  img {
-    height: 75px;
-    width: 75px;
-    border-radius: 100px;
-    margin: 0 auto;
-    object-fit: contain;
   }
   svg {
     height: 26px;
@@ -104,53 +78,4 @@ export const StyledHeader = styled.header`
     cursor: pointer;
     background-color: var(--button-hover-background-color);
   }
-
-  @media (max-width: 1030px) {
-  }
-  @media (max-width: 895px) {
-  }
-  @media (max-width: 800px) {
-    /* img {
-      width: 40px;
-      height: 40px;
-    }
-    h2 {
-      font-size: 1rem;
-    } */
-    /* .content {
-      display: inline-block;
-    }
-    .content > * {
-      gap: 8px;
-    } */
-  }
-  @media (max-width: 660px) {
-    .logo {
-      display: none;
-    }
-    img {
-      margin-top: 10px;
-    }
-    h2 {
-      position: absolute;
-      top: 0%;
-      left: 0%;
-    }
-  }
-  @media(max-width: 460px) {
-    img {
-      width: 60px;
-      height: 60px;
-    }
-    & > div > div {
-      gap: 0;
-      margin-left: 1.25rem;
-    }
-    div:nth-child(2) {
-      margin: 0;
-    }
-    p {
-      font-size: 1rem;
-    }
-  }
-`;
+`

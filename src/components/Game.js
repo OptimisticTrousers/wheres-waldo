@@ -10,6 +10,8 @@ import { StyledDropdownImage } from "./styled/DropdownImage.styled";
 import { ImageContext } from "../context/Store";
 import uniqid from "uniqid";
 import { GameContainer } from "./styled/GameContainer.styled";
+import HeaderRight from "./HeaderRight";
+import { useOutletContext } from "react-router";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -32,6 +34,8 @@ export default function Game() {
     horizontalOffset: "50%",
     verticalOffset: "0%",
   }));
+
+  const [theme, changeTheme, changeGameState] = useOutletContext();
 
   const [dbCoordinates, setDbCoordinates] = useState(null);
 
@@ -150,6 +154,11 @@ export default function Game() {
           <div id="bottom"></div>
         </div>
         <div id="box" className={`${isMenuActive && "active"}`}>
+          <HeaderRight
+            theme={theme}
+            changeTheme={changeTheme}
+            changeGameState={changeGameState}
+          />
           <h2>Pick Your Level!</h2>
           <div id="items">
             <div

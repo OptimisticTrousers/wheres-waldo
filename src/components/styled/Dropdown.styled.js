@@ -47,7 +47,7 @@ export const StyledDropdown = styled.div`
 
   #btn.active {
     left: 220px;
-    top: 2%;
+    top: 0.5%;
     & > div {
       background-color: var(--menu-text);
     }

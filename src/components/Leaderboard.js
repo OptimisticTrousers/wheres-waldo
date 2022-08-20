@@ -1,4 +1,4 @@
-import { StyledLeaderBoard } from "./styled/StyledLeaderBoard";
+import { StyledLeaderBoard } from "./styled/StyledLeaderBoard.styled";
 import { LeaderboardImages } from "./styled/LeaderboardImages.styled";
 import { useContext, useState } from "react";
 import { ImageContext } from "../context/Store";
