@@ -80,9 +80,6 @@ export default function Game() {
   ) {
     const { horizontalOffset, verticalOffset } = coordinates;
 
-    if (numberOfCharactersFound === 3) {
-      setUserWon(true);
-    }
     if (
       verticalCoordinates - verticalRange <= verticalOffset &&
       verticalCoordinates + verticalRange >= verticalOffset &&
@@ -93,6 +90,9 @@ export default function Game() {
         charactersFound.find((character) => character.name === name).found ===
         false
       ) {
+        if (numberOfCharactersFound === 3) {
+          setUserWon(true);
+        }
         setCharactersFound((prevCharactersFound) => {
           const characterIndex = prevCharactersFound.findIndex(
             (character) => character.name === name
