@@ -125,10 +125,6 @@ export const StyledHeader = styled.header`
     }
   }
   @media(max-width: 460px) {
-    img {
-      width: 60px;
-      height: 60px;
-    }
     & > div > div {
       gap: 0;
       margin-left: 1.25rem;
@@ -138,6 +134,12 @@ export const StyledHeader = styled.header`
     }
     p {
       font-size: 1rem;
+    }
+  }
+  @media(max-width: 355px) {
+    img {
+      height: 66px;
+      width: 66px;
     }
   }
 `;
