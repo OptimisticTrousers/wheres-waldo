@@ -18,7 +18,6 @@ export const StyledHeaderRight = styled.div`
     mode === "light" ? "white" : "rgb(56, 56, 56)"};
   --button-hover-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"};
-    overflow:hidden;
 
 & > div {
   display: flex;
@@ -78,4 +77,5 @@ export const StyledHeaderRight = styled.div`
     cursor: pointer;
     background-color: var(--button-hover-background-color);
   }
+
 `

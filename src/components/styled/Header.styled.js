@@ -105,25 +105,12 @@ export const StyledHeader = styled.header`
     background-color: var(--button-hover-background-color);
   }
 
-  @media (max-width: 1030px) {
-  }
-  @media (max-width: 895px) {
-  }
-  @media (max-width: 800px) {
-    /* img {
-      width: 40px;
-      height: 40px;
+  @media(max-width: 990px) {
+    & > div > div:nth-child(3) {
+      display: none;
     }
-    h2 {
-      font-size: 1rem;
-    } */
-    /* .content {
-      display: inline-block;
-    }
-    .content > * {
-      gap: 8px;
-    } */
   }
+ 
   @media (max-width: 660px) {
     .logo {
       display: none;
