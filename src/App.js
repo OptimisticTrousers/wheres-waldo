@@ -10,15 +10,12 @@ import { Modal } from "./components/styled/Modal.styled";
 import { ImageContext } from "./context/Store";
 import uniqid from "uniqid";
 import { arrayUnion } from "firebase/firestore";
-
 import { firebaseConfig } from "./firebase-config";
 import { initializeApp } from "firebase/app";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
+import { db } from "../firebase-config";
 import Filter from "bad-words";
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-const db = getFirestore(app);
+
 function App() {
   const [theme, setTheme] = useState({ mode: "light" });
 
@@ -134,7 +131,7 @@ function App() {
         changeGameState={changeGameState}
       />
       <StyledContent>
-        <Outlet context={[theme, changeTheme, changeGameState]}/>
+        <Outlet context={[theme, changeTheme, changeGameState]} />
       </StyledContent>
       <Footer />
     </ThemeProvider>

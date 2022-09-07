@@ -12,11 +12,7 @@ import uniqid from "uniqid";
 import { GameContainer } from "./styled/GameContainer.styled";
 import HeaderRight from "./HeaderRight";
 import { useOutletContext } from "react-router";
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-const db = getFirestore(app);
+import { db } from "../firebase-config";
 
 export default function Game() {
   const {

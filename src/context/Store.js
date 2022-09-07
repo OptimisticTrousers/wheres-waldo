@@ -13,11 +13,7 @@ import wizard from "../assets/wizard.jpg";
 import { firebaseConfig } from "../firebase-config";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-const db = getFirestore(app);
+import { db } from "../firebase-config";
 
 export const ImageContext = createContext();
 
