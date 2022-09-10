@@ -29,9 +29,9 @@ export const StyledDropdown = styled.div`
     position: fixed;
     z-index: 5;
     top: 5.1%;
-    background-color: black;
+    background-color: white;
     border-radius: 10px;
-    padding: 0.4rem;
+    padding: 0.3rem;
     left: 2%;
     cursor: pointer;
     transition: left 500ms var(--easing);
@@ -49,7 +49,7 @@ export const StyledDropdown = styled.div`
     left: 220px;
     top: 0.5%;
     & > div {
-      background-color: var(--menu-text);
+    color: black;
     }
     & > #top {
       transform: translateY(10px) rotate(-135deg);
@@ -68,7 +68,7 @@ export const StyledDropdown = styled.div`
     z-index: 4;
     overflow: auto;
     top: 0px;
-    left: -275px;
+    left: -300px;
     width: 300px;
     opacity: 0;
     padding: 30px 0px;

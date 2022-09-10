@@ -13,7 +13,7 @@ import { arrayUnion } from "firebase/firestore";
 import { firebaseConfig } from "./firebase-config";
 import { initializeApp } from "firebase/app";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { db } from "./firebase-config";
 import Filter from "bad-words";
 
 function App() {
