@@ -57,10 +57,10 @@ export const StyledHeader = styled.header`
 
   img {
     height: 75px;
-    width: 75px;
+    width: 100%;
     border-radius: 100px;
-    margin: 0 auto;
-    object-fit: contain;
+    object-fit: cover;
+    overflow: hidden;
   }
   svg {
     height: 26px;

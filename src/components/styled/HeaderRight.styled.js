@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledHeaderRight = styled.div`
-
   background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "white" : "rgb(56,56,56)"};
   transition: 1s;
@@ -13,18 +12,21 @@ export const StyledHeaderRight = styled.div`
     mode === "light" ? "#ebedf0" : "black"};
   --header-accent: "#ebedf0";
   --button-background-color: ${({ theme: { mode } }) =>
-    mode === "light" ? "rgb(56, 56, 56)" : "white"};
+    mode === "light" ? "black" : "white"};
   --button-text-color: ${({ theme: { mode } }) =>
-    mode === "light" ? "white" : "rgb(56, 56, 56)"};
+    mode === "light" ? "white" : "black"};
   --button-hover-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"};
 
-& > div {
-  display: flex;
-  column-gap: 8px;
-  margin: 0 auto;
-  padding: 1rem;
-}
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding: 0.25rem;
+    margin-top: 0.5rem;
+  }
 
   a {
     all: unset;
@@ -38,12 +40,13 @@ export const StyledHeaderRight = styled.div`
   svg {
     height: 26px;
     width: 26px;
+    color: var(--button-background-color);
   }
 
   .theme-button {
     width: 36px;
     height: 36px;
-    background-color: white;
+    background-color: inherit;
     border: none;
     box-sizing: border-box;
     display: flex;
@@ -63,19 +66,18 @@ export const StyledHeaderRight = styled.div`
     color: var(--header-text-color);
   }
   .theme-button:hover {
-    background-color: #ebedf0;
+    background-color: var(--button-text-color);
     cursor: pointer;
   }
   .instructions {
     background-color: var(--button-background-color);
-    color: var(--button-text-color);
     border: none;
-    border-radius: 32px;
-    padding: 0.25rem 0.5rem;
+    color: var(--button-text-color);
+    border-radius: 8px;
+    padding: 0.5rem 1.25rem;
   }
   .instructions:hover {
     cursor: pointer;
     background-color: var(--button-hover-background-color);
   }
-
-`
+`;
