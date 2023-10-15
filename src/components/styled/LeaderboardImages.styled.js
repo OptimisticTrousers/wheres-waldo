@@ -4,6 +4,7 @@ export const LeaderboardImages = styled.div`
   display: grid;
   place-items: center;
   grid-template-columns: repeat(auto-fit, minmax(241px, 1fr));
+  row-gap: 2rem;
   img {
     width: 241px;
     height: 160px;

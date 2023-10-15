@@ -13,6 +13,7 @@ import { GameContainer } from "./styled/GameContainer.styled";
 import HeaderRight from "./HeaderRight";
 import { useOutletContext } from "react-router";
 import { db } from "../firebase-config";
+import SideNav from "./SideNav";
 
 export default function Game() {
   const {
@@ -140,7 +141,14 @@ export default function Game() {
   return (
     <>
       <StyledDropdown>
-        <div
+        <button
+          className={`admin-window ${isMenuActive && "active"}`}
+          onClick={handleMenuClick}
+          onMouseEnter={handleMenuClick}
+        >
+          LEVELS
+        </button>
+        {/* <div
           id="btn"
           className={`${isMenuActive && "active"}`}
           onClick={handleMenuClick}
@@ -148,9 +156,18 @@ export default function Game() {
           <div id="top"></div>
           <div id="middle"></div>
           <div id="bottom"></div>
-        </div>
-        <div id="box" className={`${isMenuActive && "active"}`}>
-          <HeaderRight
+        </div> */}
+        <div
+          id="box"
+          className={`${isMenuActive && "active"}`}
+          onMouseLeave={handleMenuClick}
+        >
+          {/* <HeaderRight
+            theme={theme}
+            changeTheme={changeTheme}
+            changeGameState={changeGameState}
+          /> */}
+          <SideNav
             theme={theme}
             changeTheme={changeTheme}
             changeGameState={changeGameState}

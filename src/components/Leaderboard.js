@@ -20,7 +20,7 @@ export default function Leaderboard() {
         }}
       >
         <img src={image} alt={name} />
-        <p>Level {index + 1}</p>
+        <p className={`${index === leaderboardIndex ? 'active': ''}`}>Level {index + 1}</p>
       </div>
     );
   });

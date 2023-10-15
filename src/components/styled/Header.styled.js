@@ -14,6 +14,9 @@ export const StyledHeader = styled.header`
     mode === "light" ? "white" : "rgb(56, 56, 56)"};
   --button-hover-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"};
+  border-bottom: ${({ theme: { mode } }) =>
+    mode === "light" ? "1px solid black" : "1px solid #e0e0e0"};
+
   height: 8%;
   display: flex;
   justify-content: center;
@@ -50,16 +53,16 @@ export const StyledHeader = styled.header`
 
   & > div > div {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
   }
 
   img {
     height: 75px;
-    width: 100%;
-    border-radius: 100px;
-    object-fit: cover;
+    width: 75px;
+    border-radius: 8px;
+    object-fit: contain;
     overflow: hidden;
   }
   svg {
@@ -105,13 +108,71 @@ export const StyledHeader = styled.header`
     background-color: var(--button-hover-background-color);
   }
 
-  @media(max-width: 990px) {
+  & > div > div:last-child {
+    gap: 1.5rem; /* Increase the gap between items for better spacing */
+    padding-right: 1rem; /* Add some padding to the right for better spacing from the edge */
+  }
+
+  .instructions {
+    margin-left: 0.5rem; /* Add some margin to the left of the instructions button for spacing */
+    padding: 0.25rem 1rem; /* Increase the horizontal padding of the instructions button for better visual */
+  }
+
+  /* Adjust the theme button styles for better visuals */
+  .theme-button {
+    margin-left: 0.5rem; /* Add some margin to the left of the theme button for spacing */
+    border: 1px solid var(--header-text-color); /* Add a border to give it some definition */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  }
+
+  @media (max-width: 1160px) {
+    .container {
+      flex-direction: column;
+      gap: 0;
+      margin-left: 1rem;
+    }
+  }
+
+  @media (max-width: 1040px) {
+    & {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 930px) {
     & > div > div:nth-child(3) {
       display: none;
     }
+    & > div {
+      width: 100%;
+    }
   }
- 
-  @media (max-width: 660px) {
+
+  @media (max-width: 600px) {
+    div:nth-child(2) {
+      margin: 0;
+    }
+    & {
+      justify-content: flex-start;
+      flex: 1;
+    }
+    & > div {
+      justify-content: space-evenly;
+    }
+    .container {
+      flex-direction: column;
+      gap: 0;
+      margin-left: 1rem;
+    }
+    .characters {
+      gap: 0.5rem;
+    }
+    .container {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+  /* @media (max-width: 660px) {
     .logo {
       display: none;
     }
@@ -123,23 +184,32 @@ export const StyledHeader = styled.header`
       top: 0%;
       left: 0%;
     }
-  }
-  @media(max-width: 460px) {
-    & > div > div {
+  } */
+  @media (max-width: 446px) {
+    /* & > div > div {
       gap: 0;
       margin-left: 1.25rem;
     }
     div:nth-child(2) {
       margin: 0;
-    }
+    } */
     p {
       font-size: 1rem;
     }
+    h2 {
+      font-size: 1rem;
+    }
+    img {
+      width: 100%;
+    }
+    & {
+      justify-content: stretch;
+    }
   }
-  @media(max-width: 355px) {
+  /* @media (max-width: 355px) {
     img {
       height: 66px;
       width: 66px;
     }
-  }
+  } */
 `;

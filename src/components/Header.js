@@ -41,7 +41,7 @@ const Header = ({ changeTheme, theme, changeGameState }) => {
   return (
     <StyledHeader>
       <Container className="content">
-        <div>
+        <div className="container">
           <Link to="/">
             <img
               className="logo"

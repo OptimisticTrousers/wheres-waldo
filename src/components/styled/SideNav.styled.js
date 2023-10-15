@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-export const StyledHeaderRight = styled.div`
+export const StyledSideNav = styled.div`
   background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "white" : "rgb(56,56,56)"};
   transition: 1s;
-  --header-background-color: ${({ theme: { mode } }) =>
+  --sidebar-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "white" : "rgb(56, 56, 56)"};
-  --header-text-color: ${({ theme: { mode } }) =>
+  --sidebar-text-color: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(56, 56, 56)" : "white"};
   --link-background: ${({ theme: { mode } }) =>
     mode === "light" ? "#ebedf0" : "black"};
-  --header-accent: "#ebedf0";
+  --sidebar-accent: "#ebedf0";
   --button-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "black" : "white"};
   --button-text-color: ${({ theme: { mode } }) =>
@@ -18,20 +18,23 @@ export const StyledHeaderRight = styled.div`
   --button-hover-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"};
 
-  & > div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: space-between;
-    padding-top: 1rem;
-    padding: 0.25rem;
-    margin-top: 0.5rem;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 1rem;
+  padding: 1rem;
+  margin-top: 0.5rem;
 
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
   a {
     all: unset;
     font-size: 1.25rem;
-    color: var(--header-text-color);
+    color: var(--sidebar-text-color);
   }
   a:hover {
     cursor: pointer;
@@ -55,15 +58,15 @@ export const StyledHeaderRight = styled.div`
     border-radius: 50%;
   }
   h1 {
-    color: var(--header-text-color);
+    color: var(--sidebar-text-color);
   }
   h2 {
-    color: var(--header-text-color);
+    color: var(--sidebar-text-color);
   }
   p {
     text-align: center;
     font-size: 1.25rem;
-    color: var(--header-text-color);
+    color: var(--sidebar-text-color);
   }
   .theme-button:hover {
     background-color: var(--button-text-color);
@@ -74,16 +77,14 @@ export const StyledHeaderRight = styled.div`
     background-color: #ff6b6b;
     border: none;
     color: white;
-    border-radius: 8px;
     padding: 0.5rem 1.25rem;
+    border-radius: 4px;
     transition: background-color 0.3s ease, border-color 0.3s ease,
       transform 0.3s ease, box-shadow 0.3s ease;
   }
   .instructions:hover {
-    transition: all 0.3s ease;
-    background-color: #ff3d3d; /* a slightly darker shade of the original color */
-    border-color: #ff3d3d;
-    transform: scale(1.05); /* slightly enlarging the button for emphasis */
-    cursor: pointer; /* to indicate it's clickable */
+    transition: background-color 0.3s ease, border-color 0.3s ease,
+      transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 107, 107, 0.8);
   }
 `;

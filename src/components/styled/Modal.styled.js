@@ -8,41 +8,57 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
   background-color: rgb(0, 0, 0, 0.4);
   text-align: center;
+
+  --modal-background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "#fefefe" : "rgb(56, 56, 56)"};
+  --modal-text-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "rgb(56, 56, 56)" : "white"};
   --border-color: ${({ theme: { mode } }) =>
-    mode === "light" ? "rgb(56, 56 ,56)" : "white"};
+    mode === "light" ? "rgb(211, 211, 211)" : "white"};
+  --button-background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "#0085fe" : "white"};
+  --button-text-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "white" : "rgb(56, 56, 56)"};
+  --button-hover-background-color: ${({ theme: { mode } }) =>
+    mode === "light" ? "#2660a4" : "#ebedf0"};
+
   button {
     display: block;
     margin: 0 auto;
     margin-top: 2rem;
     width: 100%;
     height: 40px;
-    background-color: #0085fe;
+    background-color: var(--button-background-color);
     border: none;
-    color: white;
-    transition: 1s;
+    color: var(--button-text-color);
+    transition: 0.3s;
   }
+  
   button:hover {
-    transition: all ease-in-out 0.2s;
+    background-color: var(--button-hover-background-color);
     cursor: pointer;
-    background-color: #2660a4;
   }
+
   h2 {
     font-weight: 900;
-    color: black;
+    color: var(--modal-text-color);
   }
+  
   p {
     margin: 0.5rem 0rem;
+    color: var(--modal-text-color);
   }
+
   & > div {
-    background-color: #fefefe;
+    background-color: var(--modal-background-color);
     margin: 15% auto;
+    max-width: 460px;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid var(--border-color);
     width: ${({ userWon }) => (userWon ? "50%" : "80%")};
-    border-radius: 8%;
+    border-radius: 8px;
   }
   & > div > div {
     display: flex;
@@ -73,6 +89,7 @@ export const Modal = styled.div`
   button:nth-child(1) {
     background-color: ${({ userWon }) => userWon && "inherit"};
     color: #0085fe;
+    border-radius: 4px;
   }
   label {
     font-weight: 900;
@@ -84,7 +101,7 @@ export const Modal = styled.div`
   img {
     width: 80px;
     height: 80px;
-    object-fit: contain;
+    object-fit: cover;
     border: 1px solid var(--border-color);
     border-radius: 5%;
   }

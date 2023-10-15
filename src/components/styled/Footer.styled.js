@@ -40,4 +40,13 @@ export const StyledFooter = styled.footer`
   a:hover {
     background-color: var(--logo-background-color);
   }
+
+  @media (max-width: 400px) {
+    & > div {
+      gap: 0;
+    }
+    & {
+      text-align: center;
+    }
+  }
 `;
