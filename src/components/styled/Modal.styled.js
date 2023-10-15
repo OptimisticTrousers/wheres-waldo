@@ -10,6 +10,7 @@ export const Modal = styled.div`
   overflow: auto;
   background-color: rgb(0, 0, 0, 0.4);
   text-align: center;
+  animation: scale-down 0.1s;
 
   --modal-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "#fefefe" : "rgb(56, 56, 56)"};
@@ -35,7 +36,7 @@ export const Modal = styled.div`
     color: var(--button-text-color);
     transition: 0.3s;
   }
-  
+
   button:hover {
     background-color: var(--button-hover-background-color);
     cursor: pointer;
@@ -45,7 +46,17 @@ export const Modal = styled.div`
     font-weight: 900;
     color: var(--modal-text-color);
   }
-  
+
+  @keyframes scale-down {
+    0% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
   p {
     margin: 0.5rem 0rem;
     color: var(--modal-text-color);
@@ -54,7 +65,7 @@ export const Modal = styled.div`
   & > div {
     background-color: var(--modal-background-color);
     margin: 15% auto;
-    max-width: 460px;
+    max-width: 440px;
     padding: 20px;
     border: 1px solid var(--border-color);
     width: ${({ userWon }) => (userWon ? "50%" : "80%")};
@@ -75,7 +86,9 @@ export const Modal = styled.div`
     border-radius: 0.375rem;
     border-width: 1px;
     font-size: 100%;
-    width: 40%;
+    width: 100%;
+    border: ${({ theme: { mode } }) =>
+      mode === "light" ? "1px solid #121212" : "1px solid transparent"};
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   }
   form {
@@ -90,6 +103,21 @@ export const Modal = styled.div`
     background-color: ${({ userWon }) => userWon && "inherit"};
     color: #0085fe;
     border-radius: 4px;
+  }
+  & form .buttons > button {
+    background-color: ${({ userWon }) => userWon && "inherit"};
+    /* color: #9acfff; */
+    border-radius: 4px;
+    color: ${({ theme: { mode } }) => (mode === "light" ? "black" : "#9acfff")};
+  }
+  & form label {
+    color: var(--modal-text-color);
+    align-self: flex-start;
+  }
+  & form .buttons > button:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-text-color);
+    cursor: pointer;
   }
   label {
     font-weight: 900;

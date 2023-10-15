@@ -24,7 +24,7 @@ export const StyledDropdown = styled.div`
   h2 {
     color: var(--menu-text);
     padding-left: 2rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   #btn {
     position: fixed;
@@ -48,22 +48,25 @@ export const StyledDropdown = styled.div`
 
   .admin-window {
     position: absolute;
-    left: -50px;
+    left: -51px;
     z-index: 1;
     top: 100%;
     transform: translateY(-50%);
-    color: #fff;
+    color: ${({ theme: { mode } }) => (mode === "light" ? "black" : "white")};
     padding: 12px 30px;
     font-size: 24px;
     cursor: pointer;
     font-family: sans-serif;
     transition: all 350ms var(--easing);
     transform: rotate(90deg);
-    background-color: rgba(14, 14, 33, 0.92);
+    background-color: ${({ theme: { mode } }) =>
+      mode === "light" ? "white" : "rgba(14, 14, 33, 0.92)"};
     backdrop-filter: blur(8px);
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
-    border: 2px solid rgba(57, 57, 89, 0.92);
+    border: 2px solid
+      ${({ theme: { mode } }) => (mode === "light" ? "gray" : "white")};
+    border-bottom: 0;
   }
 
   .admin-window:hover {
@@ -154,7 +157,8 @@ export const StyledDropdown = styled.div`
       transition: all 250ms;
       &:hover {
         padding: 15px 45px;
-        background-color: white;
+        background-color: ${({ theme: { mode } }) =>
+          mode === "light" ? "rgb(56, 56, 56)" : "white"};
       }
     }
   }

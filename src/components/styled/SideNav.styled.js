@@ -78,6 +78,7 @@ export const StyledSideNav = styled.div`
     border: none;
     color: white;
     padding: 0.5rem 1.25rem;
+    cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease, border-color 0.3s ease,
       transform 0.3s ease, box-shadow 0.3s ease;

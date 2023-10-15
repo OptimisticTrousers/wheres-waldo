@@ -57,7 +57,9 @@ export const StyledHeader = styled.header`
     align-items: center;
     gap: 3rem;
   }
-
+  .logo {
+    border-radius: 50%;
+  }
   img {
     height: 75px;
     width: 75px;

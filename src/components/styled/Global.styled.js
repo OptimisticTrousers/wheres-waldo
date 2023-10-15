@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+
 const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -8,37 +9,29 @@ const GlobalStyles = createGlobalStyle`
   html {
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
   }
   body {
     min-height: 100%;
     position: relative;
     padding-bottom: 40px;
   }
-  /* Universal Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-}
+  /* Universal Scrollbar Styling based on Theme */
+  ::-webkit-scrollbar {
+      width: 12px;
+  }
 
-/* Scrollbar Track */
-::-webkit-scrollbar-track {
-    background-color: rgba(14, 14, 33, 0.92); /* Same dark background color from your button for consistency */
-    border-radius: 10px; /* Rounded corners for a softer appearance */
-}
+  ::-webkit-scrollbar-track {
+      background-color: ${({ theme: { mode } }) => mode === "light" ? "#ebedf0" : "rgb(56, 56, 56)"}; 
+  }
 
-/* Scrollbar Handle */
-::-webkit-scrollbar-thumb {
-    background-color: rgba(57, 57, 89, 0.92); /* Darkened shade to provide contrast with the track */
-    border-radius: 10px; /* Rounded corners to match the track */
-    border: 2px solid rgba(14, 14, 33, 0.92); /* An outer border matching the background color for a "grooved" appearance */
-}
+  ::-webkit-scrollbar-thumb {
+      background-color: ${({ theme: { mode } }) => mode === "light" ? "rgb(56, 56, 56)" : "white"}; 
+      border: 2px solid ${({ theme: { mode } }) => mode === "light" ? "#ebedf0" : "black"}; 
+  }
 
-/* Scrollbar Handle Hover State */
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(97, 97, 129, 0.92); /* Even darker shade for hover feedback */
-}
-
-
+  ::-webkit-scrollbar-thumb:hover {
+      background-color: ${({ theme: { mode } }) => mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"}; 
+  }
 `;
 
 export default GlobalStyles;
