@@ -207,6 +207,9 @@ export const StyledHeader = styled.header`
     & {
       justify-content: stretch;
     }
+    .characters {
+      padding-right: 1rem;
+    }
   }
   /* @media (max-width: 355px) {
     img {

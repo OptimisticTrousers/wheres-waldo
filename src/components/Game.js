@@ -144,7 +144,6 @@ export default function Game() {
         <button
           className={`admin-window ${isMenuActive && "active"}`}
           onClick={handleMenuClick}
-          onMouseEnter={handleMenuClick}
         >
           LEVELS
         </button>
@@ -160,7 +159,7 @@ export default function Game() {
         <div
           id="box"
           className={`${isMenuActive && "active"}`}
-          onMouseLeave={handleMenuClick}
+          // onMouseLeave={handleMenuClick}
         >
           {/* <HeaderRight
             theme={theme}

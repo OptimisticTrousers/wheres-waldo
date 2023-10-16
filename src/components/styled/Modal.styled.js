@@ -11,6 +11,10 @@ export const Modal = styled.div`
   background-color: rgb(0, 0, 0, 0.4);
   text-align: center;
   animation: scale-down 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 
   --modal-background-color: ${({ theme: { mode } }) =>
     mode === "light" ? "#fefefe" : "rgb(56, 56, 56)"};
@@ -64,7 +68,7 @@ export const Modal = styled.div`
 
   & > div {
     background-color: var(--modal-background-color);
-    margin: 15% auto;
+    margin: 0 auto;
     max-width: 440px;
     padding: 20px;
     border: 1px solid var(--border-color);

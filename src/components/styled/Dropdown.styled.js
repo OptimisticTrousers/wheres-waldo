@@ -57,7 +57,7 @@ export const StyledDropdown = styled.div`
     font-size: 24px;
     cursor: pointer;
     font-family: sans-serif;
-    transition: all 350ms var(--easing);
+    transition: all 250ms var(--easing);
     transform: rotate(90deg);
     background-color: ${({ theme: { mode } }) =>
       mode === "light" ? "white" : "rgba(14, 14, 33, 0.92)"};
@@ -76,7 +76,10 @@ export const StyledDropdown = styled.div`
       73,
       0.92
     ); /* Significantly darken the background */
-    color: #e91e63; /* Change text color to a bright pink */
+    color: ${({ theme: { mode } }) =>
+      mode === "light"
+        ? "var(--menu-background)"
+        : "#e91e63"}; /* Change text color to a bright pink */
     transform: rotate(90deg) scale(1.1); /* More scaling along with the rotation */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow for more depth */
     border-color: rgba(
@@ -87,9 +90,11 @@ export const StyledDropdown = styled.div`
     ); /* Darken the border color more noticeably */
   }
 
-  /* .admin-window.active {
-    left: calc(var(--sidebar-width) - 40px);
-  } */
+  @media screen and (hover: none) and (pointer: coarse) {
+  }
+  .admin-window.active {
+    left: calc(var(--sidebar-width) - 52px);
+  }
 
   /* .admin-window {
     position: fixed;
