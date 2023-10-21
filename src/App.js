@@ -15,9 +15,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 import { db } from "./firebase-config";
 import Filter from "bad-words";
+import { useWindowSize } from "@uidotdev/usehooks";
+import Confetti from "react-confetti";
 
 function App() {
   const [theme, setTheme] = useState({ mode: "light" });
+  const { width, height } = useWindowSize();
 
   const [userInput, setUserInput] = useState("");
 
@@ -82,24 +85,28 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {userWon && (
-        <Modal userWon>
-          <div>
-            <h2>
-              You finished in <span>{stoppedTimer?.current?.textContent}</span>
-            </h2>
-            <p>Enter your name to save your score on the leaderboard!</p>
-            <form onSubmit={formSubmit}>
-              <label>Username</label>
-              <input value={userInput} onChange={handleInputChange} />
-              <div className="buttons">
-                <button type="button" onClick={resetGame}>
-                  Cancel
-                </button>
-                <button type="submit">Submit Score</button>
-              </div>
-            </form>
-          </div>
-        </Modal>
+        <>
+          <Modal userWon>
+            <Confetti width={width} height={height} />
+            <div>
+              <h2>
+                You won! You finished in{" "}
+                <span>{stoppedTimer?.current?.textContent}</span>
+              </h2>
+              <p>Enter your name to save your score on the leaderboard!</p>
+              <form onSubmit={formSubmit}>
+                <label>Username</label>
+                <input value={userInput} onChange={handleInputChange} />
+                <div className="buttons">
+                  <button type="button" onClick={resetGame}>
+                    Cancel
+                  </button>
+                  <button type="submit">Submit Score</button>
+                </div>
+              </form>
+            </div>
+          </Modal>
+        </>
       )}
       {gameStarted === false && (
         <Modal>
