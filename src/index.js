@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
 import { ImageProvider } from "./context/Store";
@@ -11,14 +11,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ImageProvider>
     <React.StrictMode>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Game />} />
             <Route path="leaderboard" element={<Leaderboard />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </React.StrictMode>
   </ImageProvider>
 );
