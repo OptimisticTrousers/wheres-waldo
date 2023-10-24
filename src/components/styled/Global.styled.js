@@ -15,9 +15,6 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     padding-bottom: 40px;
   }
-  #root {
-    height: 100%;
-  }
   /* Universal Scrollbar Styling based on Theme */
   ::-webkit-scrollbar {
       width: 12px;
