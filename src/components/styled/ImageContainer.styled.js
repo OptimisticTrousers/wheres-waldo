@@ -7,6 +7,7 @@ export const ImageContainer = styled.div`
   background-repeat: no-repeat;
   height: 1280px;
   width: 1920px;
+  margin: 0 auto;
 
   div {
     position: relative;
