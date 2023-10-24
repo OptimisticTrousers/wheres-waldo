@@ -15,22 +15,29 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     padding-bottom: 40px;
   }
+  #root {
+    height: 100%;
+  }
   /* Universal Scrollbar Styling based on Theme */
   ::-webkit-scrollbar {
       width: 12px;
   }
 
   ::-webkit-scrollbar-track {
-      background-color: ${({ theme: { mode } }) => mode === "light" ? "#ebedf0" : "rgb(56, 56, 56)"}; 
+      background-color: ${({ theme: { mode } }) =>
+        mode === "light" ? "#ebedf0" : "rgb(56, 56, 56)"}; 
   }
 
   ::-webkit-scrollbar-thumb {
-      background-color: ${({ theme: { mode } }) => mode === "light" ? "rgb(56, 56, 56)" : "white"}; 
-      border: 2px solid ${({ theme: { mode } }) => mode === "light" ? "#ebedf0" : "black"}; 
+      background-color: ${({ theme: { mode } }) =>
+        mode === "light" ? "rgb(56, 56, 56)" : "white"}; 
+      border: 2px solid ${({ theme: { mode } }) =>
+        mode === "light" ? "#ebedf0" : "black"}; 
   }
 
   ::-webkit-scrollbar-thumb:hover {
-      background-color: ${({ theme: { mode } }) => mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"}; 
+      background-color: ${({ theme: { mode } }) =>
+        mode === "light" ? "rgb(100, 100, 100)" : "#ebedf0"}; 
   }
 `;
 

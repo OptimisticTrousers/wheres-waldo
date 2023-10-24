@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useContext, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { StyledContent } from "./components/styled/Game.styled";
+import { StyledLayout } from "./components/styled/Layout.styled";
 import { Modal } from "./components/styled/Modal.styled";
 import { ImageContext } from "./context/Store";
 import uniqid from "uniqid";
@@ -137,9 +137,9 @@ function App() {
         theme={theme}
         changeGameState={changeGameState}
       />
-      <StyledContent>
+      <StyledLayout>
         <Outlet context={[theme, changeTheme, changeGameState]} />
-      </StyledContent>
+      </StyledLayout>
       <Footer />
     </ThemeProvider>
   );

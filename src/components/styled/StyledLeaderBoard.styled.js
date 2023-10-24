@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLeaderBoard = styled.main`
+export const StyledLeaderBoard = styled.div`
   height: auto;
   width: 100%;
   --background-color: ${({ theme: { mode } }) =>
