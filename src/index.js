@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, HashRouter as Router } from "react-router-dom";
 import Game from "./components/Game";
 import Leaderboard from "./components/Leaderboard";
 import { ImageProvider } from "./context/Store";
