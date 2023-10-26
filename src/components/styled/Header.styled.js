@@ -204,6 +204,9 @@ export const StyledHeader = styled.header`
     img {
       width: 100%;
     }
+    .logo {
+      border-radius: 8px;
+    }
     & {
       justify-content: stretch;
     }

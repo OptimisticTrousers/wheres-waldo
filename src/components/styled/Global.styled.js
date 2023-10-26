@@ -16,7 +16,6 @@ const GlobalStyles = createGlobalStyle`
     --background-color: ${({ theme: { mode } }) =>
       mode === "light" ? "white" : "rgb(56, 56, 56)"};
     background-color: var(--background-color);
-    padding-bottom: 40px;
   }
   /* Universal Scrollbar Styling based on Theme */
   ::-webkit-scrollbar {

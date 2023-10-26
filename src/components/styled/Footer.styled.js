@@ -10,13 +10,9 @@ export const StyledFooter = styled.footer`
   background-color: var(--background-color);
   padding: 1rem 0rem;
   color: var(--text-color);
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 60px;
   width: 100%;
   transition: 1s;
+  margin-top: auto;
 
   div {
     display: flex;
